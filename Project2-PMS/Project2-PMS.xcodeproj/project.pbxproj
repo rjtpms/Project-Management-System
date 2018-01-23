@@ -14,6 +14,7 @@
 		23EA9D652016D2DA0086EAF4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 23EA9D642016D2DA0086EAF4 /* Assets.xcassets */; };
 		23EA9D682016D2DA0086EAF4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 23EA9D662016D2DA0086EAF4 /* LaunchScreen.storyboard */; };
 		23EA9D732016D2DB0086EAF4 /* Project2_PMSTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23EA9D722016D2DB0086EAF4 /* Project2_PMSTests.swift */; };
+		4DC67D602017F3EC008B9B77 /* FIRService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DC67D5F2017F3EC008B9B77 /* FIRService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -38,6 +39,7 @@
 		23EA9D6E2016D2DB0086EAF4 /* Project2-PMSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Project2-PMSTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		23EA9D722016D2DB0086EAF4 /* Project2_PMSTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Project2_PMSTests.swift; sourceTree = "<group>"; };
 		23EA9D742016D2DB0086EAF4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4DC67D5F2017F3EC008B9B77 /* FIRService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FIRService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -79,12 +81,10 @@
 		23EA9D592016D2DA0086EAF4 /* Project2-PMS */ = {
 			isa = PBXGroup;
 			children = (
-				23EA9D5A2016D2DA0086EAF4 /* AppDelegate.swift */,
+				4DC67D5E2017EC86008B9B77 /* Supporting Files */,
+				4DC67D5F2017F3EC008B9B77 /* FIRService.swift */,
 				23EA9D5C2016D2DA0086EAF4 /* ViewController.swift */,
 				23EA9D5E2016D2DA0086EAF4 /* Main.storyboard */,
-				23EA9D642016D2DA0086EAF4 /* Assets.xcassets */,
-				23EA9D662016D2DA0086EAF4 /* LaunchScreen.storyboard */,
-				23EA9D692016D2DB0086EAF4 /* Info.plist */,
 				23EA9D612016D2DA0086EAF4 /* Project2_PMS.xcdatamodeld */,
 			);
 			path = "Project2-PMS";
@@ -97,6 +97,17 @@
 				23EA9D742016D2DB0086EAF4 /* Info.plist */,
 			);
 			path = "Project2-PMSTests";
+			sourceTree = "<group>";
+		};
+		4DC67D5E2017EC86008B9B77 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				23EA9D5A2016D2DA0086EAF4 /* AppDelegate.swift */,
+				23EA9D642016D2DA0086EAF4 /* Assets.xcassets */,
+				23EA9D662016D2DA0086EAF4 /* LaunchScreen.storyboard */,
+				23EA9D692016D2DB0086EAF4 /* Info.plist */,
+			);
+			path = "Supporting Files";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -203,6 +214,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				23EA9D5D2016D2DA0086EAF4 /* ViewController.swift in Sources */,
+				4DC67D602017F3EC008B9B77 /* FIRService.swift in Sources */,
 				23EA9D5B2016D2DA0086EAF4 /* AppDelegate.swift in Sources */,
 				23EA9D632016D2DA0086EAF4 /* Project2_PMS.xcdatamodeld in Sources */,
 			);
