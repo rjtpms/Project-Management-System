@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		23DDD7E22018403900DB4AAA /* HelperExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23DDD7E12018403900DB4AAA /* HelperExtensions.swift */; };
+		23DDD7E62018498300DB4AAA /* SignupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23DDD7E52018498300DB4AAA /* SignupViewController.swift */; };
 		23EA9D5B2016D2DA0086EAF4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23EA9D5A2016D2DA0086EAF4 /* AppDelegate.swift */; };
 		23EA9D5D2016D2DA0086EAF4 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23EA9D5C2016D2DA0086EAF4 /* ViewController.swift */; };
 		23EA9D602016D2DA0086EAF4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 23EA9D5E2016D2DA0086EAF4 /* Main.storyboard */; };
@@ -32,6 +34,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		23DDD7E12018403900DB4AAA /* HelperExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelperExtensions.swift; sourceTree = "<group>"; };
+		23DDD7E52018498300DB4AAA /* SignupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupViewController.swift; sourceTree = "<group>"; };
 		23EA9D572016D2DA0086EAF4 /* Project2-PMS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Project2-PMS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		23EA9D5A2016D2DA0086EAF4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		23EA9D5C2016D2DA0086EAF4 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -101,6 +105,7 @@
 				4D7CA369201821320025B5D3 /* Network */,
 				4D7CA36A201821410025B5D3 /* Controller */,
 				23EA9D5E2016D2DA0086EAF4 /* Main.storyboard */,
+				23DDD7E12018403900DB4AAA /* HelperExtensions.swift */,
 			);
 			path = "Project2-PMS";
 			sourceTree = "<group>";
@@ -127,6 +132,7 @@
 			children = (
 				23EA9D5C2016D2DA0086EAF4 /* ViewController.swift */,
 				4D7CA367201821290025B5D3 /* LoginViewController.swift */,
+				23DDD7E52018498300DB4AAA /* SignupViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -277,12 +283,20 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-Project2-PMS/Pods-Project2-PMS-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
+				"${BUILT_PRODUCTS_DIR}/Protobuf/Protobuf.framework",
+				"${BUILT_PRODUCTS_DIR}/TWMessageBarManager/TWMessageBarManager.framework",
+				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
 				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Protobuf.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/TWMessageBarManager.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -379,7 +393,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				23EA9D5D2016D2DA0086EAF4 /* ViewController.swift in Sources */,
+				23DDD7E62018498300DB4AAA /* SignupViewController.swift in Sources */,
 				4DC67D602017F3EC008B9B77 /* FIRService.swift in Sources */,
+				23DDD7E22018403900DB4AAA /* HelperExtensions.swift in Sources */,
 				23EA9D5B2016D2DA0086EAF4 /* AppDelegate.swift in Sources */,
 				4D7CA368201821290025B5D3 /* LoginViewController.swift in Sources */,
 				23EA9D632016D2DA0086EAF4 /* Project2_PMS.xcdatamodeld in Sources */,

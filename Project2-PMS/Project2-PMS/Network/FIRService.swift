@@ -7,6 +7,10 @@
 //
 
 import Foundation
+import FirebaseDatabase
+import FirebaseStorage
+import FirebaseAuth
+import UIKit
 
 enum Result<T> {
 	case Success(T)
@@ -15,7 +19,17 @@ enum Result<T> {
 
 class FIRService: NSObject {
 	static let shareInstance = FIRService()
-	private override init() {}
+    
+    var databaseRef : DatabaseReference!
+    var storageRef: StorageReference!
+    
+    private override init () {
+        databaseRef = Database.database().reference()
+        storageRef = Storage.storage().reference()
+    }
 	
-	
+    func createUserProfile(ofUser uid: String, name: String?, email: String?) {
+        let userDict = ["name": name, "email": email]
+        databaseRef.child("Users").child(uid).updateChildValues(userDict)
+    }
 }

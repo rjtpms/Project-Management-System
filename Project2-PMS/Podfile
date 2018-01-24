@@ -7,6 +7,12 @@ target 'Project2-PMS' do
 
   # Pods for Project2-PMS
   pod 'Firebase/Core'
+  pod 'Firebase/Auth'
+  pod 'Firebase/Database'
+  pod 'Firebase/Storage'
+  pod 'Firebase/Messaging'
+  pod 'TWMessageBarManager'
+  
   target 'Project2-PMSTests' do
     inherit! :search_paths
     # Pods for testing
