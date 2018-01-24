@@ -7,8 +7,9 @@
 //
 
 import Foundation
-import FirebaseAuth
 import FirebaseDatabase
+import FirebaseStorage
+import FirebaseAuth
 
 enum Result<T> {
 	case Success(T)
@@ -22,9 +23,19 @@ class FIRService: NSObject {
 	
 	// Database refences
 	private var userRef: DatabaseReference!
+	private var databaseRef : DatabaseReference!
+	private var storageRef: StorageReference!
 	
 	private override init() {
 		userRef = Database.database().reference().child("Users")
+		databaseRef = Database.database().reference()
+		storageRef = Storage.storage().reference()
+	}
+	
+	
+	func createUserProfile(ofUser uid: String, name: String?, email: String?) {
+		let userDict = ["name": name, "email": email]
+		databaseRef.child("Users").child(uid).updateChildValues(userDict)
 	}
 	
 	// Email,Password login

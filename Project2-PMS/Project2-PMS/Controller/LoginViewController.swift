@@ -10,11 +10,13 @@ import UIKit
 import TWMessageBarManager
 import GoogleSignIn
 import FirebaseAuth
+import SVProgressHUD
 
 class LoginViewController: UIViewController {
 	@IBOutlet weak var loginButton: UIButton!
 	@IBOutlet weak var emailTextfield: UITextField!
 	@IBOutlet weak var passwordTextfield: UITextField!
+	@IBOutlet weak var bottomViewContraint: NSLayoutConstraint!
 	
 	lazy var tapRecognizer: UITapGestureRecognizer = {
 		var recognizer = UITapGestureRecognizer(target:self, action: #selector(dismissKeyboard))
@@ -64,10 +66,28 @@ private extension LoginViewController {
 		loginButton.layer.borderWidth = 1
 		loginButton.layer.borderColor = UIColor.gray.cgColor
 		loginButton.clipsToBounds = true
+		
+		// view move up as keyboard shows
+		NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(_:)), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
+		NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(_:)), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
 	}
 	
-	@objc func dismissKeyboard() {
-		view.endEditing(true)
+	@objc func keyboardWillShow(_ notification: Notification) {
+		if let userinfo = notification.userInfo {
+			if let keyboardSize = (userinfo[UIKeyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
+				bottomViewContraint.constant = keyboardSize.height
+			}
+			UIView.animate(withDuration: 0.1, animations: {
+				self.view.layoutIfNeeded()
+			})
+		}
+	}
+	
+	@objc func keyboardWillHide(_ notification: Notification) {
+		bottomViewContraint.constant = 0
+		UIView.animate(withDuration: 0.1, animations: {
+			self.view.layoutIfNeeded()
+		})
 	}
 	
 	func validateInputs() -> Bool {
@@ -96,15 +116,17 @@ private extension LoginViewController {
 	
 	func loginUser(_ credential: AuthCredential? = nil) {
 		// handle oAuth signin
+		
 		if let cred = credential {
+			SVProgressHUD.show(withStatus: "logging in...")
 			FIRService.shareInstance.loginUser(with: cred) { [weak self ] (user, error) in
 				self?.proceedLogin(for: user, with: error)
 			}
 		} else {
 			// Handle Email/Password login
 			if validateInputs() {
-				
 				// Call FIRService to login user with email and password
+				SVProgressHUD.show(withStatus: "logging in...")
 				FIRService.shareInstance.loginUser(with: userEmail, and: userPassword) { [weak self] (user, error) in
 					self?.proceedLogin(for: user, with: error)
 				}
@@ -114,6 +136,7 @@ private extension LoginViewController {
 	
 	func proceedLogin(for user: User?, with error: Error?) {
 		guard error == nil, let user = user else {
+			SVProgressHUD.dismiss()
 			TWMessageBarManager().showMessage(withTitle: "Error", description: error!.localizedDescription, type: .error)
 			return
 		}
@@ -125,7 +148,9 @@ private extension LoginViewController {
 		
 		// Save user info in firebase, and in sinleton
 		FIRService.shareInstance.saveLoggedInUser(user) {
-			// Navigate to homeVC and we are on main queue
+			SVProgressHUD.dismiss()
+			TWMessageBarManager().showMessage(withTitle: "Success", description: "Welcome back \(CurrentUser.sharedInstance.fullname ?? "")", type: .success)
+			// TODO: Navigate to homeVC and we are on main queue
 		}
 	}
 }
