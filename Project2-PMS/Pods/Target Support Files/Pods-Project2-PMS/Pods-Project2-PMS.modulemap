@@ -1,0 +1,6 @@
+framework module Pods_Project2_PMS {
+  umbrella header "Pods-Project2-PMS-umbrella.h"
+
+  export *
+  module * { export * }
+}
