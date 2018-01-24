@@ -29,6 +29,8 @@ class SignupViewController: UIViewController {
         hideKeyboardWhenTappedAround()
         signupButton.layer.cornerRadius = 5
         
+        navigationItem.title = "Sign Up"
+        
         // add bottom borders for text fields
         nameField.layer.addBorder(edge: .bottom, color: .darkGray, thickness: 0.5)
         emailField.layer.addBorder(edge: .bottom, color: .darkGray, thickness: 0.5)
