@@ -1,5 +1,5 @@
-*.xcuserstate
+# Github Credentials
 githubp2.txt
-UserInterfaceState.xcuserstate
-Project2-PMS/Project2-PMS.xcodeproj/project.xcworkspace/xcuserdata/Chico.xcuserdatad/UserInterfaceState.xcuserstate
-Project2-PMS/Pods/Pods.xcodeproj/xcuserdata/
+
+# User settings
+xcuserdata/
