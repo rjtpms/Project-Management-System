@@ -8,7 +8,8 @@
 
 import Foundation
 
-enum Role : String {
+enum Role: String {
     case manager = "Project Manager"
     case member = "Member"
+	case none
 }

@@ -18,12 +18,12 @@ class AddProjectViewController: FormViewController {
     }
 	
 	private func setupForm() {
-		Form
-			+++ Section()
-			<<< TextRow() {
-				$0.title = "Name"
-				$0.placeholder = "New Project"
-			}
+//		Form
+//			+++ Section()
+//			<<< TextRow() {
+//				$0.title = "Name"
+//				$0.placeholder = "New Project"
+//			}
 	}
 	
 	@IBAction func dismissVC(_ sender: UIBarButtonItem) {

@@ -95,7 +95,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "105"
             endingLineNumber = "105"
-            landmarkName = "fetchCurrentUserInfo(with:completion:)"
+            landmarkName = "getAllTaskIds(ofUser:completion:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

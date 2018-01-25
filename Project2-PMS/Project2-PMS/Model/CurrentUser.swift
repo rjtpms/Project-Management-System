@@ -9,12 +9,6 @@
 import Foundation
 import UIKit
 
-enum Role: String {
-	case Member = "Member"
-	case ProjectManager = "Project Manager"
-	case none
-}
-
 class CurrentUser: NSObject {
 	private let userDataKey = "userData"
 	var userId: String!
@@ -50,13 +44,6 @@ class CurrentUser: NSObject {
 		self.role = role
 	}
 	
-<<<<<<< Updated upstream
-	var userId: String!
-	var email: String!
-	var fullname: String?
-	var profileImageUrl: URL?
-    var role: Role!
-=======
 	func save() {
 		var dictionary = [String: Any]()
 		dictionary["userId"] = userId
@@ -77,5 +64,4 @@ class CurrentUser: NSObject {
 			role = Role(rawValue: (dictionary["role"] as! String))!
 		}
 	}
->>>>>>> Stashed changes
 }
