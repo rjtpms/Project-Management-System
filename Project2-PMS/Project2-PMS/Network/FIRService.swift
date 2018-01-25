@@ -19,6 +19,12 @@ enum Result<T> {
 typealias LoginResultHandler = (User?, Error?) -> ()
 
 class FIRService: NSObject {
+    enum FIRServiceError: Error {
+        case pathNotFoundInDatabase
+        case noUserLoggedIn
+        case taskDoesNotExist
+    }
+    
 	static let shareInstance = FIRService()
 	
 	// Database refences
@@ -31,12 +37,72 @@ class FIRService: NSObject {
 		databaseRef = Database.database().reference()
 		storageRef = Storage.storage().reference()
 	}
+    
 	
-	
-	func createUserProfile(ofUser uid: String, name: String?, email: String?) {
-		let userDict = ["name": name, "email": email]
+	// create user profile in DB
+    func createUserProfile(ofUser uid: String, name: String?, email: String?, role: String?) {
+        let userDict = ["name": name, "email": email, "role": role]
 		databaseRef.child("Users").child(uid).updateChildValues(userDict)
 	}
+    
+    func createOrDeleteTask(task: Task, toCreate: Bool, completion: @escaping (Error?) -> ()) {
+        
+        guard let userId = CurrentUser.sharedInstance.userId else {
+            completion(FIRServiceError.noUserLoggedIn)
+            return
+        }
+        
+        // create task and add to "Tasks" table
+        let key = databaseRef.child("Tasks").childByAutoId().key
+//        let timestamp = (Date().timeIntervalSince1970)
+        
+        let taskDict = ["title": task.title, "description": task.description, "start date": task.startDate?.timeIntervalSince1970, "due date": task.dueDate?.timeIntervalSince1970, "projectID": task.projectId, "isCompleted": false] as [String : Any]
+        databaseRef.child("Tasks").child(key).updateChildValues(taskDict)
+        completion(nil)
+    }
+    
+    
+    
+    func getTaskInfo(ofTask id: String, completion: @escaping (Task?, Error?) -> ()) {
+        let ref = databaseRef.child("Tasks").child(id)
+        ref.observeSingleEvent(of: DataEventType.value, with: { (snapshot) in
+            var taskDict : [String: Any]
+            taskDict = snapshot.value as? [String: Any] ?? [:]
+            let task = Task(id: id)
+            task.title = taskDict["title"] as? String
+            task.description = taskDict["description"] as? String
+            if let startTimestamp = taskDict["start date"] as? TimeInterval{
+                task.startDate = Date(timeIntervalSince1970: startTimestamp)
+            }
+            if let dueTimestamp = taskDict["due date"] as? TimeInterval {
+                task.dueDate = Date(timeIntervalSince1970: dueTimestamp)
+            }
+            
+            task.members = []
+            if let members = taskDict["members"] as? [String: Any] {
+                let memberIds = Array(members.keys)
+                for memberId in memberIds {
+                    task.members?.append(Member(id: memberId))
+                }
+            }
+            
+            task.isCompleted = taskDict["isCompleted"] as? Bool
+            task.projectId = taskDict["projectID"] as? String
+            
+            completion(task, nil)
+        })
+    }
+    
+    
+    func getAllTaskIds(ofUser uid: String, completion: @escaping ([String]?, Error?) -> ()) {
+        let ref = databaseRef.child("Users").child(uid).child("tasks")
+        ref.observeSingleEvent(of: DataEventType.value, with: { (snapshot) in
+            var taskDict : [String: Any]
+            taskDict = snapshot.value as? [String: Any] ?? [:]
+            let tasks : [String] = Array(taskDict.keys)
+            completion(tasks, nil)
+        })
+    }
 	
 	// Email,Password login
 	func loginUser(with email: String, and password: String, completion: @escaping LoginResultHandler) {
@@ -70,10 +136,12 @@ class FIRService: NSObject {
 					]
 				)
 				// save oAuth user info to current user
-				currentUser.userId = user.uid
-				currentUser.email = user.email
-				currentUser.fullname = user.displayName
-				currentUser.profileImageUrl = user.photoURL
+				currentUser.update(id: user.uid,
+								   email: user.email!,
+								   name: user.displayName!,
+								   photoUrl: user.photoURL,
+								   role: .none)
+				currentUser.save()
 				
 				DispatchQueue.main.async {
 					completion()
@@ -94,16 +162,29 @@ class FIRService: NSObject {
 		let currentUser = CurrentUser.sharedInstance
 		
 		userRef.child(id).observeSingleEvent(of: .value) { (snapshot) in
-			if let userDict = snapshot.value as? [String: String] {
-				let email = userDict["email"]!
-				let name = userDict["name"]
-				let profileUrlStr = userDict["profile photo"]
+			if let userDict = snapshot.value as? [String: String],
+				let email = userDict["email"],
+				let name = userDict["name"] {
 				
-				if let profilestr = profileUrlStr {
-					currentUser.profileImageUrl = URL(string: profilestr)
+				// handle situation when user login Oauth but close app in chose role page
+				var role: Role!
+				if userDict["role"] == nil {
+					role = Role.none
+				} else {
+					role = Role(rawValue: userDict["role"]!)
 				}
-				currentUser.email = email
-				currentUser.fullname = name
+				
+				var photoUrl: URL?
+				if let profileUrlStr = userDict["profile photo"] {
+					photoUrl = URL(string: profileUrlStr)
+				}
+				
+				currentUser.update(id: id,
+								   email: email,
+								   name: name,
+								   photoUrl: photoUrl,
+								   role: role)
+				currentUser.save()
 				
 				DispatchQueue.main.async {
 					completion()

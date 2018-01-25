@@ -16,8 +16,12 @@ class SignupViewController: UIViewController {
     @IBOutlet weak var bottomConstraint: NSLayoutConstraint!
     @IBOutlet weak var emailField: UITextField!
     @IBOutlet weak var passwordField: UITextField!
+    @IBOutlet weak var roleField: UITextField!
     @IBOutlet weak var signupButton: UIButton!
     @IBOutlet weak var bottomView: UIView!
+    
+    let roles = [Role.member.rawValue, Role.manager.rawValue]
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -41,6 +45,12 @@ class SignupViewController: UIViewController {
         // view move up as keyboard shows
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(_:)), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(_:)), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
+        
+        // pickerview
+        let pickerView = UIPickerView()
+        pickerView.delegate = self
+        roleField.inputView = pickerView
+        pickerView.dataSource = self
     }
     
     @objc func keyboardWillShow(_ notification: Notification) {
@@ -74,6 +84,15 @@ class SignupViewController: UIViewController {
             present(alert, animated: true, completion: nil)
             return
         }
+        
+        let role = roleField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
+        if role != Role.manager.rawValue && role != Role.member.rawValue {
+            let alert = UIAlertController(title: "Invalid Role", message: "Please select one of the roles in the options", preferredStyle: UIAlertControllerStyle.alert)
+            alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
+            present(alert, animated: true, completion: nil)
+            return
+        }
+        
         let pwd = passwordField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
         let email = emailField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
         /* sign up */
@@ -81,12 +100,22 @@ class SignupViewController: UIViewController {
             if error == nil {
                 if let user = firebaseUser {
                     print(user.description)
-                    FIRService.shareInstance.createUserProfile(ofUser: user.uid, name: name, email: user.email)
+                    FIRService.shareInstance.createUserProfile(ofUser: user.uid, name: name, email: user.email, role: role)
                     TWMessageBarManager.sharedInstance().showMessage(withTitle: "Success", description: "You have successfully signed up!", type: .success, duration: 3.0)
                     
+                    let currUser = CurrentUser.sharedInstance
+                    currUser.email = email
+                    currUser.fullname = name
+					currUser.role = Role(rawValue: role)!
+                    currUser.userId = user.uid
+					
+					// save user data
+					currUser.save()
+					
                     // TODO: - Go to home page
-//                    let controller = self.storyboard?.instantiateViewController(withIdentifier: "tabvc") as! TabBarViewController
-//                    self.navigationController?.pushViewController(controller, animated: true)
+                    let controller = self.storyboard?.instantiateViewController(withIdentifier: "tabVC")
+                    let appDelegate = UIApplication.shared.delegate as! AppDelegate
+                    appDelegate.window?.rootViewController = controller
                 }
             } else {
                 let alert = UIAlertController(title: "Sign Up Failed", message: error!.localizedDescription, preferredStyle: UIAlertControllerStyle.alert)
@@ -112,5 +141,23 @@ extension SignupViewController: UITextFieldDelegate {
             }
         }
         return true
+    }
+}
+
+extension SignupViewController: UIPickerViewDelegate, UIPickerViewDataSource {
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        return 1
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        return roles.count
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        return roles[row]
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        roleField.text = roles[row]
     }
 }
