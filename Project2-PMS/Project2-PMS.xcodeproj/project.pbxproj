@@ -16,6 +16,13 @@
 		23EA9D652016D2DA0086EAF4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 23EA9D642016D2DA0086EAF4 /* Assets.xcassets */; };
 		23EA9D682016D2DA0086EAF4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 23EA9D662016D2DA0086EAF4 /* LaunchScreen.storyboard */; };
 		23EA9D732016D2DB0086EAF4 /* Project2_PMSTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23EA9D722016D2DB0086EAF4 /* Project2_PMSTests.swift */; };
+		23FA54DD20197D850059CA0E /* Role.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23FA54DC20197D850059CA0E /* Role.swift */; };
+		23FA54DF20198D8D0059CA0E /* TasksViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23FA54DE20198D8C0059CA0E /* TasksViewController.swift */; };
+		23FA54E220198E780059CA0E /* TaskCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23FA54E120198E780059CA0E /* TaskCell.swift */; };
+		23FA54E420198F9E0059CA0E /* Task.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23FA54E320198F9E0059CA0E /* Task.swift */; };
+		23FA54E6201990500059CA0E /* Member.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23FA54E5201990500059CA0E /* Member.swift */; };
+		23FA54E8201993520059CA0E /* AddTaskViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23FA54E7201993520059CA0E /* AddTaskViewController.swift */; };
+		23FA54EA201993630059CA0E /* TaskDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23FA54E9201993630059CA0E /* TaskDetailViewController.swift */; };
 		4D7CA36620181FD50025B5D3 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4D7CA36520181FD50025B5D3 /* GoogleService-Info.plist */; };
 		4D7CA368201821290025B5D3 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D7CA367201821290025B5D3 /* LoginViewController.swift */; };
 		4D7CA36C201841580025B5D3 /* CurrentUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D7CA36B201841580025B5D3 /* CurrentUser.swift */; };
@@ -49,6 +56,13 @@
 		23EA9D6E2016D2DB0086EAF4 /* Project2-PMSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Project2-PMSTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		23EA9D722016D2DB0086EAF4 /* Project2_PMSTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Project2_PMSTests.swift; sourceTree = "<group>"; };
 		23EA9D742016D2DB0086EAF4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		23FA54DC20197D850059CA0E /* Role.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Role.swift; sourceTree = "<group>"; };
+		23FA54DE20198D8C0059CA0E /* TasksViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TasksViewController.swift; sourceTree = "<group>"; };
+		23FA54E120198E780059CA0E /* TaskCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskCell.swift; sourceTree = "<group>"; };
+		23FA54E320198F9E0059CA0E /* Task.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Task.swift; sourceTree = "<group>"; };
+		23FA54E5201990500059CA0E /* Member.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Member.swift; sourceTree = "<group>"; };
+		23FA54E7201993520059CA0E /* AddTaskViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTaskViewController.swift; sourceTree = "<group>"; };
+		23FA54E9201993630059CA0E /* TaskDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskDetailViewController.swift; sourceTree = "<group>"; };
 		253806804ABC9EA5A149DB45 /* Pods_Project2_PMS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Project2_PMS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		45ABB5325C93250512F260B2 /* Pods-Project2-PMSTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Project2-PMSTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-Project2-PMSTests/Pods-Project2-PMSTests.release.xcconfig"; sourceTree = "<group>"; };
 		4D7CA36520181FD50025B5D3 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -107,6 +121,7 @@
 			children = (
 				4DC67D5E2017EC86008B9B77 /* Supporting Files */,
 				4D7CA369201821320025B5D3 /* Network */,
+				23FA54E020198E370059CA0E /* View */,
 				4D7CA36A201821410025B5D3 /* Controller */,
 				4D7CA36D2018417C0025B5D3 /* Model */,
 				23EA9D5E2016D2DA0086EAF4 /* Main.storyboard */,
@@ -124,6 +139,14 @@
 			path = "Project2-PMSTests";
 			sourceTree = "<group>";
 		};
+		23FA54E020198E370059CA0E /* View */ = {
+			isa = PBXGroup;
+			children = (
+				23FA54E120198E780059CA0E /* TaskCell.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		4D7CA369201821320025B5D3 /* Network */ = {
 			isa = PBXGroup;
 			children = (
@@ -138,6 +161,9 @@
 				23EA9D5C2016D2DA0086EAF4 /* ViewController.swift */,
 				4D7CA367201821290025B5D3 /* LoginViewController.swift */,
 				23DDD7E52018498300DB4AAA /* SignupViewController.swift */,
+				23FA54DE20198D8C0059CA0E /* TasksViewController.swift */,
+				23FA54E7201993520059CA0E /* AddTaskViewController.swift */,
+				23FA54E9201993630059CA0E /* TaskDetailViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -147,6 +173,9 @@
 			children = (
 				4D7CA36B201841580025B5D3 /* CurrentUser.swift */,
 				4D7CA36E2018457A0025B5D3 /* CoreDataManager.swift */,
+				23FA54DC20197D850059CA0E /* Role.swift */,
+				23FA54E320198F9E0059CA0E /* Task.swift */,
+				23FA54E5201990500059CA0E /* Member.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -417,13 +446,20 @@
 			files = (
 				23EA9D5D2016D2DA0086EAF4 /* ViewController.swift in Sources */,
 				23DDD7E62018498300DB4AAA /* SignupViewController.swift in Sources */,
+				23FA54DF20198D8D0059CA0E /* TasksViewController.swift in Sources */,
 				4DC67D602017F3EC008B9B77 /* FIRService.swift in Sources */,
+				23FA54E8201993520059CA0E /* AddTaskViewController.swift in Sources */,
+				23FA54E220198E780059CA0E /* TaskCell.swift in Sources */,
+				23FA54E6201990500059CA0E /* Member.swift in Sources */,
 				23DDD7E22018403900DB4AAA /* HelperExtensions.swift in Sources */,
 				23EA9D5B2016D2DA0086EAF4 /* AppDelegate.swift in Sources */,
 				4D7CA368201821290025B5D3 /* LoginViewController.swift in Sources */,
+				23FA54E420198F9E0059CA0E /* Task.swift in Sources */,
 				4D7CA36C201841580025B5D3 /* CurrentUser.swift in Sources */,
 				4D7CA36F2018457A0025B5D3 /* CoreDataManager.swift in Sources */,
 				23EA9D632016D2DA0086EAF4 /* Project2_PMS.xcdatamodeld in Sources */,
+				23FA54EA201993630059CA0E /* TaskDetailViewController.swift in Sources */,
+				23FA54DD20197D850059CA0E /* Role.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

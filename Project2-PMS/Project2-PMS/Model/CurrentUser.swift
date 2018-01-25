@@ -34,4 +34,5 @@ class CurrentUser: NSObject {
 	var email: String!
 	var fullname: String?
 	var profileImageUrl: URL?
+    var role: Role!
 }
