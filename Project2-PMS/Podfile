@@ -14,6 +14,7 @@ target 'Project2-PMS' do
   pod 'Firebase/Auth'
   pod 'GoogleSignIn'
   pod 'SVProgressHUD'
+  pod 'Eureka'
   
   target 'Project2-PMSTests' do
     inherit! :search_paths
