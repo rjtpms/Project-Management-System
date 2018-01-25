@@ -23,6 +23,7 @@ class FIRService: NSObject {
         case pathNotFoundInDatabase
         case noUserLoggedIn
         case taskDoesNotExist
+        case userDoesNotExist
     }
     
 	static let shareInstance = FIRService()
@@ -41,7 +42,7 @@ class FIRService: NSObject {
 	
 	// create user profile in DB
     func createUserProfile(ofUser uid: String, name: String?, email: String?, role: String?) {
-        let userDict = ["name": name, "email": email, "role": role]
+        let userDict = ["name": name!, "email": email!, "role": role!] as [String: Any]
 		databaseRef.child("Users").child(uid).updateChildValues(userDict)
 	}
     
@@ -54,13 +55,27 @@ class FIRService: NSObject {
         
         // create task and add to "Tasks" table
         let key = databaseRef.child("Tasks").childByAutoId().key
-//        let timestamp = (Date().timeIntervalSince1970)
-        
-        let taskDict = ["title": task.title, "description": task.description, "start date": task.startDate?.timeIntervalSince1970, "due date": task.dueDate?.timeIntervalSince1970, "projectID": task.projectId, "isCompleted": false] as [String : Any]
+        let taskDict = ["title": task.title!, "description": task.description!, "start date": task.startDate!.timeIntervalSince1970, "due date": task.dueDate!.timeIntervalSince1970, "projectID": task.projectId!, "isCompleted": false] as [String : Any]
         databaseRef.child("Tasks").child(key).updateChildValues(taskDict)
-        completion(nil)
+        
+        // add the manager who created the task to the task's member list
+        assignTaskToUser(taskId: key, userId: userId) { (err) in
+            if err != nil {
+                print(err!)
+            }
+            completion(err)
+        }
+        
     }
     
+    func assignTaskToUser(taskId: String, userId: String, completion: @escaping (Error?) -> ()) {
+       // add task to user's tasks list
+        databaseRef.child("Users").child(userId).child("tasks").child(taskId).setValue(true)
+        
+       // add user to task's members list
+        databaseRef.child("Tasks").child(taskId).child("members").child(userId).setValue(true)
+        completion(nil)
+    }
     
     
     func getTaskInfo(ofTask id: String, completion: @escaping (Task?, Error?) -> ()) {
@@ -82,7 +97,7 @@ class FIRService: NSObject {
             if let members = taskDict["members"] as? [String: Any] {
                 let memberIds = Array(members.keys)
                 for memberId in memberIds {
-                    task.members?.append(Member(id: memberId))
+                    task.members?.append(memberId)
                 }
             }
             
