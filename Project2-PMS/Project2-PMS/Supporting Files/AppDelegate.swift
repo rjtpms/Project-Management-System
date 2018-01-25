@@ -21,8 +21,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 		FirebaseApp.configure()
 		GIDSignIn.sharedInstance().clientID = FirebaseApp.app()?.options.clientID
 		
+		findEntryPoint()
+		
         return true
     }
+	
+	private func findEntryPoint() {
+		let mainStoryBoard = UIStoryboard(name: "Main", bundle: Bundle.main)
+		if let _ = Auth.auth().currentUser {
+			// restore current user from userdefaults
+			CurrentUser.sharedInstance.restore()
+			window?.rootViewController = mainStoryBoard.instantiateViewController(withIdentifier: "tabVC")
+		}
+	}
 
 	@available(iOS 9.0, *)
 	func application(_ application: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey : Any])

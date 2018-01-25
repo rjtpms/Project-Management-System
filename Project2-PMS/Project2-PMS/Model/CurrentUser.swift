@@ -9,30 +9,73 @@
 import Foundation
 import UIKit
 
+enum Role: String {
+	case Member = "Member"
+	case ProjectManager = "Project Manager"
+	case none
+}
+
 class CurrentUser: NSObject {
+	private let userDataKey = "userData"
+	var userId: String!
+	var email: String!
+	var fullname: String!
+	var profileImageUrl: URL?
+	var role: Role = .none
+	
 	struct Static {
 		static var instance: CurrentUser?
 	}
 	
 	class var sharedInstance: CurrentUser {
-		if Static.instance == nil
-		{
+		if Static.instance == nil {
 			Static.instance = CurrentUser()
 		}
 		
 		return Static.instance!
 	}
 	
-	func dispose() {
-		CurrentUser.Static.instance = nil
-		print("Disposed Singleton instance")
-	}
-	
 	private override init() {}
 	
+	func dispose() {
+		CurrentUser.Static.instance = nil
+		UserDefaults.standard.removeObject(forKey: userDataKey)
+	}
+	
+	func update(id: String, email: String, name: String, photoUrl: URL?, role: Role) {
+		self.userId = id
+		self.email = email
+		self.fullname = name
+		self.profileImageUrl = photoUrl
+		self.role = role
+	}
+	
+<<<<<<< Updated upstream
 	var userId: String!
 	var email: String!
 	var fullname: String?
 	var profileImageUrl: URL?
     var role: Role!
+=======
+	func save() {
+		var dictionary = [String: Any]()
+		dictionary["userId"] = userId
+		dictionary["email"] = email
+		dictionary["fullname"] = fullname
+		dictionary["profileImageUrl"] = profileImageUrl?.absoluteString
+		dictionary["role"] = role.rawValue
+		
+		UserDefaults.standard.set(dictionary, forKey: userDataKey)
+	}
+	
+	func restore() {
+		if let dictionary = UserDefaults.standard.dictionary(forKey: userDataKey) {
+			userId = dictionary["userId"] as! String
+			email = dictionary["email"] as! String
+			fullname = dictionary["fullname"] as! String
+			profileImageUrl = URL(string: dictionary["profileImageUrl"] as! String)
+			role = Role(rawValue: (dictionary["role"] as! String))!
+		}
+	}
+>>>>>>> Stashed changes
 }
