@@ -404,7 +404,7 @@
         <!--Tab Bar Controller-->
         <scene sceneID="9v8-BI-nMb">
             <objects>
-                <tabBarController id="mSa-s7-1cM" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="tabVC" id="mSa-s7-1cM" sceneMemberID="viewController">
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="ax3-ln-aO8">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
