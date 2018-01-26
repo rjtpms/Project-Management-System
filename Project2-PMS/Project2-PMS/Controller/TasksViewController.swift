@@ -108,5 +108,24 @@ extension TasksViewController: UITableViewDelegate, UITableViewDataSource {
         return cell
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let controller = storyboard?.instantiateViewController(withIdentifier: "taskDetailVC") as! TaskDetailViewController
+        let task = tasks[indexPath.row]
+        if let _ = task.title {
+            controller.task = tasks[indexPath.row]
+            navigationController?.pushViewController(controller, animated: true)
+        } else {
+            FIRService.shareInstance.getTaskInfo(ofTask: task.id, completion: { (taskObj, err) in
+                if err != nil {
+                    print()
+                    print(err!.localizedDescription)
+                } else {
+                    controller.task = taskObj
+                    self.navigationController?.pushViewController(controller, animated: true)
+                }
+            })
+        }
+    }
+    
     
 }

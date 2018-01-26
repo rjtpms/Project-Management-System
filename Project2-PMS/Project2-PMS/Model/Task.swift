@@ -16,7 +16,7 @@ class Task {
     var description: String?
     var startDate: Date?
     var dueDate: Date?
-    var members: [Member]?
+    var members: [String]?
     
     init(id: String) {
         self.id = id

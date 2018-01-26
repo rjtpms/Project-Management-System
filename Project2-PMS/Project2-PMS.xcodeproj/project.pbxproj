@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2306CA4B201A3ABD00B8DD94 /* AvatarCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2306CA4A201A3ABD00B8DD94 /* AvatarCell.swift */; };
+		2306CA4D201A3B8800B8DD94 /* CommentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2306CA4C201A3B8800B8DD94 /* CommentCell.swift */; };
+		2306CA6D201A4B8900B8DD94 /* TaskInfoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2306CA6C201A4B8900B8DD94 /* TaskInfoCell.swift */; };
 		23DDD7E22018403900DB4AAA /* HelperExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23DDD7E12018403900DB4AAA /* HelperExtensions.swift */; };
 		23DDD7E62018498300DB4AAA /* SignupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23DDD7E52018498300DB4AAA /* SignupViewController.swift */; };
 		23EA9D5B2016D2DA0086EAF4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23EA9D5A2016D2DA0086EAF4 /* AppDelegate.swift */; };
@@ -49,6 +52,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		2306CA4A201A3ABD00B8DD94 /* AvatarCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvatarCell.swift; sourceTree = "<group>"; };
+		2306CA4C201A3B8800B8DD94 /* CommentCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentCell.swift; sourceTree = "<group>"; };
+		2306CA6C201A4B8900B8DD94 /* TaskInfoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskInfoCell.swift; sourceTree = "<group>"; };
 		23DDD7E12018403900DB4AAA /* HelperExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelperExtensions.swift; sourceTree = "<group>"; };
 		23DDD7E52018498300DB4AAA /* SignupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupViewController.swift; sourceTree = "<group>"; };
 		23EA9D572016D2DA0086EAF4 /* Project2-PMS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Project2-PMS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -155,6 +161,9 @@
 			isa = PBXGroup;
 			children = (
 				23FA54E120198E780059CA0E /* TaskCell.swift */,
+				2306CA4A201A3ABD00B8DD94 /* AvatarCell.swift */,
+				2306CA4C201A3B8800B8DD94 /* CommentCell.swift */,
+				2306CA6C201A4B8900B8DD94 /* TaskInfoCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -488,8 +497,11 @@
 				4DAC2E552019A9720088E60B /* Project.swift in Sources */,
 				4DC67D602017F3EC008B9B77 /* FIRService.swift in Sources */,
 				23FA54E8201993520059CA0E /* AddTaskViewController.swift in Sources */,
+				2306CA4D201A3B8800B8DD94 /* CommentCell.swift in Sources */,
 				23FA54E220198E780059CA0E /* TaskCell.swift in Sources */,
 				23FA54E6201990500059CA0E /* Member.swift in Sources */,
+				2306CA6D201A4B8900B8DD94 /* TaskInfoCell.swift in Sources */,
+				2306CA4B201A3ABD00B8DD94 /* AvatarCell.swift in Sources */,
 				23DDD7E22018403900DB4AAA /* HelperExtensions.swift in Sources */,
 				23EA9D5B2016D2DA0086EAF4 /* AppDelegate.swift in Sources */,
 				4D7CA368201821290025B5D3 /* LoginViewController.swift in Sources */,
