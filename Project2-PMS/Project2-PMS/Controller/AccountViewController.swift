@@ -8,6 +8,7 @@
 
 import UIKit
 import FirebaseAuth
+import GoogleSignIn
 
 class AccountViewController: UIViewController {
 
@@ -17,9 +18,10 @@ class AccountViewController: UIViewController {
     }
 
 	@IBAction func logOut(_ sender: UIButton) {
-		// logout user
 		do {
+			// logout user
 			try Auth.auth().signOut()
+			GIDSignIn.sharedInstance().signOut()
 			
 			// reset current user
 			CurrentUser.sharedInstance.dispose()

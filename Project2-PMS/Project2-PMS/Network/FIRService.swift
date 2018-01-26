@@ -11,21 +11,20 @@ import FirebaseDatabase
 import FirebaseStorage
 import FirebaseAuth
 
-enum Result<T> {
-	case Success(T)
-	case Error(String)
-}
-
-typealias LoginResultHandler = (User?, Error?) -> ()
 
 class FIRService: NSObject {
     enum FIRServiceError: Error {
         case pathNotFoundInDatabase
         case noUserLoggedIn
         case taskDoesNotExist
+		case failParseProjectInfo
         case userDoesNotExist
     }
-    
+	
+	typealias LoginResultHandler = (User?, Error?) -> ()
+	typealias FetchProjectResultHandler = (Project?, Error?) -> ()
+	typealias FetchProjectsResultHandler = ([Project]?, Error?) -> ()
+	
 	static let shareInstance = FIRService()
 	
 	// Database refences
@@ -47,7 +46,6 @@ class FIRService: NSObject {
 	}
     
     func createOrDeleteTask(task: Task, toCreate: Bool, completion: @escaping (Error?) -> ()) {
-        
         guard let userId = CurrentUser.sharedInstance.userId else {
             completion(FIRServiceError.noUserLoggedIn)
             return
@@ -67,7 +65,7 @@ class FIRService: NSObject {
         }
         
     }
-    
+
     func assignTaskToUser(taskId: String, userId: String, completion: @escaping (Error?) -> ()) {
        // add task to user's tasks list
         databaseRef.child("Users").child(userId).child("tasks").child(taskId).setValue(true)
@@ -76,7 +74,6 @@ class FIRService: NSObject {
         databaseRef.child("Tasks").child(taskId).child("members").child(userId).setValue(true)
         completion(nil)
     }
-    
     
     func getTaskInfo(ofTask id: String, completion: @escaping (Task?, Error?) -> ()) {
         let ref = databaseRef.child("Tasks").child(id)
@@ -181,7 +178,7 @@ class FIRService: NSObject {
 				let email = userDict["email"],
 				let name = userDict["name"] {
 				
-				// handle situation when user login Oauth but close app in chose role page
+				// handle situation when user login Oauth but close app in choose role page
 				var role: Role!
 				if userDict["role"] == nil {
 					role = Role.none
@@ -206,5 +203,183 @@ class FIRService: NSObject {
 				}
 			}
 		}
+	}
+	
+	// fetch all projects for manager
+	func getAllProjects(with managerId: String, completion: @escaping FetchProjectsResultHandler) {
+		let fetchProjectIdsGroup = DispatchGroup()
+		let fetchProjectGroup = DispatchGroup()
+		var error: Error?
+		var projectIds: [String] = []
+		var projectResults: [Project] = []
+		
+		fetchProjectIdsGroup.enter()
+		getProjectIds(with: managerId) { (pIds, err) in
+			fetchProjectIdsGroup.leave()
+			guard error == nil, let unwrappedIds = pIds else {
+				error = err
+				completion(nil, error)
+				return
+			}
+			projectIds = unwrappedIds
+		}
+		
+		fetchProjectIdsGroup.notify(queue: .main) { [weak self] in
+			for projectId in projectIds {
+				fetchProjectGroup.enter()
+				self?.getProjectInfo(with: projectId) { (project, err) in
+					fetchProjectGroup.leave()
+					guard error == nil, let unwrappedProject = project else {
+						error = err
+						completion(nil, error)
+						return
+					}
+					projectResults.append(unwrappedProject)
+				}
+			}
+			
+			fetchProjectGroup.notify(queue: .main) {
+				completion(projectResults.isEmpty ? nil : projectResults, error)
+			}
+		}
+	}
+	
+	// find projects Ids associated with a user
+	private func getProjectIds(with userId: String, completion: @escaping ([String]?, Error?) -> ()) {
+		let ref = databaseRef.child("Users").child(userId).child("projects")
+		ref.observeSingleEvent(of: .value){ (snapshot) in
+			if let pIdDict = snapshot.value as? [String: Any] {
+				let projectIds = Array(pIdDict.keys)
+				completion(projectIds, nil)
+			} else {
+				completion(nil, FIRServiceError.pathNotFoundInDatabase)
+			}
+		}
+	}
+	
+	// fetch projects for a member
+	func getMemberProjects(with userId: String, completion: @escaping FetchProjectsResultHandler) {
+		// key: project id, value: array of tasks Id current user is working on
+		let getAllTaskIdsGroup = DispatchGroup()
+		let getProjectIdsGroup = DispatchGroup()
+		let getProjectsGroup = DispatchGroup()
+		var projectResults: [Project] = []
+		var taskIds: [String] = []
+		var projectIds: [String] = []
+		var error: Error?
+		
+		// fetch all tasks ids for this user
+		getAllTaskIdsGroup.enter()
+		getAllTaskIds(ofUser: userId) { (ids, err) in
+			getAllTaskIdsGroup.leave()
+			guard error == nil, let unwrappedIds = ids else {
+				error = err
+				return
+			}
+			taskIds = unwrappedIds
+		}
+		
+		getAllTaskIdsGroup.notify(queue: .main) { [weak self] in
+			// for each task we find it's associated project
+			getProjectIdsGroup.enter()
+			self?.getProjectIds(with: userId) { (pIds, err) in
+				getProjectIdsGroup.leave()
+				guard error == nil, let unwrappedIds = pIds else {
+					error = err
+					return
+				}
+				projectIds = unwrappedIds
+			}
+			
+			getProjectIdsGroup.notify(queue: .main) { [weak self] in
+				for projectId in projectIds {
+					getProjectsGroup.enter()
+					self?.getProjectInfo(with: projectId, filteredAgainst: taskIds) { (project, err) in
+						getProjectsGroup.leave()
+						guard error == nil, let unwrappedProject = project else {
+							error = err
+							return
+						}
+						projectResults.append(unwrappedProject)
+					}
+				}
+				
+				getProjectsGroup.notify(queue: .main) {
+					// complete!
+					completion(projectResults.isEmpty ? nil : projectResults, error)
+				}
+			}
+		}
+	}
+	
+	/**
+		Note: when filteredAgainst is nil, fetch single project data with all the fields
+		when filtedAgainst is provided, fetch a single project with only taks ids that is in filtedAgainst
+	*/
+	func getProjectInfo(with projectId: String, filteredAgainst taskIds: [String]? = nil, completion: @escaping FetchProjectResultHandler) {
+		let projectRef = databaseRef.child("Projects")
+		
+		projectRef.child(projectId).observeSingleEvent(of: .value) { (snapshot) in
+			if let projectDict = snapshot.value as? [String: Any],
+				let description = projectDict["description"] as? String,
+				let dueDate = projectDict["due date"] as? TimeInterval,
+				let startDate = projectDict["start date"] as? TimeInterval,
+				let name = projectDict["name"] as? String,
+				let managerId = projectDict["manager"] as? String {
+				
+				var project = Project(id: projectId,
+									  description: description,
+									  startDate: Date(timeIntervalSince1970: startDate),
+									  endDate: Date(timeIntervalSince1970: dueDate),
+									  name: name,
+									  tasks: [],
+									  members: [],
+									  managerId: managerId)
+				
+				if let memberDict = projectDict["members"] as? [String: Any] {
+					let memberIds = Array(memberDict.keys)
+					for id in memberIds {
+						project.members!.append(Member(id: id))
+					}
+				}
+				
+				if let taskDict = projectDict["task"] as? [String: Any] {
+					
+					// filter only the taskIds that is in memeber's tasks list if taskIds is not nil
+					let projectTaskIds = taskIds == nil ?
+						Array(taskDict.keys) :
+						Array(taskDict.keys).filter { taskIds!.contains($0) }
+					
+					for id in projectTaskIds {
+						project.tasks!.append(Task(id: id))
+					}
+				}
+				
+				completion(project, nil)
+			} else {
+				completion(nil, FIRServiceError.failParseProjectInfo)
+			}
+		}
+	}
+	
+	// Create Project
+	func createProject(for project: Project, completion: @escaping () -> ()) {
+		let currentUser = CurrentUser.sharedInstance
+		let newProjectRef = databaseRef.child("Projects").child(project.id)
+		
+		// create new project
+		let projectDict = ["name": project.name,
+						   "description": project.description,
+						   "manager": currentUser.userId,
+						   "start date": project.startDate.timeIntervalSince1970,
+						   "due date": project.endDate.timeIntervalSince1970] as [String: Any]
+		
+		
+		newProjectRef.updateChildValues(projectDict)
+		
+		// update manager's project list
+		userRef.child(currentUser.userId).child("projects").updateChildValues([project.id: true])
+		
+		completion()
 	}
 }
