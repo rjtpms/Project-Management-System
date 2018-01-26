@@ -91,11 +91,8 @@ class TasksViewController: UIViewController {
                 self.taskTable.reloadData()
                 self.refreshControl.endRefreshing()
             }
-            
         }
-        
     }
-    
 }
 
 extension TasksViewController: UITableViewDelegate, UITableViewDataSource {

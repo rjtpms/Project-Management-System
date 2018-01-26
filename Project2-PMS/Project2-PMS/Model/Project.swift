@@ -11,8 +11,10 @@ import Foundation
 struct Project {
 	var id: String
 	var description: String
-	var startDate: Double
-	var endDate: Double
+	var startDate: Date
+	var endDate: Date
 	var name: String
-	var tasks: [String]
+	var tasks: [Task]?
+	var members: [Member]?
+	var managerId: String
 }
