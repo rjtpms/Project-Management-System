@@ -26,12 +26,14 @@ class TasksViewController: UIViewController {
     }
     
     func setupView() {
-        let role = CurrentUser.sharedInstance.role!
+        let role = CurrentUser.sharedInstance.role
         switch role {
         case Role.manager:
             addTaskButton.isHidden = false
         case Role.member:
             addTaskButton.isHidden = true
+		default:
+			break
         }
     }
     

@@ -151,10 +151,12 @@ class FIRService: NSObject {
 					]
 				)
 				// save oAuth user info to current user
-				currentUser.userId = user.uid
-				currentUser.email = user.email
-				currentUser.fullname = user.displayName
-				currentUser.profileImageUrl = user.photoURL
+				currentUser.update(id: user.uid,
+								   email: user.email!,
+								   name: user.displayName!,
+								   photoUrl: user.photoURL,
+								   role: .none)
+				currentUser.save()
 				
 				DispatchQueue.main.async {
 					completion()
@@ -175,16 +177,29 @@ class FIRService: NSObject {
 		let currentUser = CurrentUser.sharedInstance
 		
 		userRef.child(id).observeSingleEvent(of: .value) { (snapshot) in
-			if let userDict = snapshot.value as? [String: String] {
-				let email = userDict["email"]!
-				let name = userDict["name"]
-				let profileUrlStr = userDict["profile photo"]
+			if let userDict = snapshot.value as? [String: String],
+				let email = userDict["email"],
+				let name = userDict["name"] {
 				
-				if let profilestr = profileUrlStr {
-					currentUser.profileImageUrl = URL(string: profilestr)
+				// handle situation when user login Oauth but close app in chose role page
+				var role: Role!
+				if userDict["role"] == nil {
+					role = Role.none
+				} else {
+					role = Role(rawValue: userDict["role"]!)
 				}
-				currentUser.email = email
-				currentUser.fullname = name
+				
+				var photoUrl: URL?
+				if let profileUrlStr = userDict["profile photo"] {
+					photoUrl = URL(string: profileUrlStr)
+				}
+				
+				currentUser.update(id: id,
+								   email: email,
+								   name: name,
+								   photoUrl: photoUrl,
+								   role: role)
+				currentUser.save()
 				
 				DispatchQueue.main.async {
 					completion()
