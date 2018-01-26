@@ -60,7 +60,10 @@ class CurrentUser: NSObject {
 			userId = dictionary["userId"] as! String
 			email = dictionary["email"] as! String
 			fullname = dictionary["fullname"] as! String
-			profileImageUrl = URL(string: dictionary["profileImageUrl"] as! String)
+            if let profileImageUrlStr = dictionary["profileImageUrl"] as? String {
+                profileImageUrl = URL(string: profileImageUrlStr)
+            }
+            
 			role = Role(rawValue: (dictionary["role"] as! String))!
 		}
 	}

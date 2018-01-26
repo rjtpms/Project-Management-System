@@ -11,7 +11,6 @@ import UIKit
 class TaskInfoCell: UITableViewCell {
 
     @IBOutlet weak var titleLabel: UILabel!
-    
     @IBOutlet weak var dateImageView: UIImageView!
     @IBOutlet weak var endDateLabel: UILabel!
     @IBOutlet weak var startDateLabel: UILabel!

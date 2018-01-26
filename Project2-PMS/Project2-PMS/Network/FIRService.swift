@@ -24,6 +24,7 @@ class FIRService: NSObject {
         case noUserLoggedIn
         case taskDoesNotExist
         case userDoesNotExist
+        case failedToGetUserInfo
     }
     
 	static let shareInstance = FIRService()
@@ -68,6 +69,10 @@ class FIRService: NSObject {
         
     }
     
+    func setCompletionStatus(ofTask taskId: String, to status: Bool) {
+        databaseRef.child("Tasks").child(taskId).child("isCompleted").setValue(status)
+    }
+    
     func assignTaskToUser(taskId: String, userId: String, completion: @escaping (Error?) -> ()) {
        // add task to user's tasks list
         databaseRef.child("Users").child(userId).child("tasks").child(taskId).setValue(true)
@@ -108,6 +113,41 @@ class FIRService: NSObject {
         })
     }
     
+    
+    func getUserInfo(ofUser id: String, completion: @escaping (Member?, Error?) -> ()) {
+        userRef.child(id).observeSingleEvent(of: .value) { (snapshot) in
+            if let userDict = snapshot.value as? [String: Any],
+                let email = userDict["email"] as? String,
+                let name = userDict["name"] as? String,
+                let photoUrl = userDict["profile photo"] as? String{
+                
+                let url = URL(string: photoUrl)
+                var image : UIImage? = nil
+                if let url = url {
+                    image = self.downloadImageWithURL(url: url)
+                }
+                
+                let member = Member(id: id);
+                member.email = email
+                member.name = name
+                member.profileImage = image
+                
+                completion(member, nil)
+            } else {
+                completion(nil, FIRServiceError.failedToGetUserInfo)
+            }
+        }
+    }
+    
+    func downloadImageWithURL(url: URL) -> UIImage! {
+        do {
+            let data = try NSData(contentsOf: url, options: NSData.ReadingOptions())
+            return UIImage(data: data as Data)
+        } catch {
+            print(error)
+        }
+        return UIImage()
+    }
     
     func getAllTaskIds(ofUser uid: String, completion: @escaping ([String]?, Error?) -> ()) {
         let ref = databaseRef.child("Users").child(uid).child("tasks")
