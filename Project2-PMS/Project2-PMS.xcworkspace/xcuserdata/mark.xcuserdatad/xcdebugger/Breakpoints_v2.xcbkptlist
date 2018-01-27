@@ -42,7 +42,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Project2-PMS/Controller/LoginController/LoginVC+Helper.swift"
-            timestampString = "538556782.5521131"
+            timestampString = "538692171.680442"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "100"
@@ -58,7 +58,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Project2-PMS/Controller/LoginController/LoginVC+Helper.swift"
-            timestampString = "538556782.55224"
+            timestampString = "538692171.680824"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "103"
@@ -154,11 +154,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Project2-PMS/Controller/ProjectController/ProjectViewController.swift"
-            timestampString = "538640476.703377"
+            timestampString = "538785846.8041871"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "96"
-            endingLineNumber = "96"
+            startingLineNumber = "115"
+            endingLineNumber = "115"
             landmarkName = "tableView(_:cellForRowAt:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -170,13 +170,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Project2-PMS/Controller/ProjectController/ProjectViewController.swift"
-            timestampString = "538640476.7034529"
+            timestampString = "538785846.80426"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "83"
-            endingLineNumber = "83"
-            landmarkName = "ProjectViewController"
-            landmarkType = "21">
+            startingLineNumber = "102"
+            endingLineNumber = "102"
+            landmarkName = "unknown"
+            landmarkType = "0">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -186,13 +186,45 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Project2-PMS/Controller/ProjectController/ProjectViewController.swift"
-            timestampString = "538640476.703506"
+            timestampString = "538785846.804348"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "17"
-            endingLineNumber = "17"
+            startingLineNumber = "20"
+            endingLineNumber = "20"
             landmarkName = "projects"
             landmarkType = "24">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Project2_PMS.ProjectViewController.init(nibName: Swift.Optional&lt;Swift.String&gt;, bundle: Swift.Optional&lt;__ObjC.Bundle&gt;) -&gt; Project2_PMS.ProjectViewController"
+                  moduleName = "Project2-PMS"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/mark/Desktop/Project-Management-System/Project2-PMS/Project2-PMS/Controller/ProjectController/ProjectViewController.swift"
+                  timestampString = "538784355.156292"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "20"
+                  endingLineNumber = "20"
+                  offsetFromSymbolStart = "652">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Project2_PMS.ProjectViewController.init(coder: __ObjC.NSCoder) -&gt; Swift.Optional&lt;Project2_PMS.ProjectViewController&gt;"
+                  moduleName = "Project2-PMS"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/mark/Desktop/Project-Management-System/Project2-PMS/Project2-PMS/Controller/ProjectController/ProjectViewController.swift"
+                  timestampString = "538784355.158345"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "20"
+                  endingLineNumber = "20"
+                  offsetFromSymbolStart = "608">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -202,11 +234,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Project2-PMS/Controller/ProjectController/ProjectViewController.swift"
-            timestampString = "538640476.703606"
+            timestampString = "538785846.804402"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "100"
-            endingLineNumber = "100"
+            startingLineNumber = "119"
+            endingLineNumber = "119"
             landmarkName = "tableView(_:cellForRowAt:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -218,11 +250,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Project2-PMS/Controller/ProjectController/ProjectViewController.swift"
-            timestampString = "538640476.703663"
+            timestampString = "538785846.804453"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "93"
-            endingLineNumber = "93"
+            startingLineNumber = "112"
+            endingLineNumber = "112"
             landmarkName = "tableView(_:numberOfRowsInSection:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -234,12 +266,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Project2-PMS/Network/FIRService.swift"
-            timestampString = "538640476.703712"
+            timestampString = "538785846.804505"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "248"
-            endingLineNumber = "248"
-            landmarkName = "getAllProjects(with:completion:)"
+            startingLineNumber = "258"
+            endingLineNumber = "258"
+            landmarkName = "fetchUserInfo(with:completion:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -250,12 +282,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Project2-PMS/Network/FIRService.swift"
-            timestampString = "538640476.70408"
+            timestampString = "538785846.8045681"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "234"
-            endingLineNumber = "234"
-            landmarkName = "getAllProjects(with:completion:)"
+            startingLineNumber = "244"
+            endingLineNumber = "244"
+            landmarkName = "fetchUserInfo(with:completion:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -266,13 +298,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Project2-PMS/Network/FIRService.swift"
-            timestampString = "538640476.704336"
+            timestampString = "538785846.804623"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "267"
-            endingLineNumber = "267"
-            landmarkName = "FIRService"
-            landmarkType = "3">
+            startingLineNumber = "277"
+            endingLineNumber = "277"
+            landmarkName = "getAllProjects(with:completion:)"
+            landmarkType = "7">
             <Locations>
                <Location
                   shouldBeEnabled = "Yes"
@@ -282,12 +314,27 @@
                   moduleName = "Project2-PMS"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/mark/Desktop/Project-Management-System/Project2-PMS/Project2-PMS/Network/FIRService.swift"
-                  timestampString = "538640476.887607"
+                  timestampString = "538784355.1783561"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "267"
-                  endingLineNumber = "267"
-                  offsetFromSymbolStart = "692">
+                  startingLineNumber = "277"
+                  endingLineNumber = "277"
+                  offsetFromSymbolStart = "352">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Optional&lt;Swift.Array&lt;Swift.String&gt;&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in Project2_PMS.FIRService.getMemberProjects(with: Swift.String, completion: (Swift.Optional&lt;Swift.Array&lt;Project2_PMS.Project&gt;&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; ()) -&gt; ()"
+                  moduleName = "Project2-PMS"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/mark/Desktop/Project-Management-System/Project2-PMS/Project2-PMS/Network/FIRService.swift"
+                  timestampString = "538784355.180329"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "277"
+                  endingLineNumber = "277"
+                  offsetFromSymbolStart = "40">
                </Location>
                <Location
                   shouldBeEnabled = "Yes"
@@ -297,11 +344,134 @@
                   moduleName = "Project2-PMS"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/mark/Desktop/Project-Management-System/Project2-PMS/Project2-PMS/Network/FIRService.swift"
-                  timestampString = "538640476.88957"
+                  timestampString = "538784355.18267"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "267"
-                  endingLineNumber = "267"
+                  startingLineNumber = "277"
+                  endingLineNumber = "277"
+                  offsetFromSymbolStart = "88">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #2 () -&gt; () in closure #2 () -&gt; () in Project2_PMS.FIRService.getMemberProjects(with: Swift.String, completion: (Swift.Optional&lt;Swift.Array&lt;Project2_PMS.Project&gt;&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; ()) -&gt; ()"
+                  moduleName = "Project2-PMS"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/mark/Desktop/Project-Management-System/Project2-PMS/Project2-PMS/Network/FIRService.swift"
+                  timestampString = "538784355.184787"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "277"
+                  endingLineNumber = "277"
+                  offsetFromSymbolStart = "52">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Project2-PMS/Network/FIRService.swift"
+            timestampString = "538785846.80468"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "279"
+            endingLineNumber = "279"
+            landmarkName = "getAllProjects(with:completion:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Optional&lt;Swift.Array&lt;Swift.String&gt;&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in Project2_PMS.FIRService.getMemberProjects(with: Swift.String, completion: (Swift.Optional&lt;Swift.Array&lt;Project2_PMS.Project&gt;&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; ()) -&gt; ()"
+                  moduleName = "Project2-PMS"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/mark/Desktop/Project-Management-System/Project2-PMS/Project2-PMS/Network/FIRService.swift"
+                  timestampString = "538784355.1914411"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "279"
+                  endingLineNumber = "279"
+                  offsetFromSymbolStart = "28">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #2 () -&gt; () in Project2_PMS.FIRService.getMemberProjects(with: Swift.String, completion: (Swift.Optional&lt;Swift.Array&lt;Project2_PMS.Project&gt;&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; ()) -&gt; ()"
+                  moduleName = "Project2-PMS"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/mark/Desktop/Project-Management-System/Project2-PMS/Project2-PMS/Network/FIRService.swift"
+                  timestampString = "538784355.193395"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "279"
+                  endingLineNumber = "279"
+                  offsetFromSymbolStart = "60">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Optional&lt;Swift.Array&lt;Swift.String&gt;&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in closure #2 () -&gt; () in Project2_PMS.FIRService.getMemberProjects(with: Swift.String, completion: (Swift.Optional&lt;Swift.Array&lt;Project2_PMS.Project&gt;&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; ()) -&gt; ()"
+                  moduleName = "Project2-PMS"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/mark/Desktop/Project-Management-System/Project2-PMS/Project2-PMS/Network/FIRService.swift"
+                  timestampString = "538784355.195321"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "279"
+                  endingLineNumber = "279"
+                  offsetFromSymbolStart = "28">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #2 () -&gt; () in closure #2 () -&gt; () in Project2_PMS.FIRService.getMemberProjects(with: Swift.String, completion: (Swift.Optional&lt;Swift.Array&lt;Project2_PMS.Project&gt;&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; ()) -&gt; ()"
+                  moduleName = "Project2-PMS"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/mark/Desktop/Project-Management-System/Project2-PMS/Project2-PMS/Network/FIRService.swift"
+                  timestampString = "538784355.197309"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "279"
+                  endingLineNumber = "279"
+                  offsetFromSymbolStart = "64">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Optional&lt;Project2_PMS.Project&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in closure #2 () -&gt; () in closure #2 () -&gt; () in Project2_PMS.FIRService.getMemberProjects(with: Swift.String, completion: (Swift.Optional&lt;Swift.Array&lt;Project2_PMS.Project&gt;&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; ()) -&gt; ()"
+                  moduleName = "Project2-PMS"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/mark/Desktop/Project-Management-System/Project2-PMS/Project2-PMS/Network/FIRService.swift"
+                  timestampString = "538784355.1994179"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "279"
+                  endingLineNumber = "279"
+                  offsetFromSymbolStart = "180">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #2 () -&gt; () in closure #2 () -&gt; () in closure #2 () -&gt; () in Project2_PMS.FIRService.getMemberProjects(with: Swift.String, completion: (Swift.Optional&lt;Swift.Array&lt;Project2_PMS.Project&gt;&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; ()) -&gt; ()"
+                  moduleName = "Project2-PMS"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/mark/Desktop/Project-Management-System/Project2-PMS/Project2-PMS/Network/FIRService.swift"
+                  timestampString = "538784355.20135"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "279"
+                  endingLineNumber = "279"
                   offsetFromSymbolStart = "36">
                </Location>
             </Locations>
@@ -314,12 +484,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Project2-PMS/Network/FIRService.swift"
-            timestampString = "538640476.704579"
+            timestampString = "538785846.804737"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "269"
-            endingLineNumber = "269"
-            landmarkName = "getMemberProjects(with:completion:)"
+            startingLineNumber = "289"
+            endingLineNumber = "289"
+            landmarkName = "getAllProjects(with:completion:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -330,12 +500,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Project2-PMS/Network/FIRService.swift"
-            timestampString = "538640476.704815"
+            timestampString = "538785846.804794"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "279"
-            endingLineNumber = "279"
-            landmarkName = "getMemberProjects(with:completion:)"
+            startingLineNumber = "302"
+            endingLineNumber = "302"
+            landmarkName = "getProjectIds(with:completion:)"
             landmarkType = "7">
             <Locations>
                <Location
@@ -346,11 +516,75 @@
                   moduleName = "Project2-PMS"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/mark/Desktop/Project-Management-System/Project2-PMS/Project2-PMS/Network/FIRService.swift"
-                  timestampString = "538640476.898015"
+                  timestampString = "538784355.214128"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "279"
-                  endingLineNumber = "279"
+                  startingLineNumber = "302"
+                  endingLineNumber = "302"
+                  offsetFromSymbolStart = "396">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Optional&lt;Swift.Array&lt;Swift.String&gt;&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in closure #2 () -&gt; () in Project2_PMS.FIRService.getMemberProjects(with: Swift.String, completion: (Swift.Optional&lt;Swift.Array&lt;Project2_PMS.Project&gt;&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; ()) -&gt; ()"
+                  moduleName = "Project2-PMS"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/mark/Desktop/Project-Management-System/Project2-PMS/Project2-PMS/Network/FIRService.swift"
+                  timestampString = "538784355.216152"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "302"
+                  endingLineNumber = "302"
+                  offsetFromSymbolStart = "356">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Project2-PMS/Network/FIRService.swift"
+            timestampString = "538785846.804849"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "315"
+            endingLineNumber = "315"
+            landmarkName = "getMemberProjects(with:completion:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Project2-PMS/Network/FIRService.swift"
+            timestampString = "538785846.804902"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "304"
+            endingLineNumber = "304"
+            landmarkName = "getProjectIds(with:completion:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #2 () -&gt; () in Project2_PMS.FIRService.getMemberProjects(with: Swift.String, completion: (Swift.Optional&lt;Swift.Array&lt;Project2_PMS.Project&gt;&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; ()) -&gt; ()"
+                  moduleName = "Project2-PMS"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/mark/Desktop/Project-Management-System/Project2-PMS/Project2-PMS/Network/FIRService.swift"
+                  timestampString = "538784355.224738"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "304"
+                  endingLineNumber = "304"
                   offsetFromSymbolStart = "444">
                </Location>
                <Location
@@ -361,11 +595,11 @@
                   moduleName = "Project2-PMS"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/mark/Desktop/Project-Management-System/Project2-PMS/Project2-PMS/Network/FIRService.swift"
-                  timestampString = "538640476.9001271"
+                  timestampString = "538784355.227143"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "253"
-                  endingLineNumber = "253"
+                  startingLineNumber = "278"
+                  endingLineNumber = "278"
                   offsetFromSymbolStart = "24">
                </Location>
             </Locations>
@@ -378,42 +612,458 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Project2-PMS/Network/FIRService.swift"
-            timestampString = "538640476.705052"
+            timestampString = "538785846.804957"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "292"
-            endingLineNumber = "292"
-            landmarkName = "getMemberProjects(with:completion:)"
+            startingLineNumber = "250"
+            endingLineNumber = "250"
+            landmarkName = "fetchUserInfo(with:completion:)"
             landmarkType = "7">
             <Locations>
                <Location
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "closure #2 () -&gt; () in closure #2 () -&gt; () in Project2_PMS.FIRService.getMemberProjects(with: Swift.String, completion: (Swift.Optional&lt;Swift.Array&lt;Project2_PMS.Project&gt;&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; ()) -&gt; ()"
+                  symbolName = "closure #2 () -&gt; () in Project2_PMS.FIRService.getAllProjects(with: Swift.String, completion: (Swift.Optional&lt;Swift.Array&lt;Project2_PMS.Project&gt;&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; ()) -&gt; ()"
                   moduleName = "Project2-PMS"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/mark/Desktop/Project-Management-System/Project2-PMS/Project2-PMS/Network/FIRService.swift"
-                  timestampString = "538640476.9050159"
+                  timestampString = "538784355.2318439"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "292"
-                  endingLineNumber = "292"
-                  offsetFromSymbolStart = "812">
+                  startingLineNumber = "251"
+                  endingLineNumber = "251"
+                  offsetFromSymbolStart = "768">
                </Location>
                <Location
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "closure #2 () -&gt; () in closure #2 () -&gt; () in closure #2 () -&gt; () in Project2_PMS.FIRService.getMemberProjects(with: Swift.String, completion: (Swift.Optional&lt;Swift.Array&lt;Project2_PMS.Project&gt;&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; ()) -&gt; ()"
+                  symbolName = "closure #2 () -&gt; () in closure #2 () -&gt; () in Project2_PMS.FIRService.getAllProjects(with: Swift.String, completion: (Swift.Optional&lt;Swift.Array&lt;Project2_PMS.Project&gt;&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; ()) -&gt; ()"
                   moduleName = "Project2-PMS"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/mark/Desktop/Project-Management-System/Project2-PMS/Project2-PMS/Network/FIRService.swift"
-                  timestampString = "538640476.906968"
+                  timestampString = "538784355.233942"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "251"
-                  endingLineNumber = "251"
+                  startingLineNumber = "224"
+                  endingLineNumber = "224"
+                  offsetFromSymbolStart = "24">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Project2-PMS/Controller/LoginController/LoginVC+Helper.swift"
+            timestampString = "538692171.6815259"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "83"
+            endingLineNumber = "83"
+            landmarkName = "loginUser(_:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Project2-PMS/Controller/LoginController/LoginVC+Helper.swift"
+            timestampString = "538692171.681775"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "75"
+            endingLineNumber = "75"
+            landmarkName = "loginUser(_:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Project2-PMS/Controller/LoginController/LoginVC+Helper.swift"
+            timestampString = "538692217.193935"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "90"
+            endingLineNumber = "90"
+            landmarkName = "proceedLogin(for:with:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Project2-PMS/Network/FIRService.swift"
+            timestampString = "538785846.805087"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "126"
+            endingLineNumber = "126"
+            landmarkName = "getUserInfo(ofUser:completion:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Project2-PMS/Network/FIRService.swift"
+            timestampString = "538785846.805146"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "135"
+            endingLineNumber = "135"
+            landmarkName = "getUserInfo(ofUser:completion:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Project2-PMS/Network/FIRService.swift"
+            timestampString = "538785846.805204"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "142"
+            endingLineNumber = "142"
+            landmarkName = "getUserInfo(ofUser:completion:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Project2-PMS/Network/FIRService.swift"
+            timestampString = "538785846.8052599"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "145"
+            endingLineNumber = "145"
+            landmarkName = "downloadImageWithURL(url:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Project2-PMS/Network/FIRService.swift"
+            timestampString = "538785846.805317"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "177"
+            endingLineNumber = "177"
+            landmarkName = "loginUser(with:completion:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Project2_PMS.FIRService.fetchUserInfo(with: Swift.String, completion: (Swift.Optional&lt;Project2_PMS.Member&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; ()) -&gt; ()"
+                  moduleName = "Project2-PMS"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/mark/Desktop/Project-Management-System/Project2-PMS/Project2-PMS/Network/FIRService.swift"
+                  timestampString = "538784355.265335"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "177"
+                  endingLineNumber = "177"
+                  offsetFromSymbolStart = "36">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (__ObjC.DataSnapshot) -&gt; () in Project2_PMS.FIRService.fetchUserInfo(with: Swift.String, completion: (Swift.Optional&lt;Project2_PMS.Member&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; ()) -&gt; ()"
+                  moduleName = "Project2-PMS"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/mark/Desktop/Project-Management-System/Project2-PMS/Project2-PMS/Network/FIRService.swift"
+                  timestampString = "538784355.267666"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "178"
+                  endingLineNumber = "178"
+                  offsetFromSymbolStart = "48">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Project2-PMS/Network/FIRService.swift"
+            timestampString = "538785846.805372"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "178"
+            endingLineNumber = "178"
+            landmarkName = "loginUser(with:completion:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Project2-PMS/Controller/ProjectController/ProjectContainerViewController.swift"
+            timestampString = "538769319.862251"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "74"
+            endingLineNumber = "74"
+            landmarkName = "updateChildVC(with:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Project2-PMS/Controller/ProjectController/MembersViewController.swift"
+            timestampString = "538785846.805462"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "45"
+            endingLineNumber = "45"
+            landmarkName = "unknown"
+            landmarkType = "0">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Project2-PMS/Controller/ProjectController/MembersViewController.swift"
+            timestampString = "538785846.805807"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "20"
+            endingLineNumber = "20"
+            landmarkName = "unknown"
+            landmarkType = "0">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Project2-PMS/Controller/ProjectController/MembersViewController.swift"
+            timestampString = "538785846.806066"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "77"
+            endingLineNumber = "77"
+            landmarkName = "unknown"
+            landmarkType = "0">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Project2-PMS/Controller/ProjectController/MembersViewController.swift"
+            timestampString = "538785846.806306"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "92"
+            endingLineNumber = "92"
+            landmarkName = "unknown"
+            landmarkType = "0">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Project2-PMS/Controller/ProjectController/MembersViewController.swift"
+            timestampString = "538785846.806538"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "101"
+            endingLineNumber = "101"
+            landmarkName = "unknown"
+            landmarkType = "0">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Project2-PMS/Network/FIRService.swift"
+            timestampString = "538785846.80677"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "407"
+            endingLineNumber = "407"
+            landmarkName = "getProjectInfo(with:filteredAgainst:completion:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Project2_PMS.FIRService.searchMembers(using: Swift.String, completion: (Swift.Optional&lt;Swift.Array&lt;Project2_PMS.Member&gt;&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; ()) -&gt; ()"
+                  moduleName = "Project2-PMS"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/mark/Desktop/Project-Management-System/Project2-PMS/Project2-PMS/Network/FIRService.swift"
+                  timestampString = "538784355.299248"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "407"
+                  endingLineNumber = "407"
+                  offsetFromSymbolStart = "864">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (__ObjC.DataSnapshot) -&gt; () in Project2_PMS.FIRService.searchMembers(using: Swift.String, completion: (Swift.Optional&lt;Swift.Array&lt;Project2_PMS.Member&gt;&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; ()) -&gt; ()"
+                  moduleName = "Project2-PMS"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/mark/Desktop/Project-Management-System/Project2-PMS/Project2-PMS/Network/FIRService.swift"
+                  timestampString = "538784355.30121"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "398"
+                  endingLineNumber = "398"
+                  offsetFromSymbolStart = "24">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Project2-PMS/Controller/ProjectController/ManageMemberVC+SearchDelegate.swift"
+            timestampString = "538785846.806839"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "40"
+            endingLineNumber = "40"
+            landmarkName = "updateSearchResults(for:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Project2-PMS/Network/FIRService.swift"
+            timestampString = "538785846.806896"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "409"
+            endingLineNumber = "409"
+            landmarkName = "getProjectInfo(with:filteredAgainst:completion:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Project2-PMS/Network/FIRService.swift"
+            timestampString = "538785846.806958"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "423"
+            endingLineNumber = "423"
+            landmarkName = "createProject(for:completion:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Project2-PMS/Network/FIRService.swift"
+            timestampString = "538785846.807012"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "426"
+            endingLineNumber = "426"
+            landmarkName = "createProject(for:completion:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Project2_PMS.FIRService.searchMembers(using: Swift.String, completion: (Swift.Optional&lt;Swift.Array&lt;Project2_PMS.Member&gt;&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; ()) -&gt; ()"
+                  moduleName = "Project2-PMS"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/mark/Desktop/Project-Management-System/Project2-PMS/Project2-PMS/Network/FIRService.swift"
+                  timestampString = "538784355.317403"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "426"
+                  endingLineNumber = "426"
+                  offsetFromSymbolStart = "1696">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #2 (__ObjC.DataSnapshot) -&gt; () in Project2_PMS.FIRService.searchMembers(using: Swift.String, completion: (Swift.Optional&lt;Swift.Array&lt;Project2_PMS.Member&gt;&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; ()) -&gt; ()"
+                  moduleName = "Project2-PMS"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/mark/Desktop/Project-Management-System/Project2-PMS/Project2-PMS/Network/FIRService.swift"
+                  timestampString = "538784355.319391"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "398"
+                  endingLineNumber = "398"
                   offsetFromSymbolStart = "24">
                </Location>
             </Locations>
@@ -426,12 +1076,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Project2-PMS/Network/FIRService.swift"
-            timestampString = "538640476.705291"
+            timestampString = "538785846.807067"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "305"
-            endingLineNumber = "305"
-            landmarkName = "getMemberProjects(with:completion:)"
+            startingLineNumber = "442"
+            endingLineNumber = "442"
+            landmarkName = "searchMembers(using:completion:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -442,12 +1092,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Project2-PMS/Network/FIRService.swift"
-            timestampString = "538640476.705526"
+            timestampString = "538785846.80712"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "294"
-            endingLineNumber = "294"
-            landmarkName = "getMemberProjects(with:completion:)"
+            startingLineNumber = "453"
+            endingLineNumber = "453"
+            landmarkName = "searchMembers(using:completion:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -458,12 +1108,92 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Project2-PMS/Network/FIRService.swift"
-            timestampString = "538640476.705901"
+            timestampString = "538785846.8071719"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "240"
-            endingLineNumber = "240"
-            landmarkName = "getAllProjects(with:completion:)"
+            startingLineNumber = "442"
+            endingLineNumber = "442"
+            landmarkName = "searchMembers(using:completion:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Project2-PMS/Network/FIRService.swift"
+            timestampString = "538785846.807219"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "448"
+            endingLineNumber = "448"
+            landmarkName = "searchMembers(using:completion:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Project2-PMS/Network/FIRService.swift"
+            timestampString = "538785846.807264"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "453"
+            endingLineNumber = "453"
+            landmarkName = "searchMembers(using:completion:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Project2-PMS/View/ShowMemeberCell.swift"
+            timestampString = "538785846.807315"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "25"
+            endingLineNumber = "25"
+            landmarkName = "configureCell(imageURL:name:email:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Project2-PMS/Controller/ProjectController/ManageMemberVC+SearchDelegate.swift"
+            timestampString = "538785846.8073601"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "53"
+            endingLineNumber = "53"
+            landmarkName = "finishGettingSearchResults(members:error:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Project2-PMS/Controller/ProjectController/ManageMemberVC+CollectionDelegates.swift"
+            timestampString = "538785846.807438"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "29"
+            endingLineNumber = "29"
+            landmarkName = "collectionView(_:itemsForBeginning:at:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

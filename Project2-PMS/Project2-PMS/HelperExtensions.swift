@@ -10,6 +10,11 @@ import UIKit
 
 // hide keyboard when tapped around
 extension UIViewController {
+	var mFont: UIFont? {
+		let font = UIFont(name: "Avenir-Heavy", size: 14)
+		return font
+	}
+	
     func hideKeyboardWhenTappedAround() {
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
         tap.cancelsTouchesInView = false
@@ -19,6 +24,23 @@ extension UIViewController {
     @objc func dismissKeyboard() {
         view.endEditing(true)
     }
+	
+	func showNetworkIndicators() {
+		UIApplication.shared.isNetworkActivityIndicatorVisible = true
+	}
+	
+	func hideNetworkIndicatros() {
+		UIApplication.shared.isNetworkActivityIndicatorVisible = false
+	}
+	
+	// get the first contentVC
+	var contents: UIViewController {
+		if let navCon = self as? UINavigationController {
+			return navCon.visibleViewController ?? self
+		} else {
+			return self
+		}
+	}
 }
 
 // add border to one side
@@ -50,3 +72,4 @@ extension CALayer {
         self.addSublayer(border)
     }
 }
+

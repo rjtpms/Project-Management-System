@@ -14,7 +14,7 @@ struct Project {
 	var startDate: Date
 	var endDate: Date
 	var name: String
-	var tasks: [Task]?
-	var members: [Member]?
+	var tasks: [Task] = []
+	var members: [Member] = []
 	var managerId: String
 }

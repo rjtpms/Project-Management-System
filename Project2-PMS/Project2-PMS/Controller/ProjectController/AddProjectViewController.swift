@@ -113,8 +113,8 @@ class AddProjectViewController: FormViewController {
 								 startDate: startDate,
 								 endDate: endDate,
 								 name: projectName,
-								 tasks: nil,
-								 members: nil,
+								 tasks: [],
+								 members: [],
 								 managerId: CurrentUser.sharedInstance.userId)
 		
 		FIRService.shareInstance.createProject(for: newProject) {
