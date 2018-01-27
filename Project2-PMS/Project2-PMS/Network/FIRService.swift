@@ -19,11 +19,14 @@ class FIRService: NSObject {
         case taskDoesNotExist
 		case failParseProjectInfo
         case userDoesNotExist
+		case failParseUserInfo
     }
 	
 	typealias LoginResultHandler = (User?, Error?) -> ()
 	typealias FetchProjectResultHandler = (Project?, Error?) -> ()
 	typealias FetchProjectsResultHandler = ([Project]?, Error?) -> ()
+	typealias FetchUserResulHandler = (Member?, Error?) -> ()
+	typealias SearchMembersResultHandler = ([Member]?, Error?) -> ()
 	
 	static let shareInstance = FIRService()
 	
@@ -160,7 +163,7 @@ class FIRService: NSObject {
 				}
 			} else {
 				// if record exist, fetch it
-				self?.fetchCurrentUserInfo(with: user.uid) {
+				self?.fetchUserInfo(with: user.uid) {_,_ in
 					DispatchQueue.main.async {
 						completion()
 					}
@@ -170,37 +173,44 @@ class FIRService: NSObject {
 	}
 	
 	// Fetch currentuser info from firebase and store in singleton
-	func fetchCurrentUserInfo(with id: String, completion: @escaping () -> ()) {
-		let currentUser = CurrentUser.sharedInstance
-		
+	func fetchUserInfo(with id: String, completion: @escaping FetchUserResulHandler) {
 		userRef.child(id).observeSingleEvent(of: .value) { (snapshot) in
-			if let userDict = snapshot.value as? [String: String],
-				let email = userDict["email"],
-				let name = userDict["name"] {
+			if let userDict = snapshot.value as? [String: Any],
+				let email = userDict["email"] as? String,
+				let name = userDict["name"] as? String {
 				
 				// handle situation when user login Oauth but close app in choose role page
 				var role: Role!
 				if userDict["role"] == nil {
 					role = Role.none
 				} else {
-					role = Role(rawValue: userDict["role"]!)
+					role = Role(rawValue: userDict["role"] as! String)
 				}
 				
 				var photoUrl: URL?
-				if let profileUrlStr = userDict["profile photo"] {
+				if let profileUrlStr = userDict["profile photo"] as? String {
 					photoUrl = URL(string: profileUrlStr)
 				}
 				
-				currentUser.update(id: id,
-								   email: email,
-								   name: name,
-								   photoUrl: photoUrl,
-								   role: role)
-				currentUser.save()
-				
-				DispatchQueue.main.async {
-					completion()
+				let currentUser = CurrentUser.sharedInstance
+				if currentUser.userId == id {
+					currentUser.update(id: id,
+									   email: email,
+									   name: name,
+									   photoUrl: photoUrl,
+									   role: role)
+					currentUser.save()
 				}
+				
+				let resultMember = Member(id: id,
+										  name: name,
+										  email: email,
+										  imageURL: photoUrl)
+				DispatchQueue.main.async {
+					completion(resultMember, nil)
+				}
+			} else {
+				completion(nil, FIRServiceError.failParseUserInfo)
 			}
 		}
 	}
@@ -339,7 +349,7 @@ class FIRService: NSObject {
 				if let memberDict = projectDict["members"] as? [String: Any] {
 					let memberIds = Array(memberDict.keys)
 					for id in memberIds {
-						project.members!.append(Member(id: id))
+						project.members.append(Member(id: id))
 					}
 				}
 				
@@ -351,7 +361,7 @@ class FIRService: NSObject {
 						Array(taskDict.keys).filter { taskIds!.contains($0) }
 					
 					for id in projectTaskIds {
-						project.tasks!.append(Task(id: id))
+						project.tasks.append(Task(id: id))
 					}
 				}
 				
@@ -381,5 +391,75 @@ class FIRService: NSObject {
 		userRef.child(currentUser.userId).child("projects").updateChildValues([project.id: true])
 		
 		completion()
+	}
+	
+	// search by name or email
+	func searchMembers(using searchText: String, completion: @escaping SearchMembersResultHandler) {
+		var resultIds: [String] = []
+		var resultMembers: [Member] = []
+		let searchGroup = DispatchGroup()
+		let fetchMembersGroup = DispatchGroup()
+			
+		// get memberIds that has name starting with searchText
+		
+		let nameQuery = userRef.queryOrdered(byChild: "name").queryStarting(atValue: searchText).queryEnding(atValue: searchText + "\u{f8ff}")
+		searchGroup.enter()
+		nameQuery.observeSingleEvent(of: .value) { (snapshot) in
+			searchGroup.leave()
+			if let membersDict = snapshot.value as? [String: Any] {
+				for (memberId, memberDict) in membersDict {
+					// add memebrId to result when role is not manager, and id is not already in resultIds
+					if !resultIds.contains(memberId),
+					let role = (memberDict as? [String: Any])?["role"] as? String,
+						role != "Project Manager"{
+						resultIds.append(memberId)
+					}
+				}
+			}
+		}
+		
+		// get memberdIds that has email starting with searchText
+		let emailSerchText = searchText.lowercased()
+		let emailQuery = userRef.queryOrdered(byChild: "email").queryStarting(atValue: emailSerchText).queryEnding(atValue: emailSerchText + "\u{f8ff}")
+		
+		searchGroup.enter()
+		emailQuery.observeSingleEvent(of: .value) { (snapshot) in
+			searchGroup.leave()
+			if let membersDict = snapshot.value as? [String: Any] {
+				for (memberId, memberDict) in membersDict {
+					// add memebrId to result when role is not manager, and id is not already in resultIds
+					if !resultIds.contains(memberId),
+						let role = (memberDict as? [String: Any])?["role"] as? String,
+						role != "Project Manager"{
+						resultIds.append(memberId)
+					}
+				}
+			}
+		}
+		
+		searchGroup.notify(queue: .main) { [weak self] in
+			// now start fetching result members info
+			for id in resultIds {
+				fetchMembersGroup.enter()
+				self?.fetchUserInfo(with: id) { (member, error) in
+					fetchMembersGroup.leave()
+					guard error == nil else { return }
+					guard let unwrappedMember = member else { return }
+					resultMembers.append(unwrappedMember)
+				}
+			}
+			
+			fetchMembersGroup.notify(queue: .main) {
+				if resultMembers.isEmpty {
+					completion(nil, FIRServiceError.userDoesNotExist)
+				} else {
+					completion(resultMembers, nil)
+				}
+			}
+		}
+	}
+	
+	func add(member memberId: String, toProject projectId: String) {
+		
 	}
 }

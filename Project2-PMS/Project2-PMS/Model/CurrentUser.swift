@@ -64,4 +64,9 @@ class CurrentUser: NSObject {
 			role = Role(rawValue: (dictionary["role"] as! String))!
 		}
 	}
+	
+	func convertToMember() -> Member {
+		let member = Member(id: userId, name: fullname, email: email, imageURL: profileImageUrl)
+		return member
+	}
 }

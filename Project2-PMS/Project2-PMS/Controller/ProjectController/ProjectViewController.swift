@@ -12,6 +12,10 @@ class ProjectViewController: UIViewController {
 	@IBOutlet weak var tableview: UITableView!
 	private var refreshControl = UIRefreshControl()
 	
+	private let cellIdentifier = "BasicProjectCell"
+	private let addProjectSegue = "AddProjectSegue"
+	private let showContainerSegue = "showContainerSegue"
+	
 	// PM can see all the projects, Member can only see projects that they are assigned task to
 	var projects: [Project] = [] {
 		didSet {
@@ -36,6 +40,21 @@ class ProjectViewController: UIViewController {
 		
 	}
 	
+	override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+		if segue.identifier == showContainerSegue,
+			let targetVC = segue.destination as? ProjectContainerViewController,
+			let indexPath = tableview.indexPathForSelectedRow {
+			
+			let trueIndex = currentUser.role == .manager ? indexPath.row - 1 : indexPath.row
+			targetVC.project = projects[trueIndex]
+		}
+	}
+	
+}
+
+// MARK: - Helper Methods
+private extension ProjectViewController {
+	
 	func setupUI() {
 		refreshControl.isEnabled = true
 		refreshControl.tintColor = UIColor.cyan
@@ -44,6 +63,7 @@ class ProjectViewController: UIViewController {
 	}
 	
 	@objc func fetchProjects () {
+		showNetworkIndicators()
 		let firService = FIRService.shareInstance
 		
 		switch currentUser.role {
@@ -66,9 +86,9 @@ class ProjectViewController: UIViewController {
 		}
 	}
 	
-	private func finishFetching(newProjects: [Project]?, err: Error?) {
+	func finishFetching(newProjects: [Project]?, err: Error?) {
 		refreshControl.endRefreshing()
-		
+		hideNetworkIndicatros()
 		guard err == nil else {
 			print(err!.localizedDescription)
 			return
@@ -93,7 +113,7 @@ extension ProjectViewController: UITableViewDelegate, UITableViewDataSource {
 	}
 	
 	func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-		let cell = tableView.dequeueReusableCell(withIdentifier: "BasicProjectCell", for: indexPath)
+		let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath)
 		
 		// enable add row if current is manager
 		if indexPath.row == 0, currentUser.role == .manager {
@@ -113,12 +133,14 @@ extension ProjectViewController: UITableViewDelegate, UITableViewDataSource {
 		case 0:
 			// nav to addproject VC if current user is manager
 			if currentUser.role == .manager {
-				performSegue(withIdentifier: "AddProjectSegue", sender: nil)
+				performSegue(withIdentifier: addProjectSegue, sender: nil)
 			} else {
 				// when selecing project row
+				performSegue(withIdentifier: showContainerSegue, sender: nil)
 			}
 		default:
 			// when selecing project row
+			performSegue(withIdentifier: showContainerSegue, sender: nil)
 			break
 		}
 	}

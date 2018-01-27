@@ -26,16 +26,28 @@
 		23FA54E6201990500059CA0E /* Member.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23FA54E5201990500059CA0E /* Member.swift */; };
 		23FA54E8201993520059CA0E /* AddTaskViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23FA54E7201993520059CA0E /* AddTaskViewController.swift */; };
 		23FA54EA201993630059CA0E /* TaskDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23FA54E9201993630059CA0E /* TaskDetailViewController.swift */; };
+		4D4AE490201BE2E4004A08AF /* MembersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D4AE48F201BE2E4004A08AF /* MembersViewController.swift */; };
+		4D4AE492201BE2FE004A08AF /* AboutProjectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D4AE491201BE2FE004A08AF /* AboutProjectViewController.swift */; };
+		4D4AE494201BE327004A08AF /* ManageMemembersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D4AE493201BE327004A08AF /* ManageMemembersViewController.swift */; };
+		4D4AE496201C2B0E004A08AF /* MemberCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D4AE495201C2B0E004A08AF /* MemberCell.swift */; };
 		4D7CA36620181FD50025B5D3 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4D7CA36520181FD50025B5D3 /* GoogleService-Info.plist */; };
 		4D7CA368201821290025B5D3 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D7CA367201821290025B5D3 /* LoginViewController.swift */; };
 		4D7CA36C201841580025B5D3 /* CurrentUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D7CA36B201841580025B5D3 /* CurrentUser.swift */; };
 		4D7CA36F2018457A0025B5D3 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D7CA36E2018457A0025B5D3 /* CoreDataManager.swift */; };
+		4D982C11201B0C1900E1D3E4 /* ProjectContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D982C10201B0C1900E1D3E4 /* ProjectContainerViewController.swift */; };
 		4DAC2E4B201978350088E60B /* ProjectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DAC2E4A201978350088E60B /* ProjectViewController.swift */; };
 		4DAC2E4E201985660088E60B /* LoginVC+Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DAC2E4D201985660088E60B /* LoginVC+Helper.swift */; };
 		4DAC2E50201986880088E60B /* ExtraInfomationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DAC2E4F201986880088E60B /* ExtraInfomationViewController.swift */; };
 		4DAC2E5220199FA60088E60B /* AccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DAC2E5120199FA60088E60B /* AccountViewController.swift */; };
 		4DAC2E552019A9720088E60B /* Project.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DAC2E542019A9720088E60B /* Project.swift */; };
 		4DAC2E572019B5D30088E60B /* AddProjectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DAC2E562019B5D30088E60B /* AddProjectViewController.swift */; };
+		4DC1B6B5201CD56900E6313C /* ShowMemeberCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DC1B6B4201CD56900E6313C /* ShowMemeberCell.swift */; };
+		4DC1B6B7201CD72F00E6313C /* CollectionContainerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DC1B6B6201CD72F00E6313C /* CollectionContainerCell.swift */; };
+		4DC1B6BB201CE05100E6313C /* MemberPhotoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DC1B6BA201CE05100E6313C /* MemberPhotoCell.swift */; };
+		4DC1B6BD201CE84100E6313C /* ManageMemberVC+SearchDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DC1B6BC201CE84100E6313C /* ManageMemberVC+SearchDelegate.swift */; };
+		4DC1B6BF201CF80900E6313C /* MemberVC+Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DC1B6BE201CF80900E6313C /* MemberVC+Helper.swift */; };
+		4DC1B6C1201D264100E6313C /* ManageMemberVC+TabeDelegates.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DC1B6C0201D264100E6313C /* ManageMemberVC+TabeDelegates.swift */; };
+		4DC1B6C3201D266000E6313C /* ManageMemberVC+CollectionDelegates.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DC1B6C2201D266000E6313C /* ManageMemberVC+CollectionDelegates.swift */; };
 		4DC67D602017F3EC008B9B77 /* FIRService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DC67D5F2017F3EC008B9B77 /* FIRService.swift */; };
 		B3D8BC3C9E7617F16AD02EC0 /* Pods_Project2_PMSTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E37E4173C4FEFA5C80239E5A /* Pods_Project2_PMSTests.framework */; };
 		C211D8525DF4F37898EFCDC0 /* Pods_Project2_PMS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 253806804ABC9EA5A149DB45 /* Pods_Project2_PMS.framework */; };
@@ -77,16 +89,28 @@
 		23FA54E9201993630059CA0E /* TaskDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskDetailViewController.swift; sourceTree = "<group>"; };
 		253806804ABC9EA5A149DB45 /* Pods_Project2_PMS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Project2_PMS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		45ABB5325C93250512F260B2 /* Pods-Project2-PMSTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Project2-PMSTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-Project2-PMSTests/Pods-Project2-PMSTests.release.xcconfig"; sourceTree = "<group>"; };
+		4D4AE48F201BE2E4004A08AF /* MembersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MembersViewController.swift; sourceTree = "<group>"; };
+		4D4AE491201BE2FE004A08AF /* AboutProjectViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutProjectViewController.swift; sourceTree = "<group>"; };
+		4D4AE493201BE327004A08AF /* ManageMemembersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManageMemembersViewController.swift; sourceTree = "<group>"; };
+		4D4AE495201C2B0E004A08AF /* MemberCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemberCell.swift; sourceTree = "<group>"; };
 		4D7CA36520181FD50025B5D3 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		4D7CA367201821290025B5D3 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		4D7CA36B201841580025B5D3 /* CurrentUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentUser.swift; sourceTree = "<group>"; };
 		4D7CA36E2018457A0025B5D3 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
+		4D982C10201B0C1900E1D3E4 /* ProjectContainerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectContainerViewController.swift; sourceTree = "<group>"; };
 		4DAC2E4A201978350088E60B /* ProjectViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectViewController.swift; sourceTree = "<group>"; };
 		4DAC2E4D201985660088E60B /* LoginVC+Helper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LoginVC+Helper.swift"; sourceTree = "<group>"; };
 		4DAC2E4F201986880088E60B /* ExtraInfomationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtraInfomationViewController.swift; sourceTree = "<group>"; };
 		4DAC2E5120199FA60088E60B /* AccountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountViewController.swift; sourceTree = "<group>"; };
 		4DAC2E542019A9720088E60B /* Project.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Project.swift; sourceTree = "<group>"; };
 		4DAC2E562019B5D30088E60B /* AddProjectViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddProjectViewController.swift; sourceTree = "<group>"; };
+		4DC1B6B4201CD56900E6313C /* ShowMemeberCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowMemeberCell.swift; sourceTree = "<group>"; };
+		4DC1B6B6201CD72F00E6313C /* CollectionContainerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionContainerCell.swift; sourceTree = "<group>"; };
+		4DC1B6BA201CE05100E6313C /* MemberPhotoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemberPhotoCell.swift; sourceTree = "<group>"; };
+		4DC1B6BC201CE84100E6313C /* ManageMemberVC+SearchDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ManageMemberVC+SearchDelegate.swift"; sourceTree = "<group>"; };
+		4DC1B6BE201CF80900E6313C /* MemberVC+Helper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MemberVC+Helper.swift"; sourceTree = "<group>"; };
+		4DC1B6C0201D264100E6313C /* ManageMemberVC+TabeDelegates.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ManageMemberVC+TabeDelegates.swift"; sourceTree = "<group>"; };
+		4DC1B6C2201D266000E6313C /* ManageMemberVC+CollectionDelegates.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ManageMemberVC+CollectionDelegates.swift"; sourceTree = "<group>"; };
 		4DC67D5F2017F3EC008B9B77 /* FIRService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FIRService.swift; sourceTree = "<group>"; };
 		95901DA01E48F0F01EECEDEE /* Pods-Project2-PMSTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Project2-PMSTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Project2-PMSTests/Pods-Project2-PMSTests.debug.xcconfig"; sourceTree = "<group>"; };
 		E1C4EE5003EAC61C61826864 /* Pods-Project2-PMS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Project2-PMS.release.xcconfig"; path = "Pods/Target Support Files/Pods-Project2-PMS/Pods-Project2-PMS.release.xcconfig"; sourceTree = "<group>"; };
@@ -164,6 +188,10 @@
 				2306CA4A201A3ABD00B8DD94 /* AvatarCell.swift */,
 				2306CA4C201A3B8800B8DD94 /* CommentCell.swift */,
 				2306CA6C201A4B8900B8DD94 /* TaskInfoCell.swift */,
+				4D4AE495201C2B0E004A08AF /* MemberCell.swift */,
+				4DC1B6B4201CD56900E6313C /* ShowMemeberCell.swift */,
+				4DC1B6B6201CD72F00E6313C /* CollectionContainerCell.swift */,
+				4DC1B6BA201CE05100E6313C /* MemberPhotoCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -219,6 +247,14 @@
 			children = (
 				4DAC2E4A201978350088E60B /* ProjectViewController.swift */,
 				4DAC2E562019B5D30088E60B /* AddProjectViewController.swift */,
+				4D982C10201B0C1900E1D3E4 /* ProjectContainerViewController.swift */,
+				4D4AE48F201BE2E4004A08AF /* MembersViewController.swift */,
+				4DC1B6BE201CF80900E6313C /* MemberVC+Helper.swift */,
+				4D4AE493201BE327004A08AF /* ManageMemembersViewController.swift */,
+				4DC1B6BC201CE84100E6313C /* ManageMemberVC+SearchDelegate.swift */,
+				4DC1B6C0201D264100E6313C /* ManageMemberVC+TabeDelegates.swift */,
+				4DC1B6C2201D266000E6313C /* ManageMemberVC+CollectionDelegates.swift */,
+				4D4AE491201BE2FE004A08AF /* AboutProjectViewController.swift */,
 			);
 			path = ProjectController;
 			sourceTree = "<group>";
@@ -369,11 +405,13 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-Project2-PMS/Pods-Project2-PMS-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/BTNavigationDropdownMenu/BTNavigationDropdownMenu.framework",
 				"${BUILT_PRODUCTS_DIR}/Eureka/Eureka.framework",
 				"${BUILT_PRODUCTS_DIR}/GTMOAuth2/GTMOAuth2.framework",
 				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
 				"${BUILT_PRODUCTS_DIR}/Protobuf/Protobuf.framework",
+				"${BUILT_PRODUCTS_DIR}/SDWebImage/SDWebImage.framework",
 				"${BUILT_PRODUCTS_DIR}/SVProgressHUD/SVProgressHUD.framework",
 				"${BUILT_PRODUCTS_DIR}/TWMessageBarManager/TWMessageBarManager.framework",
 				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
@@ -381,11 +419,13 @@
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/BTNavigationDropdownMenu.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Eureka.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMOAuth2.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Protobuf.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SDWebImage.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SVProgressHUD.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/TWMessageBarManager.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
@@ -488,26 +528,38 @@
 			buildActionMask = 2147483647;
 			files = (
 				4DAC2E4B201978350088E60B /* ProjectViewController.swift in Sources */,
+				4D4AE490201BE2E4004A08AF /* MembersViewController.swift in Sources */,
 				4DAC2E50201986880088E60B /* ExtraInfomationViewController.swift in Sources */,
+				4DC1B6BB201CE05100E6313C /* MemberPhotoCell.swift in Sources */,
 				4DAC2E5220199FA60088E60B /* AccountViewController.swift in Sources */,
 				4DAC2E572019B5D30088E60B /* AddProjectViewController.swift in Sources */,
 				23EA9D5D2016D2DA0086EAF4 /* ViewController.swift in Sources */,
 				23DDD7E62018498300DB4AAA /* SignupViewController.swift in Sources */,
+				4DC1B6BF201CF80900E6313C /* MemberVC+Helper.swift in Sources */,
 				23FA54DF20198D8D0059CA0E /* TasksViewController.swift in Sources */,
 				4DAC2E552019A9720088E60B /* Project.swift in Sources */,
+				4D4AE494201BE327004A08AF /* ManageMemembersViewController.swift in Sources */,
+				4DC1B6B7201CD72F00E6313C /* CollectionContainerCell.swift in Sources */,
 				4DC67D602017F3EC008B9B77 /* FIRService.swift in Sources */,
 				23FA54E8201993520059CA0E /* AddTaskViewController.swift in Sources */,
 				2306CA4D201A3B8800B8DD94 /* CommentCell.swift in Sources */,
+				4DC1B6C3201D266000E6313C /* ManageMemberVC+CollectionDelegates.swift in Sources */,
+				4DC1B6B5201CD56900E6313C /* ShowMemeberCell.swift in Sources */,
+				4DC1B6BD201CE84100E6313C /* ManageMemberVC+SearchDelegate.swift in Sources */,
 				23FA54E220198E780059CA0E /* TaskCell.swift in Sources */,
 				23FA54E6201990500059CA0E /* Member.swift in Sources */,
 				2306CA6D201A4B8900B8DD94 /* TaskInfoCell.swift in Sources */,
+				4D982C11201B0C1900E1D3E4 /* ProjectContainerViewController.swift in Sources */,
+				4D4AE492201BE2FE004A08AF /* AboutProjectViewController.swift in Sources */,
 				2306CA4B201A3ABD00B8DD94 /* AvatarCell.swift in Sources */,
+				4DC1B6C1201D264100E6313C /* ManageMemberVC+TabeDelegates.swift in Sources */,
 				23DDD7E22018403900DB4AAA /* HelperExtensions.swift in Sources */,
 				23EA9D5B2016D2DA0086EAF4 /* AppDelegate.swift in Sources */,
 				4D7CA368201821290025B5D3 /* LoginViewController.swift in Sources */,
 				23FA54E420198F9E0059CA0E /* Task.swift in Sources */,
 				4DAC2E4E201985660088E60B /* LoginVC+Helper.swift in Sources */,
 				4D7CA36C201841580025B5D3 /* CurrentUser.swift in Sources */,
+				4D4AE496201C2B0E004A08AF /* MemberCell.swift in Sources */,
 				4D7CA36F2018457A0025B5D3 /* CoreDataManager.swift in Sources */,
 				23EA9D632016D2DA0086EAF4 /* Project2_PMS.xcdatamodeld in Sources */,
 				23FA54EA201993630059CA0E /* TaskDetailViewController.swift in Sources */,
@@ -601,7 +653,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -652,7 +704,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
@@ -668,7 +720,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = RQAE768Z9N;
 				INFOPLIST_FILE = "$(SRCROOT)/Project2-PMS/Supporting Files/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.RJTCompuquest.Project2-PMS";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -685,7 +737,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = RQAE768Z9N;
 				INFOPLIST_FILE = "$(SRCROOT)/Project2-PMS/Supporting Files/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.RJTCompuquest.Project2-PMS";
 				PRODUCT_NAME = "$(TARGET_NAME)";
