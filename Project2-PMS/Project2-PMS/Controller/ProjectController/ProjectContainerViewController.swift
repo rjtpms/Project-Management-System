@@ -44,18 +44,15 @@ class ProjectContainerViewController: UIViewController {
     }
 	
 	private func setupUI() {
-//		self.navigationController?.navigationBar.barTintColor = UIColor(red: 0.0/255.0, green:180/255.0, blue:220/255.0, alpha: 1.0)
-		
 		setupDropdownMenu()
 		updateChildVC(with: currentVCIndex)
 	}
 	
 	private func setupDropdownMenu() {
 		menuView = BTNavigationDropdownMenu(navigationController: self.navigationController, containerView: self.navigationController!.view, title: BTTitle.title(titles.first!), items: titles)
-		// customized menue
+		// customized menu
 		menuView.cellHeight = 40
 		menuView.cellBackgroundColor = self.navigationController?.navigationBar.barTintColor
-//		menuView.cellSelectionColor = UIColor(red: 0.0/255.0, green:160.0/255.0, blue:195.0/255.0, alpha: 1.0)
 		menuView.shouldKeepSelectedCellColor = true
 		menuView.cellTextLabelFont = UIFont(name: "Avenir-Heavy", size: 14)
 		menuView.cellTextLabelAlignment = .center
@@ -71,23 +68,28 @@ class ProjectContainerViewController: UIViewController {
 	}
 	
 	private func updateChildVC(with selectionIndex: Int) {
-		let currentChildVC = childrenVCs[currentVCIndex]
-		let selectedVC = childrenVCs[selectionIndex]
-		
-		// configure selectedVC
-		if selectedVC is TasksViewController {
-//			(selectedVC as! TasksViewController).taskIds = project.tasks?.map { $0.id }
-		} else if selectedVC is AboutProjectViewController {
-//			(selectedVC as! AboutProjectViewController).project = project
-		} else if selectedVC is MembersViewController {
-			(selectedVC as! MembersViewController).project = project
+		if selectionIndex != currentVCIndex {
+			let currentChildVC = childrenVCs[currentVCIndex]
+			let selectedVC = childrenVCs[selectionIndex]
+			
+			// configure selectedVC
+			if selectedVC is TasksViewController {
+				//			(selectedVC as! TasksViewController).taskIds = project.tasks?.map { $0.id }
+				print("Selected TaskVC")
+			} else if selectedVC is AboutProjectViewController {
+				//			(selectedVC as! AboutProjectViewController).project = project
+				print("selected AboutVC")
+			} else if selectedVC is MembersViewController {
+				(selectedVC as! MembersViewController).project = project
+				print("selected membersVC")
+			}
+			
+			remove(asChildViewController: currentChildVC)
+			add(asChildViewController: selectedVC)
+			
+			// keep track of childVC index
+			currentVCIndex = selectionIndex
 		}
-		
-		remove(asChildViewController: currentChildVC)
-		add(asChildViewController: selectedVC)
-		
-		// keep track of childVC index
-		currentVCIndex = selectionIndex
 	}
 	
 	private func add(asChildViewController viewController: UIViewController) {
