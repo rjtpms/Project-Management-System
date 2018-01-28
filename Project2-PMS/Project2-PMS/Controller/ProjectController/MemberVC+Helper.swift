@@ -29,14 +29,13 @@ extension MembersViewController {
 	}
 	
 	@objc func needToFetch() {
-		refreshControl.beginRefreshing()
 		fetchTableData()
 	}
 	
 	@objc func fetchTableData() {
 		let fetchdataGroup = DispatchGroup()
 		var tempMembers: [Member] = []
-		
+		showNetworkIndicators()
 		// fetch manager if current user is not the manager of currenet project
 		if manager == nil {
 			fetchdataGroup.enter()
@@ -76,6 +75,7 @@ extension MembersViewController {
 		
 		fetchdataGroup.notify(queue: .main) { [weak self] in
 			// stop spinner,refresh controll
+			self?.hideNetworkIndicatros()
 			self?.refreshControl.endRefreshing()
 			self?.members = tempMembers
 		}

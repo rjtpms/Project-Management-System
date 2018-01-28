@@ -15,6 +15,7 @@ class MembersViewController: UIViewController {
 	private let memberCellIdentifier = "MemberCell"
 	private let addMemberCellidentifier = "AddCell"
 	private let showManageMemberSegue = "ShowManageMemberSegue"
+	
 	var project: Project! {
 		didSet {
 			preConfigureProperties()
@@ -43,10 +44,18 @@ class MembersViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 		setupUI()
-		
     }
 	
-
+	override func viewWillAppear(_ animated: Bool) {
+		super.viewWillAppear(animated)
+		print("memeber VC will appear")
+		
+	}
+	
+	override func viewDidAppear(_ animated: Bool) {
+		super.viewDidAppear(animated)
+		print("member VC did appear")
+	}
 	
 	override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
 		if segue.identifier == "ShowManageMemberSegue", let target = segue.destination.contents as? ManageMemembersViewController {
@@ -58,13 +67,21 @@ class MembersViewController: UIViewController {
 
 extension MembersViewController: ManageMemembersVCDelegate {
 	func didRemoveMember(_ member: Member) {
-		// TODO: remove member from current project
 		print("\(member.name!) is about to be removed from current project")
+		
+		members = members.filter { $0.id != member.id }
+		
+		// remove from firebase
+		FIRService.shareInstance.remove(member: member.id, fromProject: project.id)
 	}
 	
 	func didAddMember(_ member: Member) {
-		// TODO: Add member to current project
 		print("\(member.name!) is about to be added to current project")
+		
+		members.append(member)
+		
+		// add member to project: add project id to member, and add member to membes in project
+		FIRService.shareInstance.add(member: member.id, toProject: project.id)
 	}
 }
 
@@ -124,24 +141,4 @@ extension MembersViewController: UITableViewDataSource, UITableViewDelegate {
 		
 		return headerView
 	}
-	
-	func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-		if indexPath.section == 0 {
-			return false
-		}
-		
-		if currentUser.role == .manager {
-			return true
-		}
-		
-		return false
-	}
-	
-	func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-		// TODO: delete member
-	}
-	
-	
 }
-
-

@@ -192,8 +192,9 @@ class FIRService: NSObject {
 					photoUrl = URL(string: profileUrlStr)
 				}
 				
+				// init currentUser if not exsit, otherwise update it
 				let currentUser = CurrentUser.sharedInstance
-				if currentUser.userId == id {
+				if currentUser.userId == nil || currentUser.userId == id {
 					currentUser.update(id: id,
 									   email: email,
 									   name: name,
@@ -256,7 +257,11 @@ class FIRService: NSObject {
 	
 	// find projects Ids associated with a user
 	private func getProjectIds(with userId: String, completion: @escaping ([String]?, Error?) -> ()) {
-		let ref = databaseRef.child("Users").child(userId).child("projects")
+		let ref = databaseRef
+			.child("Users")
+			.child(userId)
+			.child("projects")
+		
 		ref.observeSingleEvent(of: .value){ (snapshot) in
 			if let pIdDict = snapshot.value as? [String: Any] {
 				let projectIds = Array(pIdDict.keys)
@@ -402,7 +407,11 @@ class FIRService: NSObject {
 			
 		// get memberIds that has name starting with searchText
 		
-		let nameQuery = userRef.queryOrdered(byChild: "name").queryStarting(atValue: searchText).queryEnding(atValue: searchText + "\u{f8ff}")
+		let nameQuery = userRef
+			.queryOrdered(byChild: "name")
+			.queryStarting(atValue: searchText)
+			.queryEnding(atValue: searchText + "\u{f8ff}")
+		
 		searchGroup.enter()
 		nameQuery.observeSingleEvent(of: .value) { (snapshot) in
 			searchGroup.leave()
@@ -420,7 +429,10 @@ class FIRService: NSObject {
 		
 		// get memberdIds that has email starting with searchText
 		let emailSerchText = searchText.lowercased()
-		let emailQuery = userRef.queryOrdered(byChild: "email").queryStarting(atValue: emailSerchText).queryEnding(atValue: emailSerchText + "\u{f8ff}")
+		let emailQuery = userRef
+			.queryOrdered(byChild: "email")
+			.queryStarting(atValue: emailSerchText)
+			.queryEnding(atValue: emailSerchText + "\u{f8ff}")
 		
 		searchGroup.enter()
 		emailQuery.observeSingleEvent(of: .value) { (snapshot) in
@@ -460,6 +472,48 @@ class FIRService: NSObject {
 	}
 	
 	func add(member memberId: String, toProject projectId: String) {
+		let projectValue = [projectId: ""]
+		let memberValue = [memberId: ""]
+		let projectRef = databaseRef.child("Projects").child(projectId)
+		userRef.child(memberId).child("projects").updateChildValues(projectValue)
+		projectRef.child("members").updateChildValues(memberValue)
+	}
+	
+	func remove(member memberId: String, fromProject projectId: String) {
+		// remove projectId from user
+		userRef
+			.child(memberId)
+			.child("projects")
+			.child(projectId)
+			.removeValue()
 		
+		// remove userId from project
+		databaseRef
+			.child("Projects")
+			.child(projectId)
+			.child("members")
+			.child(memberId)
+			.removeValue()
+		
+		// remove member from task which belongs to the project
+		userRef
+			.child(memberId)
+			.child("tasks")
+			.observeSingleEvent(of: .value) { [weak self] (snapshot) in
+				guard let taskDict = snapshot.value as? [String: Any] else { return }
+				
+				let taskIds = Array(taskDict.keys)
+				for taskId in taskIds {
+					let taskRef = self?.databaseRef.child("Tasks").child(taskId)
+					
+					taskRef?.observeSingleEvent(of: .value) { (snapshot) in
+						// if this user task is associate with the project user is removed from, then remove user from task
+						guard let pId = (snapshot.value as? [String: Any])?["projectID"] as? String,
+							pId == projectId else { return }
+						
+						taskRef?.child("members").child(memberId).removeValue()
+					}
+				}
+		}
 	}
 }
