@@ -73,3 +73,11 @@ extension CALayer {
     }
 }
 
+extension Date {
+	var dateString: String {
+		let dateFormatter = DateFormatter()
+		dateFormatter.dateFormat = "MMM d, yyyy"
+		return dateFormatter.string(from: self)
+	}
+}
+

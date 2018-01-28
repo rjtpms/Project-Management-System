@@ -18,8 +18,7 @@ class MembersViewController: UIViewController {
 	
 	var project: Project! {
 		didSet {
-			preConfigureProperties()
-			fetchTableData()
+			
 		}
 	}
 	
@@ -44,6 +43,8 @@ class MembersViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 		setupUI()
+		preConfigureProperties()
+		fetchTableData()
     }
 	
 	override func viewWillAppear(_ animated: Bool) {
