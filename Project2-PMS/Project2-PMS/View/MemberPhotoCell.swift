@@ -11,6 +11,7 @@ import SDWebImage
 
 class MemberPhotoCell: UICollectionViewCell {
 	@IBOutlet weak var memberPhoto: UIImageView!
+	@IBOutlet weak var memberName: UILabel!
 	
 	var photoUrl: URL! {
 		didSet {
@@ -19,6 +20,12 @@ class MemberPhotoCell: UICollectionViewCell {
 			} else {
 				memberPhoto.image = #imageLiteral(resourceName: "placeholder")
 			}
+		}
+	}
+	
+	var name: String! {
+		didSet {
+			memberName.text = name
 		}
 	}
 	

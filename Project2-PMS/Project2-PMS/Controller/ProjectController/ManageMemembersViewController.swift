@@ -72,7 +72,7 @@ extension ManageMemembersViewController {
 	
 	private func setupUI() {
 		tableview.rowHeight = UITableViewAutomaticDimension
-		tableview.estimatedRowHeight = 40
+		tableview.estimatedRowHeight = 70
 		tableview.tableFooterView = UIView()
 	}
 	
