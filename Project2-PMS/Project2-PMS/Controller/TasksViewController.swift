@@ -15,6 +15,7 @@ class TasksViewController: UIViewController {
     var refreshControl: UIRefreshControl!
     
     var tasks : [Task] = []
+    var taskIds : [String]?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,6 +23,10 @@ class TasksViewController: UIViewController {
         // Do any additional setup after loading the view.
         setupRefreshControl()
         setupView()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         loadData()
     }
     
@@ -53,6 +58,20 @@ class TasksViewController: UIViewController {
     }
     
     func loadData() {
+        if let taskids = taskIds {
+            
+            var tempTasks : [Task] = []
+            for taskId in taskids {
+                tempTasks.append(Task(id: taskId))
+            }
+            
+            self.tasks = tempTasks
+            self.taskTable.reloadData()
+            self.refreshControl.endRefreshing()
+            
+            return
+        }
+        
         guard let uid = CurrentUser.sharedInstance.userId else {return}
         
         FIRService.shareInstance.getAllTaskIds(ofUser: uid) { (tasks, err) in
@@ -103,6 +122,10 @@ extension TasksViewController: UITableViewDelegate, UITableViewDataSource {
             let formatter = DateFormatter()
             formatter.dateFormat = "MMM dd"
             cell.dueDateLabel.text = formatter.string(from: dueDate)
+        }
+        
+        if let isCompleted = task.isCompleted {
+            cell.finishedImageView.image = isCompleted ? #imageLiteral(resourceName: "checked-green") : #imageLiteral(resourceName: "checked-grey")
         }
         
         return cell
