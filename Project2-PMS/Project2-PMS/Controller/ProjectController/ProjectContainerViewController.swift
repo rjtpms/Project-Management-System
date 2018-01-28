@@ -26,11 +26,11 @@ class ProjectContainerViewController: UIViewController {
 		
 		var membersVC = storyboard?.instantiateViewController(withIdentifier: "MembersVC") as! MembersViewController
 		membersVC.title = "Members"
-		
-		// Add View Controller as Child View Controller
-		self.add(asChildViewController: taskVC)
-		self.add(asChildViewController: aboutVC)
-		self.add(asChildViewController: membersVC)
+//		
+//		// Add View Controller as Child View Controller
+//		self.add(asChildViewController: taskVC)
+//		self.add(asChildViewController: aboutVC)
+//		self.add(asChildViewController: membersVC)
 		
 		return [taskVC, membersVC, aboutVC]
 	}()
@@ -78,7 +78,7 @@ class ProjectContainerViewController: UIViewController {
 			(selectedVC as! TasksViewController).taskIds = project.tasks.map { $0.id }
 			print("Selected TaskVC")
 		} else if selectedVC is AboutProjectViewController {
-			//			(selectedVC as! AboutProjectViewController).project = project
+			(selectedVC as! AboutProjectViewController).project = project
 			print("selected AboutVC")
 		} else if selectedVC is MembersViewController {
 			(selectedVC as! MembersViewController).project = project
