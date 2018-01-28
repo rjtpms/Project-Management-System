@@ -54,6 +54,22 @@ extension ManageMemembersViewController: UITableViewDelegate, UITableViewDataSou
 		containerCell.setCollectionViewDelegates(dataSourceDelegate: self)
 	}
 	
+	func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+		if indexPath.section == 0 {
+			return 70
+		}
+		
+		return 40
+	}
+	
+	func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
+		if indexPath.section == 0 {
+			return 70
+		}
+		
+		return 40
+	}
+	
 	func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
 		let titleLabel = UILabel()
 		titleLabel.frame = CGRect(x: 15, y: 8, width: 320, height: 20)
@@ -81,5 +97,4 @@ extension ManageMemembersViewController: UITableViewDelegate, UITableViewDataSou
 			delegate?.didAddMember(currentMemeber)
 		}
 	}
-	
 }

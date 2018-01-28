@@ -369,7 +369,7 @@ class FIRService: NSObject {
 	
 	/**
 		Note: when filteredAgainst is nil, fetch single project data with all the fields
-		when filtedAgainst is provided, fetch a single project with only taks ids that is in filtedAgainst
+		when filtedAgainst is provided, fetch a single project with only tasks ids that is in filtedAgainst
 	*/
 	func getProjectInfo(with projectId: String, filteredAgainst taskIds: [String]? = nil, completion: @escaping FetchProjectResultHandler) {
 		let projectRef = databaseRef.child("Projects")
@@ -398,7 +398,7 @@ class FIRService: NSObject {
 					}
 				}
 				
-				if let taskDict = projectDict["task"] as? [String: Any] {
+				if let taskDict = projectDict["tasks"] as? [String: Any] {
 					
 					// filter only the taskIds that is in memeber's tasks list if taskIds is not nil
 					let projectTaskIds = taskIds == nil ?

@@ -17,17 +17,14 @@ class ProjectContainerViewController: UIViewController {
 	private var currentVCIndex = 0
 	private var titles = ["Task List", "Members","About Project"]
 	private lazy var childrenVCs: [UIViewController] = {
-		// Load Storyboard
-		let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
-		
 		// Instantiate View Controller
-		var taskVC = storyboard.instantiateViewController(withIdentifier: "TaskVC") as! TasksViewController
+		var taskVC = storyboard?.instantiateViewController(withIdentifier: "TaskVC") as! TasksViewController
 		taskVC.title = "Task List"
 		
-		var aboutVC = storyboard.instantiateViewController(withIdentifier: "AboutVC") as! AboutProjectViewController
+		var aboutVC = storyboard?.instantiateViewController(withIdentifier: "AboutVC") as! AboutProjectViewController
 		aboutVC.title = "About Project"
 		
-		var membersVC = storyboard.instantiateViewController(withIdentifier: "MembersVC") as! MembersViewController
+		var membersVC = storyboard?.instantiateViewController(withIdentifier: "MembersVC") as! MembersViewController
 		membersVC.title = "Members"
 		
 		// Add View Controller as Child View Controller
@@ -42,6 +39,11 @@ class ProjectContainerViewController: UIViewController {
         super.viewDidLoad()
 		setupUI()
     }
+	
+	override func viewWillDisappear(_ animated: Bool) {
+		super.viewWillDisappear(animated)
+		menuView.hide()
+	}
 	
 	private func setupUI() {
 		setupDropdownMenu()
@@ -68,28 +70,26 @@ class ProjectContainerViewController: UIViewController {
 	}
 	
 	private func updateChildVC(with selectionIndex: Int) {
-		if selectionIndex != currentVCIndex {
-			let currentChildVC = childrenVCs[currentVCIndex]
-			let selectedVC = childrenVCs[selectionIndex]
-			
-			// configure selectedVC
-			if selectedVC is TasksViewController {
-				//			(selectedVC as! TasksViewController).taskIds = project.tasks?.map { $0.id }
-				print("Selected TaskVC")
-			} else if selectedVC is AboutProjectViewController {
-				//			(selectedVC as! AboutProjectViewController).project = project
-				print("selected AboutVC")
-			} else if selectedVC is MembersViewController {
-				(selectedVC as! MembersViewController).project = project
-				print("selected membersVC")
-			}
-			
-			remove(asChildViewController: currentChildVC)
-			add(asChildViewController: selectedVC)
-			
-			// keep track of childVC index
-			currentVCIndex = selectionIndex
+		let currentChildVC = childrenVCs[currentVCIndex]
+		let selectedVC = childrenVCs[selectionIndex]
+		
+		// configure selectedVC
+		if selectedVC is TasksViewController {
+			(selectedVC as! TasksViewController).taskIds = project.tasks.map { $0.id }
+			print("Selected TaskVC")
+		} else if selectedVC is AboutProjectViewController {
+			//			(selectedVC as! AboutProjectViewController).project = project
+			print("selected AboutVC")
+		} else if selectedVC is MembersViewController {
+			(selectedVC as! MembersViewController).project = project
+			print("selected membersVC")
 		}
+		
+		remove(asChildViewController: currentChildVC)
+		add(asChildViewController: selectedVC)
+		
+		// keep track of childVC index
+		currentVCIndex = selectionIndex
 	}
 	
 	private func add(asChildViewController viewController: UIViewController) {

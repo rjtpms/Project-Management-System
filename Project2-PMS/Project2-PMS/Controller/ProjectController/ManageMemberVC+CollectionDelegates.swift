@@ -20,6 +20,7 @@ extension ManageMemembersViewController: UICollectionViewDataSource, UICollectio
 		
 		let currentSelectedMember = selectedMembers[indexPath.row]
 		cvCell.photoUrl = currentSelectedMember.profileImageURL
+		cvCell.name = currentSelectedMember.name
 		
 		return cvCell
 	}
