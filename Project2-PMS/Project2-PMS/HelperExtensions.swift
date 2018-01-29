@@ -21,7 +21,7 @@ extension UIViewController {
 	}
 	
 	var lFont: UIFont? {
-		let font = UIFont(name: "Avenir-Medium ", size: 18)
+		let font = UIFont(name: "Avenir-Medium", size: 18)
 		return font
 	}
 	
@@ -50,6 +50,14 @@ extension UIViewController {
 		} else {
 			return self
 		}
+	}
+	
+	func daysLeft(to dueDate: Date) -> Int {
+		let elapseSeconds = dueDate.timeIntervalSince(Date())
+		let hr = elapseSeconds / 3600
+		let days = hr / 24
+		
+		return Int(days)
 	}
 }
 
