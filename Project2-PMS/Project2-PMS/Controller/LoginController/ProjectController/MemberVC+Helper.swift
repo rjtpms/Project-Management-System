@@ -77,6 +77,10 @@ extension MembersViewController {
 			// stop spinner,refresh controll
 			self?.hideNetworkIndicatros()
 			self?.refreshControl.endRefreshing()
+			
+			// remove manager From members list if so that we only display members
+			tempMembers = tempMembers.filter { $0.id != self?.manager.id }
+			
 			self?.members = tempMembers
 		}
 	}
