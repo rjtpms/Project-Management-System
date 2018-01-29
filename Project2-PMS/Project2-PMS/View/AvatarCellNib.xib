@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="avatarCell" id="xwb-CZ-phS" customClass="AvatarCell" customModule="Project2_PMS" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="286" height="192"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
+                <rect key="frame" x="0.0" y="0.0" width="286" height="192"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="52Q-At-wbf">
+                        <rect key="frame" x="123" y="76" width="40" height="40"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="40" id="jWe-20-j9b"/>
+                            <constraint firstAttribute="width" constant="40" id="oYc-qE-n3J"/>
+                        </constraints>
+                    </imageView>
+                </subviews>
+            </view>
+            <constraints>
+                <constraint firstItem="52Q-At-wbf" firstAttribute="centerX" secondItem="xwb-CZ-phS" secondAttribute="centerX" id="Lcp-6o-xhj"/>
+                <constraint firstItem="52Q-At-wbf" firstAttribute="centerY" secondItem="xwb-CZ-phS" secondAttribute="centerY" id="Lm9-ny-jQb"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="LsS-ts-YMq"/>
+            <size key="customSize" width="286" height="192"/>
+            <connections>
+                <outlet property="avatarImageView" destination="52Q-At-wbf" id="75z-gZ-uGV"/>
+            </connections>
+            <point key="canvasLocation" x="110" y="-94"/>
+        </collectionViewCell>
+    </objects>
+</document>

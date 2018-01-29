@@ -34,7 +34,6 @@ class TaskDetailViewController: UIViewController {
         // Do any additional setup after loading the view.
         setupRefreshControl()
         setupView()
-        loadPage()
     }
     
     
@@ -45,6 +44,8 @@ class TaskDetailViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         tabBarController?.tabBar.isHidden = true
+        setupView()
+        loadPage()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -53,7 +54,7 @@ class TaskDetailViewController: UIViewController {
     }
     
     func setupView() {
-        navigationItem.title = "Task"
+        navigationItem.title = "Task Details"
         commentTable.tableFooterView = UIView()
         commentView.layer.cornerRadius = commentView.frame.height / 2
         
@@ -69,6 +70,22 @@ class TaskDetailViewController: UIViewController {
         titleLabel.text = task.title
         descriptionLabel.text = task.description
         setupCollectionLayout(collectionView: membersCollection)
+        
+        // add "Edit" bar button item if current user is manager
+        switch CurrentUser.sharedInstance.role {
+        case .manager:
+            let editButton = UIBarButtonItem(image: UIImage(named: "edit"), style: .plain, target: self, action: #selector(editTaskAction))
+            self.navigationItem.rightBarButtonItem  = editButton
+        case .member, .none:
+            return
+        }
+        
+    }
+    
+    @objc func editTaskAction(_ sender: Any) {
+        let controller = storyboard?.instantiateViewController(withIdentifier: "editTaskVC") as! EditTaskViewController
+        controller.task = task
+        navigationController?.pushViewController(controller, animated: true)
     }
     
     func loadPage() {
@@ -150,5 +167,11 @@ extension TaskDetailViewController: UICollectionViewDataSource, UICollectionView
         cell.avatarImageView.layer.cornerRadius = cell.avatarImageView.frame.width / 2
         cell.avatarImageView.clipsToBounds = true
         return cell
+    }
+}
+
+extension TaskDetailViewController: EditTaskViewControllerDelegate {
+    func didUpdateTask(task: Task) {
+        self.task = task
     }
 }

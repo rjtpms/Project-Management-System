@@ -67,6 +67,12 @@ class FIRService: NSObject {
         
     }
     
+    func updateTask(task: Task) {
+        // update task in "Tasks" table
+        let taskDict = ["title": task.title!, "description": task.description!, "start date": task.startDate!.timeIntervalSince1970, "due date": task.dueDate!.timeIntervalSince1970, "projectID": task.projectId!, "isCompleted": task.isCompleted!] as [String : Any]
+        databaseRef.child("Tasks").child(task.id).updateChildValues(taskDict)
+    }
+    
     func setCompletionStatus(ofTask taskId: String, to status: Bool) {
         databaseRef.child("Tasks").child(taskId).child("isCompleted").setValue(status)
     }
@@ -145,6 +151,33 @@ class FIRService: NSObject {
         }
         return UIImage()
     }
+    
+    func uploadImage(ofId userId: String, with img: UIImage, completion: @escaping (StorageMetadata?, Error?) -> ()) {
+        let data = UIImageJPEGRepresentation(img, 0.8)
+        let metadata = StorageMetadata()
+        metadata.contentType = "image/jpeg"
+        let imageName = "ProfileImage/\(userId).jpeg"
+        let childRef = storageRef?.child(imageName)
+        guard let dt = data else {return}
+        childRef?.putData(dt, metadata: metadata, completion: { (meta, error) in
+            completion(meta, error)
+        })
+    }
+    
+    
+    func getProfileImageUrl(ofUser id: String, completion: @escaping (URL?, Error?) -> ()) {
+        let imageName = "ProfileImage/\(id).jpeg"
+        let childRef = storageRef?.child(imageName)
+        childRef?.getMetadata(completion: { (metadata, error) in
+            if error != nil {
+                completion(nil, error)
+            } else {
+                let url = metadata?.downloadURL()?.absoluteURL
+                completion(url, nil)
+            }
+        })
+    }
+    
     
     func getAllTaskIds(ofUser uid: String, completion: @escaping ([String]?, Error?) -> ()) {
         let ref = databaseRef.child("Users").child(uid).child("tasks")
@@ -422,4 +455,10 @@ class FIRService: NSObject {
 		
 		completion()
 	}
+    
+    func updateUserName(ofUser uid: String, name: String) {
+        // set database reference
+        let ref = databaseRef.child("Users").child(uid).child("name")
+        ref.setValue(name)
+    }
 }

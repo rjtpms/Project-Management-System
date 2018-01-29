@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="membersFormCell" rowHeight="70" id="LHX-OV-8xp" customClass="MembersTableViewCell" customModule="Project2_PMS" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="537" height="70"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="LHX-OV-8xp" id="NFt-sg-7Yo">
+                <rect key="frame" x="0.0" y="0.0" width="537" height="69.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XLL-MH-72s">
+                        <rect key="frame" x="0.0" y="10" width="537" height="50"/>
+                        <subviews>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="lII-KC-twl">
+                                <rect key="frame" x="108" y="5" width="421" height="40"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="RvL-fh-hBU"/>
+                                </constraints>
+                                <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="47U-cK-Lif">
+                                    <size key="itemSize" width="50" height="50"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="avatarCell" id="iBW-8z-NfP" customClass="AvatarCell" customModule="Project2_PMS" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="-5" width="50" height="50"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
+                                            <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="user" translatesAutoresizingMaskIntoConstraints="NO" id="AUS-7O-Nd0">
+                                                    <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                                </imageView>
+                                            </subviews>
+                                        </view>
+                                        <constraints>
+                                            <constraint firstAttribute="bottom" secondItem="AUS-7O-Nd0" secondAttribute="bottom" id="9Yt-1F-GFU"/>
+                                            <constraint firstItem="AUS-7O-Nd0" firstAttribute="top" secondItem="iBW-8z-NfP" secondAttribute="top" id="Z2A-YA-rVY"/>
+                                            <constraint firstItem="AUS-7O-Nd0" firstAttribute="leading" secondItem="iBW-8z-NfP" secondAttribute="leading" id="jRK-ap-abA"/>
+                                            <constraint firstAttribute="trailing" secondItem="AUS-7O-Nd0" secondAttribute="trailing" id="lE3-pd-3Mf"/>
+                                        </constraints>
+                                        <connections>
+                                            <outlet property="avatarImageView" destination="AUS-7O-Nd0" id="F7T-Od-hKq"/>
+                                        </connections>
+                                    </collectionViewCell>
+                                </cells>
+                            </collectionView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Members" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MZ2-ss-4ME">
+                                <rect key="frame" x="20" y="15" width="72" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="lII-KC-twl" firstAttribute="centerY" secondItem="XLL-MH-72s" secondAttribute="centerY" id="0S2-by-tIi"/>
+                            <constraint firstAttribute="trailing" secondItem="lII-KC-twl" secondAttribute="trailing" constant="8" id="6I3-vn-7tU"/>
+                            <constraint firstAttribute="height" constant="50" id="8wf-3V-THe"/>
+                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="50" id="CBK-tT-gUM"/>
+                            <constraint firstItem="MZ2-ss-4ME" firstAttribute="centerY" secondItem="XLL-MH-72s" secondAttribute="centerY" id="LPh-mJ-QF0"/>
+                            <constraint firstItem="lII-KC-twl" firstAttribute="leading" secondItem="MZ2-ss-4ME" secondAttribute="trailing" constant="16" id="LyE-KQ-TzK"/>
+                            <constraint firstItem="MZ2-ss-4ME" firstAttribute="leading" secondItem="XLL-MH-72s" secondAttribute="leading" constant="20" id="ffF-es-2Qe"/>
+                        </constraints>
+                    </view>
+                </subviews>
+                <constraints>
+                    <constraint firstAttribute="trailing" secondItem="XLL-MH-72s" secondAttribute="trailing" id="oh8-vO-dXM"/>
+                    <constraint firstItem="XLL-MH-72s" firstAttribute="centerY" secondItem="NFt-sg-7Yo" secondAttribute="centerY" id="rfI-S6-B5L"/>
+                    <constraint firstItem="XLL-MH-72s" firstAttribute="leading" secondItem="NFt-sg-7Yo" secondAttribute="leading" id="tfW-LV-jqm"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="membersCollection" destination="lII-KC-twl" id="rHA-Km-9L7"/>
+            </connections>
+            <point key="canvasLocation" x="122.5" y="894"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="user" width="225" height="225"/>
+    </resources>
+</document>

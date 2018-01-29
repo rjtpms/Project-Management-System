@@ -40,6 +40,7 @@ class TasksViewController: UIViewController {
 		default:
 			break
         }
+        taskTable.tableFooterView = UIView()
     }
     
     
