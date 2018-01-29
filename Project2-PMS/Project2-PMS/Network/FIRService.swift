@@ -138,19 +138,22 @@ class FIRService: NSObject {
         userRef.child(id).observeSingleEvent(of: .value) { (snapshot) in
             if let userDict = snapshot.value as? [String: Any],
                 let email = userDict["email"] as? String,
-                let name = userDict["name"] as? String,
-                let photoUrl = userDict["profile photo"] as? String{
-                
-                let url = URL(string: photoUrl)
-                var image : UIImage? = nil
-                if let url = url {
-                    image = self.downloadImageWithURL(url: url)
-                }
-                
+				let name = userDict["name"] as? String {
+				
+				var image: UIImage? = nil
+				var photoURL: URL? = nil
+				if let photoUrl = userDict["profile photo"] as? String {
+					if let url = URL(string: photoUrl) {
+						photoURL = url
+						image = self.downloadImageWithURL(url: url)
+					}
+				}
+				
                 let member = Member(id: id);
                 member.email = email
                 member.name = name
                 member.profileImage = image
+				member.profileImageURL = photoURL
                 
                 completion(member, nil)
             } else {

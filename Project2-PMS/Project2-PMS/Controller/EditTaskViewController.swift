@@ -115,26 +115,36 @@ class EditTaskViewController: FormViewController, UIGestureRecognizerDelegate {
         let controller = navc?.contents as! ManageMemembersViewController
         controller.delegate = self
         controller.selectedMembers = members
+		controller.projectId = task.projectId
         present(navc!, animated: true)
     }
     
-    func loadPage() {
-        // load members
-        var tempMembers : [Member] = []
-        for memberId in task.members! {
-            FIRService.shareInstance.getUserInfo(ofUser: memberId, completion: { (member, err) in
-                if err != nil {
-                    print(err!.localizedDescription)
-                } else {
-                    tempMembers.append(member!)
-                    DispatchQueue.main.async {
-                        self.members = tempMembers
-                        self.memberCollection.reloadData()
-                    }
-                }
-            })
-        }
-    }
+	func loadPage() {
+		let group = DispatchGroup()
+		var tempMembers : [Member] = []
+		
+		for memberId in task.members! {
+			group.enter()
+			FIRService.shareInstance.getUserInfo(ofUser: memberId, completion: { (member, err) in
+				group.leave()
+				if err != nil {
+					print(err!.localizedDescription)
+				} else {
+					tempMembers.append(member!)
+				}
+			})
+		}
+		
+		group.notify(queue: .main) {
+			self.refreshControl.endRefreshing()
+			self.members = tempMembers
+			self.memberCollection.reloadData()
+		}
+		
+		// load comments
+		// ...
+		
+	}
     
     @objc func updateTaskAction(_ sender: Any) {
         // Validation
@@ -190,7 +200,7 @@ extension EditTaskViewController: UICollectionViewDataSource, UICollectionViewDe
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "avatarCell", for: indexPath) as! AvatarCell
-        cell.avatarImageView.image = members[indexPath.item].profileImage
+        cell.avatarImageView.image = members[indexPath.item].profileImage ?? #imageLiteral(resourceName: "placeholder")
         cell.avatarImageView.layer.cornerRadius = cell.avatarImageView.frame.width / 2
         cell.avatarImageView.clipsToBounds = true
         cell.avatarImageView.contentMode = .scaleAspectFill
@@ -206,6 +216,10 @@ extension EditTaskViewController: EditTaskViewControllerDelegate {
 
 extension EditTaskViewController: ManageMemembersVCDelegate {
     func didAddMember(_ member: Member) {
+		// append new member to member list
+		task.members?.append(member.id)
+		
+		// update db
         FIRService.shareInstance.assignTaskToUser(taskId: task.id, userId: member.id) { (err) in
             if (err != nil) {
                 print(err!.localizedDescription)
@@ -214,6 +228,10 @@ extension EditTaskViewController: ManageMemembersVCDelegate {
     }
     
     func didRemoveMember(_ member: Member) {
+		// remove member from member list
+		task.members = task.members?.filter { $0 != member.id }
+		
+		// update db
         FIRService.shareInstance.UnassignTaskFromUser(taskId: task.id, userId: member.id) { (err) in
             if err != nil {
                 print(err!.localizedDescription)

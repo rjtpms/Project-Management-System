@@ -102,21 +102,21 @@ extension TasksViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = taskTable.dequeueReusableCell(withIdentifier: "taskCell")  as! TaskCell
+		let cell = taskTable.dequeueReusableCell(withIdentifier: "taskCell", for: indexPath)  as! TaskCell
         let task = tasks[indexPath.row]
         if let title = task.title {
             cell.titleLabel.text = title
         } else {
-            FIRService.shareInstance.getTaskInfo(ofTask: task.id, completion: { (taskObj, err) in
-                if err != nil {
-                    print()
-                    print(err!.localizedDescription)
-                }
-                DispatchQueue.main.async {
-                    self.tasks[indexPath.row] = taskObj!
-                    self.taskTable.reloadRows(at: [indexPath], with: UITableViewRowAnimation.none)
-                }
-            })
+//            FIRService.shareInstance.getTaskInfo(ofTask: task.id, completion: { (taskObj, err) in
+//                if err != nil {
+//                    print()
+//                    print(err!.localizedDescription)
+//                }
+//                DispatchQueue.main.async {
+//                    self.tasks[indexPath.row] = taskObj!
+//                    self.taskTable.reloadRows(at: [indexPath], with: UITableViewRowAnimation.none)
+//                }
+//            })
         }
         
         if let dueDate = task.dueDate {
