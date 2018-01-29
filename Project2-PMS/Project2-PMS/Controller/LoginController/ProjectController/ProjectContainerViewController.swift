@@ -10,8 +10,11 @@ import UIKit
 import BTNavigationDropdownMenu
 
 class ProjectContainerViewController: UIViewController {
+	var addTaskButton: UIBarButtonItem!
 	
 	var project: Project!
+	
+	private let addTaskVCId = "AddTaskViewController"
 	
 	private var menuView: BTNavigationDropdownMenu!
 	private var currentVCIndex = 0
@@ -41,8 +44,18 @@ class ProjectContainerViewController: UIViewController {
 	}
 	
 	private func setupUI() {
+		addTaskButton = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addTask))
+		navigationItem.rightBarButtonItem = addTaskButton
+		
 		setupDropdownMenu()
 		updateChildVC(with: currentVCIndex)
+	}
+	
+	@objc func addTask() {
+		if let targetVC = storyboard?.instantiateViewController(withIdentifier: addTaskVCId) as? AddTaskViewController {
+			targetVC.projectID = project.id
+			navigationController?.pushViewController(targetVC, animated: true)
+		}
 	}
 	
 	private func setupDropdownMenu() {
@@ -74,12 +87,20 @@ class ProjectContainerViewController: UIViewController {
 		if selectedVC is TasksViewController {
 			(selectedVC as! TasksViewController).taskIds = project.tasks.map { $0.id }
 			print("Selected TaskVC")
+			// show navigationbar item to add task
+			if self.navigationItem.rightBarButtonItem == nil {
+				self.navigationItem.rightBarButtonItem = addTaskButton
+			}
 		} else if selectedVC is AboutProjectViewController {
 			(selectedVC as! AboutProjectViewController).project = project
 			print("selected AboutVC")
+			// hide navigationbar item
+			self.navigationItem.rightBarButtonItem = nil
 		} else if selectedVC is MembersViewController {
 			(selectedVC as! MembersViewController).project = project
 			print("selected membersVC")
+			// hide navigationbar item
+			self.navigationItem.rightBarButtonItem = nil
 		}
 		
 		remove(asChildViewController: currentChildVC)
