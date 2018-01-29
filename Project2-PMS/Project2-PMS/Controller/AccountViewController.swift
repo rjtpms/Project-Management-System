@@ -163,6 +163,7 @@ extension AccountViewController: UIImagePickerControllerDelegate, UINavigationCo
         // We always expect `imagePickerController(:didFinishPickingMediaWithInfo:)` to supply the original image.
         let image = info[UIImagePickerControllerOriginalImage] as! UIImage
         avatarImageView.image = image
+        uploadImage()
     }
     
     //imagePickerController delegate methods
