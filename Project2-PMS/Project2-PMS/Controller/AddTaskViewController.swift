@@ -17,7 +17,6 @@ class AddTaskViewController: FormViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        projectID = "324324as9dsadsada"
         setupView()
     }
     

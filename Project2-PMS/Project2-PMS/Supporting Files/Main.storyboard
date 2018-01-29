@@ -1518,13 +1518,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="1on-OC-a61"/>
                     </view>
-                    <navigationItem key="navigationItem" title="My Tasks" id="qKJ-1f-mFj">
-                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="Aab-jX-Ahn">
-                            <connections>
-                                <segue destination="HXC-Pe-F3f" kind="show" id="Gpz-X2-h5M"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" title="My Tasks" id="qKJ-1f-mFj"/>
                     <connections>
                         <outlet property="addTaskButton" destination="amK-Qt-yLp" id="bhz-yU-ueA"/>
                         <outlet property="taskTable" destination="amK-Qt-yLp" id="VrC-YO-PJy"/>
