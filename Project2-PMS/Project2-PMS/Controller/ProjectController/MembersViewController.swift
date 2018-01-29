@@ -15,12 +15,9 @@ class MembersViewController: UIViewController {
 	private let memberCellIdentifier = "MemberCell"
 	private let addMemberCellidentifier = "AddCell"
 	private let showManageMemberSegue = "ShowManageMemberSegue"
+	private let showUserProfileSegue = "ShowUserProfileSegue"
 	
-	var project: Project! {
-		didSet {
-			
-		}
-	}
+	var project: Project!
 	
 	var manager: Member! {
 		didSet {
@@ -141,5 +138,28 @@ extension MembersViewController: UITableViewDataSource, UITableViewDelegate {
 		headerView.addSubview(titleLabel)
 		
 		return headerView
+	}
+	
+	func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+		if indexPath.section == 0 {
+//			performSegue(withIdentifier: showUserProfileSegue, sender: nil)
+		} else {
+			switch indexPath.row {
+			case 0:
+				// nav to manageUser VC if current user is manager
+				if currentUser.role == .manager {
+					performSegue(withIdentifier: showManageMemberSegue, sender: nil)
+				} else {
+					// when selecing member row
+//					performSegue(withIdentifier: showUserProfileSegue, sender: nil)
+				}
+			default:
+				// when selecing member row
+//				performSegue(withIdentifier: showUserProfileSegue, sender: nil)
+				break
+			}
+		}
+		
+		tableView.deselectRow(at: indexPath, animated: true)
 	}
 }

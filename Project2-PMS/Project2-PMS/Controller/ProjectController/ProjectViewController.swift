@@ -13,7 +13,7 @@ class ProjectViewController: UIViewController {
 	private var refreshControl = UIRefreshControl()
 	
 	private let cellIdentifier = "BasicProjectCell"
-	private let addProjectSegue = "AddProjectSegue"
+	private let addProjectVCSegue = "addProjectVCSegue"
 	private let showContainerSegue = "showContainerSegue"
 	
 	// PM can see all the projects, Member can only see projects that they are assigned task to
@@ -32,12 +32,11 @@ class ProjectViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 		setupUI()
-		fetchProjects()
     }
 	
 	override func viewWillAppear(_ animated: Bool) {
 		super.viewWillAppear(animated)
-		
+		fetchProjects()
 	}
 	
 	override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -47,9 +46,11 @@ class ProjectViewController: UIViewController {
 			
 			let trueIndex = currentUser.role == .manager ? indexPath.row - 1 : indexPath.row
 			targetVC.project = projects[trueIndex]
+		} else if segue.identifier == addProjectVCSegue,
+			let targetVC = segue.destination.contents as? AddProjectViewController {
+			targetVC.delegate = self
 		}
 	}
-	
 }
 
 // MARK: - Helper Methods
@@ -133,7 +134,7 @@ extension ProjectViewController: UITableViewDelegate, UITableViewDataSource {
 		case 0:
 			// nav to addproject VC if current user is manager
 			if currentUser.role == .manager {
-				performSegue(withIdentifier: addProjectSegue, sender: nil)
+				performSegue(withIdentifier: addProjectVCSegue, sender: nil)
 			} else {
 				// when selecing project row
 				performSegue(withIdentifier: showContainerSegue, sender: nil)
@@ -143,5 +144,17 @@ extension ProjectViewController: UITableViewDelegate, UITableViewDataSource {
 			performSegue(withIdentifier: showContainerSegue, sender: nil)
 			break
 		}
+		tableView.deselectRow(at: indexPath, animated: true)
+	}
+}
+
+extension ProjectViewController: AddProjectVCDelegate {
+	func didUpdateProject(_ updatedProject: Project) {
+		// Ignore this, should be optional
+	}
+	
+	func didAddProject(_ newProject: Project) {
+		//
+		projects.append(newProject)
 	}
 }

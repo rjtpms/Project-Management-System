@@ -15,6 +15,16 @@ extension UIViewController {
 		return font
 	}
 	
+	var sFont: UIFont? {
+		let font = UIFont(name: "Avenir", size: 12)
+		return font
+	}
+	
+	var lFont: UIFont? {
+		let font = UIFont(name: "Avenir-Medium ", size: 18)
+		return font
+	}
+	
     func hideKeyboardWhenTappedAround() {
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
         tap.cancelsTouchesInView = false
@@ -78,6 +88,12 @@ extension Date {
 		let dateFormatter = DateFormatter()
 		dateFormatter.dateFormat = "MMM d, yyyy"
 		return dateFormatter.string(from: self)
+	}
+}
+
+extension UIView {
+	var roundRadius: CGFloat {
+		return self.frame.height / 2
 	}
 }
 

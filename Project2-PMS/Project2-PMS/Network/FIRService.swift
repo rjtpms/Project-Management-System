@@ -418,9 +418,9 @@ class FIRService: NSObject {
 	}
 	
 	// Create Project
-	func createProject(for project: Project, completion: @escaping () -> ()) {
+	func updateProject(for project: Project, completion: @escaping () -> ()) {
 		let currentUser = CurrentUser.sharedInstance
-		let newProjectRef = databaseRef.child("Projects").child(project.id)
+		let projectRef = databaseRef.child("Projects").child(project.id)
 		
 		// create new project
 		let projectDict = ["name": project.name,
@@ -430,7 +430,7 @@ class FIRService: NSObject {
 						   "due date": project.endDate.timeIntervalSince1970] as [String: Any]
 		
 		
-		newProjectRef.updateChildValues(projectDict)
+		projectRef.updateChildValues(projectDict)
 		
 		// update manager's project list
 		userRef.child(currentUser.userId).child("projects").updateChildValues([project.id: true])
@@ -555,5 +555,10 @@ class FIRService: NSObject {
 					}
 				}
 		}
+	}
+	
+	func deleteProject(of id: String, managedBy managerId: String) {
+		// remove project from manager
+		
 	}
 }
