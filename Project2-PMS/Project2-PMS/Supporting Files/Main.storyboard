@@ -959,7 +959,7 @@
                     </view>
                     <connections>
                         <outlet property="memberTableview" destination="1XV-0L-RNH" id="SbV-el-bSM"/>
-                        <segue destination="IZr-oq-Lxb" kind="show" identifier="ShowManageMemberSegue" id="4qO-10-Pgj"/>
+                        <segue destination="IZr-oq-Lxb" kind="presentation" identifier="ShowManageMemberSegue" id="4qO-10-Pgj"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Fre-Nb-XDD" userLabel="First Responder" sceneMemberID="firstResponder"/>

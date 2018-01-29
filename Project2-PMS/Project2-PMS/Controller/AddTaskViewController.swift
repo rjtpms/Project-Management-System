@@ -9,6 +9,10 @@
 import UIKit
 import Eureka
 
+protocol AddTaskViewControllerDelegate {
+	func didAddTask(with taskId: String)
+}
+
 class AddTaskViewController: FormViewController {
 
     var projectID: String!
