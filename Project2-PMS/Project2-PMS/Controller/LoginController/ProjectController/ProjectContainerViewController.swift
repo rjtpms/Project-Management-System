@@ -19,6 +19,7 @@ class ProjectContainerViewController: UIViewController {
 	private var menuView: BTNavigationDropdownMenu!
 	private var currentVCIndex = 0
 	private var titles = ["Task List", "Members","About Project"]
+	
 	private lazy var childrenVCs: [UIViewController] = {
 		// Instantiate View Controller
 		var taskVC = storyboard?.instantiateViewController(withIdentifier: "TaskVC") as! TasksViewController
@@ -44,7 +45,7 @@ class ProjectContainerViewController: UIViewController {
 	}
 	
 	private func setupUI() {
-		addTaskButton = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addTask))
+		
 		navigationItem.rightBarButtonItem = addTaskButton
 		
 		setupDropdownMenu()
@@ -88,7 +89,9 @@ class ProjectContainerViewController: UIViewController {
 			(selectedVC as! TasksViewController).taskIds = project.tasks.map { $0.id }
 			print("Selected TaskVC")
 			// show navigationbar item to add task
-			if self.navigationItem.rightBarButtonItem == nil {
+			if self.navigationItem.rightBarButtonItem == nil,
+				CurrentUser.sharedInstance.role == .manager {
+				addTaskButton = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addTask))
 				self.navigationItem.rightBarButtonItem = addTaskButton
 			}
 		} else if selectedVC is AboutProjectViewController {

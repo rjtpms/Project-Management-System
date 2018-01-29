@@ -10,8 +10,11 @@ import UIKit
 
 class TasksViewController: UIViewController {
 
-    @IBOutlet weak var taskTable: UITableView!
-    @IBOutlet weak var addTaskButton: UITableView!
+	@IBOutlet weak var taskTable: UITableView! {
+		didSet {
+			print("tableview is set ")
+		}
+	}
     var refreshControl: UIRefreshControl!
     
     var tasks : [Task] = []
@@ -31,15 +34,6 @@ class TasksViewController: UIViewController {
     }
     
     func setupView() {
-        let role = CurrentUser.sharedInstance.role
-        switch role {
-        case Role.manager:
-            addTaskButton.isHidden = false
-        case Role.member:
-            addTaskButton.isHidden = true
-		default:
-			break
-        }
         taskTable.tableFooterView = UIView()
     }
     
@@ -107,16 +101,16 @@ extension TasksViewController: UITableViewDelegate, UITableViewDataSource {
         if let title = task.title {
             cell.titleLabel.text = title
         } else {
-//            FIRService.shareInstance.getTaskInfo(ofTask: task.id, completion: { (taskObj, err) in
-//                if err != nil {
-//                    print()
-//                    print(err!.localizedDescription)
-//                }
-//                DispatchQueue.main.async {
-//                    self.tasks[indexPath.row] = taskObj!
-//                    self.taskTable.reloadRows(at: [indexPath], with: UITableViewRowAnimation.none)
-//                }
-//            })
+            FIRService.shareInstance.getTaskInfo(ofTask: task.id, completion: { (taskObj, err) in
+                if err != nil {
+                    print()
+                    print(err!.localizedDescription)
+                }
+                DispatchQueue.main.async {
+                    self.tasks[indexPath.row] = taskObj!
+                    self.taskTable.reloadRows(at: [indexPath], with: UITableViewRowAnimation.none)
+                }
+            })
         }
         
         if let dueDate = task.dueDate {

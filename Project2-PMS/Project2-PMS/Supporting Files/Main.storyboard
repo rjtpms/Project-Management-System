@@ -1522,7 +1522,6 @@
                     </view>
                     <navigationItem key="navigationItem" title="My Tasks" id="qKJ-1f-mFj"/>
                     <connections>
-                        <outlet property="addTaskButton" destination="amK-Qt-yLp" id="bhz-yU-ueA"/>
                         <outlet property="taskTable" destination="amK-Qt-yLp" id="VrC-YO-PJy"/>
                     </connections>
                 </viewController>
