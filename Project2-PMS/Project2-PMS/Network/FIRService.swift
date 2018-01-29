@@ -568,7 +568,7 @@ class FIRService: NSObject {
 			fetchProjectMembersGroup.notify(queue: .main) {
 				// we only interested in results that is in the given project if exists
 				// then we need to filtered resultsId
-				resultIds = resultIds.filter { projectMemberIds.contains($0) }
+				resultIds =  projectId != nil ? resultIds.filter { projectMemberIds.contains($0) } : resultIds
 				
 				// now start fetching result members info
 				for id in resultIds {
