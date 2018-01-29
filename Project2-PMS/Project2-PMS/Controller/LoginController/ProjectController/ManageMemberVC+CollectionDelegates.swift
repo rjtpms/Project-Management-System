@@ -40,8 +40,15 @@ extension ManageMemembersViewController: UICollectionViewDataSource, UICollectio
 	}
 	
 	func collectionView(_ collectionView: UICollectionView, dragSessionDidEnd session: UIDragSession) {
-		
+		// only remove member not manager himself
+		let currentUser = CurrentUser.sharedInstance
 		let memberToBeRemoved = selectedMembers[draggedMemberIndexpath.row]
+		
+		guard currentUser.role == .manager,
+			memberToBeRemoved.id != currentUser.userId else {
+			return
+		}
+		
 		// remove the item from collectionView
 		selectedMembers.remove(at: draggedMemberIndexpath.row)
 		

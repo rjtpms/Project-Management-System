@@ -99,7 +99,7 @@ extension TasksViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = taskTable.dequeueReusableCell(withIdentifier: "taskCell")  as! TaskCell
+		let cell = taskTable.dequeueReusableCell(withIdentifier: "taskCell", for: indexPath)  as! TaskCell
         let task = tasks[indexPath.row]
         if let title = task.title {
             cell.titleLabel.text = title

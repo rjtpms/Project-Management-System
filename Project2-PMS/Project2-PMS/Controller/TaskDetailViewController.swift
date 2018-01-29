@@ -87,28 +87,33 @@ class TaskDetailViewController: UIViewController {
         controller.task = task
         navigationController?.pushViewController(controller, animated: true)
     }
-    
+	
+	//load members
     func loadPage() {
-        // load members
+		let group = DispatchGroup()
         var tempMembers : [Member] = []
+		
         for memberId in task.members! {
+			group.enter()
             FIRService.shareInstance.getUserInfo(ofUser: memberId, completion: { (member, err) in
+				group.leave()
                 if err != nil {
                     print(err!.localizedDescription)
                 } else {
                     tempMembers.append(member!)
-                    DispatchQueue.main.async {
-                        self.members = tempMembers
-                        self.membersCollection.reloadData()
-                    }
                 }
             })
         }
+		
+		group.notify(queue: .main) {
+			self.refreshControl.endRefreshing()
+			self.members = tempMembers
+			self.membersCollection.reloadData()
+		}
         
         // load comments
         // ...
-        
-        refreshControl.endRefreshing()
+		
     }
     @IBAction func checkButtonAction(_ sender: Any) {
         task.isCompleted = !task.isCompleted!
@@ -163,7 +168,7 @@ extension TaskDetailViewController: UICollectionViewDataSource, UICollectionView
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "avatarCell", for: indexPath) as! AvatarCell
-        cell.avatarImageView.image = members[indexPath.item].profileImage
+        cell.avatarImageView.image = members[indexPath.item].profileImage ?? #imageLiteral(resourceName: "placeholder")
         cell.avatarImageView.layer.cornerRadius = cell.avatarImageView.frame.width / 2
         cell.avatarImageView.clipsToBounds = true
         return cell
