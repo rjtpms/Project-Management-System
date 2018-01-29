@@ -1305,7 +1305,7 @@
                                                             <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
                                                             <autoresizingMask key="autoresizingMask"/>
                                                             <subviews>
-                                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="user" translatesAutoresizingMaskIntoConstraints="NO" id="ekb-Pi-9co">
+                                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="user" translatesAutoresizingMaskIntoConstraints="NO" id="ekb-Pi-9co">
                                                                     <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
                                                                 </imageView>
                                                             </subviews>
@@ -1703,7 +1703,7 @@
         <!--Navigation Controller-->
         <scene sceneID="W8U-k1-pTi">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="IZr-oq-Lxb" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="namageMembersNavC" automaticallyAdjustsScrollViewInsets="NO" id="IZr-oq-Lxb" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="esW-6W-NgZ">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>

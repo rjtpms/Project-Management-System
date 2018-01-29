@@ -111,9 +111,11 @@ class EditTaskViewController: FormViewController, UIGestureRecognizerDelegate {
     }
     
     @objc func gotoMembersPage(_ sender: Any) {
-        let controller = storyboard?.instantiateViewController(withIdentifier: "MembersVC") as! ManageMemembersViewController
+        let navc = storyboard?.instantiateViewController(withIdentifier: "namageMembersNavC")
+        let controller = navc?.contents as! ManageMemembersViewController
         controller.delegate = self
-        navigationController?.pushViewController(controller, animated: true)
+        controller.selectedMembers = members
+        present(navc!, animated: true)
     }
     
     func loadPage() {
@@ -191,6 +193,7 @@ extension EditTaskViewController: UICollectionViewDataSource, UICollectionViewDe
         cell.avatarImageView.image = members[indexPath.item].profileImage
         cell.avatarImageView.layer.cornerRadius = cell.avatarImageView.frame.width / 2
         cell.avatarImageView.clipsToBounds = true
+        cell.avatarImageView.contentMode = .scaleAspectFill
         return cell
     }
 }
