@@ -164,7 +164,11 @@ class FIRService: NSObject {
         guard let dt = data else {return}
         childRef?.putData(dt, metadata: metadata, completion: { (meta, error) in
             completion(meta, error)
+            if let url = meta?.downloadURL()?.absoluteURL {
+                self.databaseRef.child("Users").child(userId).child("profile photo").setValue("\(url)")
+            }
         })
+        
     }
     
     

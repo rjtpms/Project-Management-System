@@ -18,10 +18,10 @@ class AccountViewController: UIViewController {
     @IBOutlet weak var nameField: UITextField!
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        setupPage()
     }
     
-    func stupPage() {
+    func setupPage() {
         hideKeyboardWhenTappedAround()
         
         avatarImageView.layer.cornerRadius = avatarImageView.frame.width / 2
@@ -95,6 +95,7 @@ class AccountViewController: UIViewController {
     
     @IBAction func editNameAction(_ sender: Any) {
         nameField.isEnabled = true
+        nameField.becomeFirstResponder()
     }
     @IBAction func logOut(_ sender: UIButton) {
 		do {

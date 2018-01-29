@@ -1134,9 +1134,9 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YZa-9j-hYn">
-                                <rect key="frame" x="0.0" y="64" width="375" height="293"/>
+                                <rect key="frame" x="0.0" y="64" width="375" height="280"/>
                                 <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="h8w-I1-FxT">
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="user" translatesAutoresizingMaskIntoConstraints="NO" id="h8w-I1-FxT">
                                         <rect key="frame" x="127" y="22" width="120" height="120"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="120" id="JBq-Lg-Ls0"/>
@@ -1154,20 +1154,20 @@
                                             <action selector="editImageAction:" destination="AxQ-GH-heq" eventType="touchUpInside" id="Obc-zh-3bu"/>
                                         </connections>
                                     </button>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fCI-Y5-ff4">
-                                        <rect key="frame" x="166" y="206" width="42" height="21"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Email" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fCI-Y5-ff4">
+                                        <rect key="frame" x="167" y="193" width="41" height="21"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="kHZ-ar-YdI">
-                                        <rect key="frame" x="57" y="160" width="262.5" height="30"/>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="kHZ-ar-YdI">
+                                        <rect key="frame" x="57" y="160" width="262.5" height="17"/>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fgn-aA-tyr">
-                                        <rect key="frame" x="327" y="168" width="15" height="15"/>
+                                        <rect key="frame" x="327" y="161.5" width="15" height="15"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="15" id="4tQ-bw-Ryq"/>
                                             <constraint firstAttribute="height" constant="15" id="O9b-Fi-UXM"/>
@@ -1178,14 +1178,13 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HcR-NX-voy">
-                                        <rect key="frame" x="161.5" y="235" width="52" height="30"/>
+                                        <rect key="frame" x="161.5" y="222" width="52" height="30"/>
                                         <state key="normal" title="Log out"/>
                                         <connections>
                                             <action selector="logOut:" destination="AxQ-GH-heq" eventType="touchUpInside" id="1SH-7i-yi5"/>
                                         </connections>
                                     </button>
                                 </subviews>
-                                <color key="backgroundColor" red="0.86513194670000004" green="0.86513194670000004" blue="0.86513194670000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstItem="HcR-NX-voy" firstAttribute="centerX" secondItem="YZa-9j-hYn" secondAttribute="centerX" id="B2j-Nt-1DH"/>
                                     <constraint firstItem="HcR-NX-voy" firstAttribute="top" secondItem="fCI-Y5-ff4" secondAttribute="bottom" constant="8" id="EFP-Rh-UWc"/>
@@ -1729,18 +1728,14 @@
         <image name="background" width="319" height="568"/>
         <image name="calendar" width="50" height="50"/>
         <image name="checked-grey" width="40" height="40"/>
-<<<<<<< HEAD:Project2-PMS/Project2-PMS/Supporting Files/Main.storyboard
-        <image name="customer-filled" width="33" height="33"/>
-        <image name="edit" width="32" height="32"/>
-        <image name="project_tab_icon" width="22" height="22"/>
-        <image name="tasks" width="32" height="32"/>
-=======
         <image name="count_down" width="50" height="50"/>
+        <image name="customer-filled" width="33" height="33"/>
         <image name="date_span" width="22" height="22"/>
+        <image name="edit" width="32" height="32"/>
         <image name="placeholder" width="22" height="22"/>
         <image name="project_tab_icon" width="22" height="22"/>
         <image name="send_button" width="62" height="62"/>
->>>>>>> ded2cbd7cdda958a9fbb9f1b692aabcd146ed714:Project2-PMS/Project2-PMS/Base.lproj/Main.storyboard
+        <image name="tasks" width="32" height="32"/>
         <image name="user" width="225" height="225"/>
     </resources>
     <inferredMetricsTieBreakers>
