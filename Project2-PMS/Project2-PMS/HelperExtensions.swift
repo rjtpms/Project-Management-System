@@ -10,6 +10,21 @@ import UIKit
 
 // hide keyboard when tapped around
 extension UIViewController {
+	var mFont: UIFont? {
+		let font = UIFont(name: "Avenir-Heavy", size: 14)
+		return font
+	}
+	
+	var sFont: UIFont? {
+		let font = UIFont(name: "Avenir", size: 12)
+		return font
+	}
+	
+	var lFont: UIFont? {
+		let font = UIFont(name: "Avenir-Medium", size: 18)
+		return font
+	}
+	
     func hideKeyboardWhenTappedAround() {
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
         tap.cancelsTouchesInView = false
@@ -19,6 +34,31 @@ extension UIViewController {
     @objc func dismissKeyboard() {
         view.endEditing(true)
     }
+	
+	func showNetworkIndicators() {
+		UIApplication.shared.isNetworkActivityIndicatorVisible = true
+	}
+	
+	func hideNetworkIndicatros() {
+		UIApplication.shared.isNetworkActivityIndicatorVisible = false
+	}
+	
+	// get the first contentVC
+	var contents: UIViewController {
+		if let navCon = self as? UINavigationController {
+			return navCon.visibleViewController ?? self
+		} else {
+			return self
+		}
+	}
+	
+	func daysLeft(to dueDate: Date) -> Int {
+		let elapseSeconds = dueDate.timeIntervalSince(Date())
+		let hr = elapseSeconds / 3600
+		let days = hr / 24
+		
+		return Int(days)
+	}
 }
 
 extension UIViewController {
@@ -58,3 +98,18 @@ extension CALayer {
         self.addSublayer(border)
     }
 }
+
+extension Date {
+	var dateString: String {
+		let dateFormatter = DateFormatter()
+		dateFormatter.dateFormat = "MMM d, yyyy"
+		return dateFormatter.string(from: self)
+	}
+}
+
+extension UIView {
+	var roundRadius: CGFloat {
+		return self.frame.height / 2
+	}
+}
+

@@ -9,13 +9,21 @@
 import Foundation
 import UIKit
 
-class Member {
+class Member: NSObject {
     let id : String
     var name: String?
     var email: String?
     var profileImage: UIImage?
-    
+	var profileImageURL: URL?
+	
     init(id: String) {
         self.id = id
     }
+	
+	init(id: String, name: String?, email: String?, imageURL: URL?) {
+		self.id = id
+		self.name = name
+		self.email = email
+		self.profileImageURL = imageURL
+	}
 }

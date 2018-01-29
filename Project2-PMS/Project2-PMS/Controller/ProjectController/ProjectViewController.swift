@@ -12,6 +12,11 @@ class ProjectViewController: UIViewController {
 	@IBOutlet weak var tableview: UITableView!
 	private var refreshControl = UIRefreshControl()
 	
+	private let createNewCellIdentifier = "CreateNewProjectCell"
+	private let projectCellIdentifier = "ProjectCell"
+	private let addProjectVCSegue = "addProjectVCSegue"
+	private let showContainerSegue = "showContainerSegue"
+	
 	// PM can see all the projects, Member can only see projects that they are assigned task to
 	var projects: [Project] = [] {
 		didSet {
@@ -28,22 +33,42 @@ class ProjectViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 		setupUI()
-		fetchProjects()
     }
 	
 	override func viewWillAppear(_ animated: Bool) {
 		super.viewWillAppear(animated)
-		
+		fetchProjects()
 	}
+	
+	override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+		if segue.identifier == showContainerSegue,
+			let targetVC = segue.destination as? ProjectContainerViewController,
+			let indexPath = tableview.indexPathForSelectedRow {
+			
+			let trueIndex = currentUser.role == .manager ? indexPath.row - 1 : indexPath.row
+			targetVC.project = projects[trueIndex]
+		} else if segue.identifier == addProjectVCSegue,
+			let targetVC = segue.destination.contents as? AddProjectViewController {
+			targetVC.delegate = self
+		}
+	}
+}
+
+// MARK: - Helper Methods
+private extension ProjectViewController {
 	
 	func setupUI() {
 		refreshControl.isEnabled = true
 		refreshControl.tintColor = UIColor.cyan
 		refreshControl.addTarget(self, action: #selector(fetchProjects), for: .valueChanged)
 		tableview.addSubview(refreshControl)
+		
+		tableview.rowHeight = UITableViewAutomaticDimension
+		tableview.estimatedRowHeight = 110
 	}
 	
 	@objc func fetchProjects () {
+		showNetworkIndicators()
 		let firService = FIRService.shareInstance
 		
 		switch currentUser.role {
@@ -66,9 +91,9 @@ class ProjectViewController: UIViewController {
 		}
 	}
 	
-	private func finishFetching(newProjects: [Project]?, err: Error?) {
+	func finishFetching(newProjects: [Project]?, err: Error?) {
 		refreshControl.endRefreshing()
-		
+		hideNetworkIndicatros()
 		guard err == nil else {
 			print(err!.localizedDescription)
 			return
@@ -93,16 +118,20 @@ extension ProjectViewController: UITableViewDelegate, UITableViewDataSource {
 	}
 	
 	func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-		let cell = tableView.dequeueReusableCell(withIdentifier: "BasicProjectCell", for: indexPath)
+		var cell: UITableViewCell!
 		
 		// enable add row if current is manager
 		if indexPath.row == 0, currentUser.role == .manager {
+			cell = tableView.dequeueReusableCell(withIdentifier: createNewCellIdentifier, for: indexPath)
 			cell.imageView?.image = #imageLiteral(resourceName: "add_project_icon")
 			cell.textLabel?.text = "Create New"
 		} else {
+			cell = tableview.dequeueReusableCell(withIdentifier: projectCellIdentifier, for: indexPath)
 			let rowIndex = currentUser.role == .manager ? indexPath.row - 1 : indexPath.row
 			let currentProject = projects[rowIndex]
-			cell.textLabel?.text = currentProject.name
+			let countdownDays = daysLeft(to: currentProject.endDate)
+			
+			(cell as! ProjectCell).configureCell(with: currentProject, and: countdownDays)
 		}
 		
 		return cell
@@ -113,13 +142,37 @@ extension ProjectViewController: UITableViewDelegate, UITableViewDataSource {
 		case 0:
 			// nav to addproject VC if current user is manager
 			if currentUser.role == .manager {
-				performSegue(withIdentifier: "AddProjectSegue", sender: nil)
+				performSegue(withIdentifier: addProjectVCSegue, sender: nil)
 			} else {
 				// when selecing project row
+				performSegue(withIdentifier: showContainerSegue, sender: nil)
 			}
 		default:
 			// when selecing project row
+			performSegue(withIdentifier: showContainerSegue, sender: nil)
 			break
 		}
+		tableView.deselectRow(at: indexPath, animated: true)
+	}
+	
+	func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+		// enable add row if current is manager
+		if indexPath.row == 0, currentUser.role == .manager {
+			return 44
+		} else {
+			return 110
+		}
+	}
+	
+}
+
+extension ProjectViewController: AddProjectVCDelegate {
+	func didUpdateProject(_ updatedProject: Project) {
+		// Ignore this, should be optional
+	}
+	
+	func didAddProject(_ newProject: Project) {
+		//
+		projects.append(newProject)
 	}
 }

@@ -15,10 +15,14 @@ target 'Project2-PMS' do
   pod 'GoogleSignIn'
   pod 'SVProgressHUD'
   pod 'Eureka'
+  pod 'BTNavigationDropdownMenu', :git => 'https://github.com/zkrige/BTNavigationDropdownMenu.git'
+  pod 'SDWebImage'
+  pod 'IQKeyboardManagerSwift'
+  pod 'SwiftGifOrigin', '~> 1.6.1'
   
   target 'Project2-PMSTests' do
     inherit! :search_paths
     # Pods for testing
   end
-
+  
 end

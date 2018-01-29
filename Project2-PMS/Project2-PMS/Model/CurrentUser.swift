@@ -60,11 +60,17 @@ class CurrentUser: NSObject {
 			userId = dictionary["userId"] as! String
 			email = dictionary["email"] as! String
 			fullname = dictionary["fullname"] as! String
-            if let profileImageUrlStr = dictionary["profileImageUrl"] as? String {
-                profileImageUrl = URL(string: profileImageUrlStr)
-            }
-            
+
+			if let url = URL(string: (dictionary["profileImageUrl"] as? String ?? "")) {
+				profileImageUrl = url
+			}
+			
 			role = Role(rawValue: (dictionary["role"] as! String))!
 		}
+	}
+	
+	func convertToMember() -> Member {
+		let member = Member(id: userId, name: fullname, email: email, imageURL: profileImageUrl)
+		return member
 	}
 }
