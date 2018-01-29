@@ -11,7 +11,6 @@ import UIKit
 class TasksViewController: UIViewController {
 
     @IBOutlet weak var taskTable: UITableView!
-    @IBOutlet weak var addTaskButton: UITableView!
     var refreshControl: UIRefreshControl!
     
     var tasks : [Task] = []
@@ -31,15 +30,6 @@ class TasksViewController: UIViewController {
     }
     
     func setupView() {
-        let role = CurrentUser.sharedInstance.role
-        switch role {
-        case Role.manager:
-            addTaskButton.isHidden = false
-        case Role.member:
-            addTaskButton.isHidden = true
-		default:
-			break
-        }
         taskTable.tableFooterView = UIView()
     }
     
@@ -47,7 +37,7 @@ class TasksViewController: UIViewController {
     func setupRefreshControl() {
         refreshControl = UIRefreshControl()
         refreshControl.isEnabled = true
-        refreshControl.tintColor = .black
+        refreshControl.tintColor = .red
         refreshControl.addTarget(self, action: #selector(refreshAction(_:)) , for: .valueChanged)
         taskTable.addSubview(refreshControl)
         taskTable.sectionHeaderHeight = 50
@@ -74,6 +64,12 @@ class TasksViewController: UIViewController {
         }
         
         guard let uid = CurrentUser.sharedInstance.userId else {return}
+        let t = Task(id: "123")
+        t.title = "TT"
+        t.isCompleted = true
+        t.dueDate = Date()
+        tasks=[t]
+        taskTable.reloadData()
         
         FIRService.shareInstance.getAllTaskIds(ofUser: uid) { (tasks, err) in
             if err != nil {
@@ -93,6 +89,7 @@ class TasksViewController: UIViewController {
                 self.refreshControl.endRefreshing()
             }
         }
+        
     }
 }
 

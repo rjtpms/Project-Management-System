@@ -121,15 +121,19 @@ class EditTaskViewController: FormViewController, UIGestureRecognizerDelegate {
     func loadPage() {
         // load members
         var tempMembers : [Member] = []
+        var count = 0
         for memberId in task.members! {
             FIRService.shareInstance.getUserInfo(ofUser: memberId, completion: { (member, err) in
                 if err != nil {
                     print(err!.localizedDescription)
                 } else {
                     tempMembers.append(member!)
-                    DispatchQueue.main.async {
-                        self.members = tempMembers
-                        self.memberCollection.reloadData()
+                    count += 1
+                    if count == self.task.members?.count {
+                        DispatchQueue.main.async {
+                            self.members = tempMembers
+                            self.memberCollection.reloadData()
+                        }
                     }
                 }
             })
