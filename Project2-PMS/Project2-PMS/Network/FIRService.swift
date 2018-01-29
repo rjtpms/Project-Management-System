@@ -496,14 +496,14 @@ class FIRService: NSObject {
     }
 	
 	// search by name or email
-	func searchMembers(using searchText: String, completion: @escaping SearchMembersResultHandler) {
+	func searchMembers(using searchText: String, withinProject projectId: String?, completion: @escaping SearchMembersResultHandler) {
 		var resultIds: [String] = []
 		var resultMembers: [Member] = []
 		let searchGroup = DispatchGroup()
 		let fetchMembersGroup = DispatchGroup()
+		let fetchProjectMembersGroup = DispatchGroup()
 			
-		// get memberIds that has name starting with searchText
-		
+		// get all memberIds that has name starting with searchText
 		let nameQuery = userRef
 			.queryOrdered(byChild: "name")
 			.queryStarting(atValue: searchText)
@@ -547,22 +547,46 @@ class FIRService: NSObject {
 		}
 		
 		searchGroup.notify(queue: .main) { [weak self] in
-			// now start fetching result members info
-			for id in resultIds {
-				fetchMembersGroup.enter()
-				self?.fetchUserInfo(with: id) { (member, error) in
-					fetchMembersGroup.leave()
-					guard error == nil else { return }
-					guard let unwrappedMember = member else { return }
-					resultMembers.append(unwrappedMember)
+			
+			var projectMemberIds: [String] = []
+			if let pId = projectId {
+				let projectRef = self?.databaseRef
+					.child("Projects")
+					.child(pId)
+					.child("members")
+				fetchProjectMembersGroup.enter()
+				projectRef?.observeSingleEvent(of: .value) { (snapshot) in
+					guard let projectMemberDict = snapshot.value as? [String: Any] else {
+						fetchProjectMembersGroup.leave()
+						return
+					}
+					projectMemberIds = Array(projectMemberDict.keys)
+					fetchProjectMembersGroup.leave()
 				}
 			}
 			
-			fetchMembersGroup.notify(queue: .main) {
-				if resultMembers.isEmpty {
-					completion(nil, FIRServiceError.userDoesNotExist)
-				} else {
-					completion(resultMembers, nil)
+			fetchProjectMembersGroup.notify(queue: .main) {
+				// we only interested in results that is in the given project if exists
+				// then we need to filtered resultsId
+				resultIds = resultIds.filter { projectMemberIds.contains($0) }
+				
+				// now start fetching result members info
+				for id in resultIds {
+					fetchMembersGroup.enter()
+					self?.fetchUserInfo(with: id) { (member, error) in
+						fetchMembersGroup.leave()
+						guard error == nil else { return }
+						guard let unwrappedMember = member else { return }
+						resultMembers.append(unwrappedMember)
+					}
+				}
+				
+				fetchMembersGroup.notify(queue: .main) {
+					if resultMembers.isEmpty {
+						completion(nil, FIRServiceError.userDoesNotExist)
+					} else {
+						completion(resultMembers, nil)
+					}
 				}
 			}
 		}

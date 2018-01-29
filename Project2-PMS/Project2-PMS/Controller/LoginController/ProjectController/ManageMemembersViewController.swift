@@ -18,6 +18,9 @@ class ManageMemembersViewController: UIViewController {
 	var collectionMemberCell: CollectionContainerCell!
 	var draggedMemberIndexpath:IndexPath!
 	
+	// if we have projectId then we only search people who is in current projects
+	var projectId: String?
+	
 	let containerCellID = "ContainerCell"
 	let showMemberCellID = "ShowMemberCell"
 	let memberPhotoCellID = "MemberPhotoCell"
