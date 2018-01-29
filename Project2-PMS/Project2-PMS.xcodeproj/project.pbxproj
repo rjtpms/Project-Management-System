@@ -27,6 +27,7 @@
 		23FA54E6201990500059CA0E /* Member.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23FA54E5201990500059CA0E /* Member.swift */; };
 		23FA54E8201993520059CA0E /* AddTaskViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23FA54E7201993520059CA0E /* AddTaskViewController.swift */; };
 		23FA54EA201993630059CA0E /* TaskDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23FA54E9201993630059CA0E /* TaskDetailViewController.swift */; };
+		4D419E0F201EB15000757092 /* ProjectCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D419E0E201EB15000757092 /* ProjectCell.swift */; };
 		4D4AE490201BE2E4004A08AF /* MembersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D4AE48F201BE2E4004A08AF /* MembersViewController.swift */; };
 		4D4AE492201BE2FE004A08AF /* AboutProjectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D4AE491201BE2FE004A08AF /* AboutProjectViewController.swift */; };
 		4D4AE494201BE327004A08AF /* ManageMemembersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D4AE493201BE327004A08AF /* ManageMemembersViewController.swift */; };
@@ -91,6 +92,7 @@
 		23FA54E9201993630059CA0E /* TaskDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskDetailViewController.swift; sourceTree = "<group>"; };
 		253806804ABC9EA5A149DB45 /* Pods_Project2_PMS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Project2_PMS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		45ABB5325C93250512F260B2 /* Pods-Project2-PMSTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Project2-PMSTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-Project2-PMSTests/Pods-Project2-PMSTests.release.xcconfig"; sourceTree = "<group>"; };
+		4D419E0E201EB15000757092 /* ProjectCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectCell.swift; sourceTree = "<group>"; };
 		4D4AE48F201BE2E4004A08AF /* MembersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MembersViewController.swift; sourceTree = "<group>"; };
 		4D4AE491201BE2FE004A08AF /* AboutProjectViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutProjectViewController.swift; sourceTree = "<group>"; };
 		4D4AE493201BE327004A08AF /* ManageMemembersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManageMemembersViewController.swift; sourceTree = "<group>"; };
@@ -194,6 +196,7 @@
 				4DC1B6B4201CD56900E6313C /* ShowMemeberCell.swift */,
 				4DC1B6B6201CD72F00E6313C /* CollectionContainerCell.swift */,
 				4DC1B6BA201CE05100E6313C /* MemberPhotoCell.swift */,
+				4D419E0E201EB15000757092 /* ProjectCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -417,6 +420,7 @@
 				"${BUILT_PRODUCTS_DIR}/Protobuf/Protobuf.framework",
 				"${BUILT_PRODUCTS_DIR}/SDWebImage/SDWebImage.framework",
 				"${BUILT_PRODUCTS_DIR}/SVProgressHUD/SVProgressHUD.framework",
+				"${BUILT_PRODUCTS_DIR}/SwiftGifOrigin/SwiftGifOrigin.framework",
 				"${BUILT_PRODUCTS_DIR}/TWMessageBarManager/TWMessageBarManager.framework",
 				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
 				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
@@ -432,6 +436,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Protobuf.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SDWebImage.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SVProgressHUD.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftGifOrigin.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/TWMessageBarManager.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
@@ -566,6 +571,7 @@
 				4D7CA36C201841580025B5D3 /* CurrentUser.swift in Sources */,
 				23CD39C9201ABFCD00FC5E94 /* Comment.swift in Sources */,
 				4D4AE496201C2B0E004A08AF /* MemberCell.swift in Sources */,
+				4D419E0F201EB15000757092 /* ProjectCell.swift in Sources */,
 				4D7CA36F2018457A0025B5D3 /* CoreDataManager.swift in Sources */,
 				23EA9D632016D2DA0086EAF4 /* Project2_PMS.xcdatamodeld in Sources */,
 				23FA54EA201993630059CA0E /* TaskDetailViewController.swift in Sources */,

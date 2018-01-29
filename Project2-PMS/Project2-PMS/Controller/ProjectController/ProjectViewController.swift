@@ -12,7 +12,8 @@ class ProjectViewController: UIViewController {
 	@IBOutlet weak var tableview: UITableView!
 	private var refreshControl = UIRefreshControl()
 	
-	private let cellIdentifier = "BasicProjectCell"
+	private let createNewCellIdentifier = "CreateNewProjectCell"
+	private let projectCellIdentifier = "ProjectCell"
 	private let addProjectVCSegue = "addProjectVCSegue"
 	private let showContainerSegue = "showContainerSegue"
 	
@@ -61,6 +62,9 @@ private extension ProjectViewController {
 		refreshControl.tintColor = UIColor.cyan
 		refreshControl.addTarget(self, action: #selector(fetchProjects), for: .valueChanged)
 		tableview.addSubview(refreshControl)
+		
+		tableview.rowHeight = UITableViewAutomaticDimension
+		tableview.estimatedRowHeight = 110
 	}
 	
 	@objc func fetchProjects () {
@@ -114,16 +118,20 @@ extension ProjectViewController: UITableViewDelegate, UITableViewDataSource {
 	}
 	
 	func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-		let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath)
+		var cell: UITableViewCell!
 		
 		// enable add row if current is manager
 		if indexPath.row == 0, currentUser.role == .manager {
+			cell = tableView.dequeueReusableCell(withIdentifier: createNewCellIdentifier, for: indexPath)
 			cell.imageView?.image = #imageLiteral(resourceName: "add_project_icon")
 			cell.textLabel?.text = "Create New"
 		} else {
+			cell = tableview.dequeueReusableCell(withIdentifier: projectCellIdentifier, for: indexPath)
 			let rowIndex = currentUser.role == .manager ? indexPath.row - 1 : indexPath.row
 			let currentProject = projects[rowIndex]
-			cell.textLabel?.text = currentProject.name
+			let countdownDays = daysLeft(to: currentProject.endDate)
+			
+			(cell as! ProjectCell).configureCell(with: currentProject, and: countdownDays)
 		}
 		
 		return cell
@@ -146,6 +154,16 @@ extension ProjectViewController: UITableViewDelegate, UITableViewDataSource {
 		}
 		tableView.deselectRow(at: indexPath, animated: true)
 	}
+	
+	func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+		// enable add row if current is manager
+		if indexPath.row == 0, currentUser.role == .manager {
+			return 44
+		} else {
+			return 110
+		}
+	}
+	
 }
 
 extension ProjectViewController: AddProjectVCDelegate {

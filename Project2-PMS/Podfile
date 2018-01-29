@@ -18,6 +18,7 @@ target 'Project2-PMS' do
   pod 'BTNavigationDropdownMenu', :git => 'https://github.com/zkrige/BTNavigationDropdownMenu.git'
   pod 'SDWebImage'
   pod 'IQKeyboardManagerSwift'
+  pod 'SwiftGifOrigin', '~> 1.6.1'
   
   target 'Project2-PMSTests' do
     inherit! :search_paths
