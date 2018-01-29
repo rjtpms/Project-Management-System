@@ -224,7 +224,6 @@
 			children = (
 				23EA9D5C2016D2DA0086EAF4 /* ViewController.swift */,
 				4DAC2E4C201985480088E60B /* LoginController */,
-				4DAC2E532019A6160088E60B /* ProjectController */,
 				23DDD7E52018498300DB4AAA /* SignupViewController.swift */,
 				23FA54DE20198D8C0059CA0E /* TasksViewController.swift */,
 				23FA54E7201993520059CA0E /* AddTaskViewController.swift */,
@@ -255,6 +254,7 @@
 				4D7CA367201821290025B5D3 /* LoginViewController.swift */,
 				4DAC2E4D201985660088E60B /* LoginVC+Helper.swift */,
 				4DAC2E4F201986880088E60B /* ExtraInfomationViewController.swift */,
+				4DAC2E532019A6160088E60B /* ProjectController */,
 			);
 			path = LoginController;
 			sourceTree = "<group>";

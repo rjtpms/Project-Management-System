@@ -53,7 +53,7 @@ class ExtraInfomationViewController: FormViewController {
 				currentUser.save()
 				
 				// show welcome message
-				TWMessageBarManager().showMessage(withTitle: "Success", description: "Welcome, \(currentUser.fullname)", type: .success)
+				TWMessageBarManager().showMessage(withTitle: "Success", description: "Welcome \(currentUser.fullname ?? "")", type: .success)
 				
 				// navigate to homeVC
 				self.performSegue(withIdentifier: "ExtraInfoToTabSegue", sender: nil)
