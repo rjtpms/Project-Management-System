@@ -58,8 +58,12 @@ class FIRService: NSObject {
         // create task and add to "Tasks" table
         let key = databaseRef.child("Tasks").childByAutoId().key
         let taskDict = ["title": task.title!, "description": task.description!, "start date": task.startDate!.timeIntervalSince1970, "due date": task.dueDate!.timeIntervalSince1970, "projectID": task.projectId!, "isCompleted": false] as [String : Any]
+		
         databaseRef.child("Tasks").child(key).updateChildValues(taskDict)
-        databaseRef.child("Projects").child(task.projectId!).child("tasks").child(task.id).setValue(true)
+		
+		// add task id to project table
+		let projectTaskDict = [task.id: true]
+        databaseRef.child("Projects").child(task.projectId!).child("tasks").updateChildValues(projectTaskDict)
         
         // add the manager who created the task to the task's member list
         assignTaskToUser(taskId: key, userId: userId) { (err) in
