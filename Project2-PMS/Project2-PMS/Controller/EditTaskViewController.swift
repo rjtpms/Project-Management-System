@@ -29,8 +29,6 @@ class EditTaskViewController: FormViewController, UIGestureRecognizerDelegate {
         setupView()
     }
     
-    
-    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         loadPage()

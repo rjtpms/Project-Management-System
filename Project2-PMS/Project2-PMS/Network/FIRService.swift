@@ -62,7 +62,7 @@ class FIRService: NSObject {
         databaseRef.child("Tasks").child(key).updateChildValues(taskDict)
 		
 		// add task id to project table
-		let projectTaskDict = [task.id: true]
+		let projectTaskDict = [key: true]
         databaseRef.child("Projects").child(task.projectId!).child("tasks").updateChildValues(projectTaskDict)
         
         // add the manager who created the task to the task's member list
