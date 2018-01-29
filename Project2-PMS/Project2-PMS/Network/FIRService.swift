@@ -94,6 +94,15 @@ class FIRService: NSObject {
         completion(nil)
     }
     
+    func UnassignTaskFromUser (taskId: String, userId: String, completion: @escaping (Error?) -> ()) {
+        // remove task from user's tasks list
+        databaseRef.child("Users").child(userId).child("tasks").child(taskId).removeValue()
+        
+        // remove user from task's members list
+        databaseRef.child("Tasks").child(taskId).child("members").child(userId).removeValue()
+        completion(nil)
+    }
+    
     func getTaskInfo(ofTask id: String, completion: @escaping (Task?, Error?) -> ()) {
         let ref = databaseRef.child("Tasks").child(id)
         ref.observeSingleEvent(of: DataEventType.value, with: { (snapshot) in

@@ -111,7 +111,9 @@ class EditTaskViewController: FormViewController, UIGestureRecognizerDelegate {
     }
     
     @objc func gotoMembersPage(_ sender: Any) {
-        print("going to members page")
+        let controller = storyboard?.instantiateViewController(withIdentifier: "MembersVC") as! ManageMemembersViewController
+        controller.delegate = self
+        navigationController?.pushViewController(controller, animated: true)
     }
     
     func loadPage() {
@@ -196,5 +198,23 @@ extension EditTaskViewController: UICollectionViewDataSource, UICollectionViewDe
 extension EditTaskViewController: EditTaskViewControllerDelegate {
     func didUpdateTask(task: Task) {
         self.task = task
+    }
+}
+
+extension EditTaskViewController: ManageMemembersVCDelegate {
+    func didAddMember(_ member: Member) {
+        FIRService.shareInstance.assignTaskToUser(taskId: task.id, userId: member.id) { (err) in
+            if (err != nil) {
+                print(err!.localizedDescription)
+            }
+        }
+    }
+    
+    func didRemoveMember(_ member: Member) {
+        FIRService.shareInstance.UnassignTaskFromUser(taskId: task.id, userId: member.id) { (err) in
+            if err != nil {
+                print(err!.localizedDescription)
+            }
+        }
     }
 }
