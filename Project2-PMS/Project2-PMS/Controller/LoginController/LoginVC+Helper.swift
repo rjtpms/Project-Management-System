@@ -102,8 +102,7 @@ extension LoginViewController {
 			if currentUser.role == .none {
 				self.performSegue(withIdentifier: "LoginToExtraInfoSegue", sender: nil)
 			} else {
-				TWMessageBarManager().showMessage(withTitle: "Success", description: "Welcome, \(currentUser.fullname)", type: .success)
-				// TODO: Navigate to homeVC
+				TWMessageBarManager().showMessage(withTitle: "", description: "Welcome \(currentUser.fullname ?? "")", type: .success)
 				self.performSegue(withIdentifier: "loginToTabSegue", sender: nil)
 			}
 		}

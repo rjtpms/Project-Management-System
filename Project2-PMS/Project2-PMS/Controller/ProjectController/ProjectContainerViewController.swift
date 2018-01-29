@@ -26,11 +26,6 @@ class ProjectContainerViewController: UIViewController {
 		
 		var membersVC = storyboard?.instantiateViewController(withIdentifier: "MembersVC") as! MembersViewController
 		membersVC.title = "Members"
-//		
-//		// Add View Controller as Child View Controller
-//		self.add(asChildViewController: taskVC)
-//		self.add(asChildViewController: aboutVC)
-//		self.add(asChildViewController: membersVC)
 		
 		return [taskVC, membersVC, aboutVC]
 	}()
@@ -52,19 +47,21 @@ class ProjectContainerViewController: UIViewController {
 	
 	private func setupDropdownMenu() {
 		menuView = BTNavigationDropdownMenu(navigationController: self.navigationController, containerView: self.navigationController!.view, title: BTTitle.title(titles.first!), items: titles)
-		// customized menu
+		
+		// customize menu
 		menuView.cellHeight = 40
 		menuView.cellBackgroundColor = self.navigationController?.navigationBar.barTintColor
 		menuView.shouldKeepSelectedCellColor = true
-		menuView.cellTextLabelFont = UIFont(name: "Avenir-Heavy", size: 14)
+		menuView.cellTextLabelFont = mFont
+		menuView.cellSelectionColor = UIColor.clear
 		menuView.cellTextLabelAlignment = .center
 		menuView.arrowPadding = 15
-		menuView.animationDuration = 0.5
+		menuView.animationDuration = 0.4
 		menuView.cellSeparatorColor = UIColor.clear
-		menuView.checkMarkImage = nil
+		menuView.checkMarkImage = #imageLiteral(resourceName: "check_green_small")
 		menuView.didSelectItemAtIndexHandler = updateChildVC
 		menuView.menuTitleColor = UIColor.black
-		menuView.arrowTintColor = UIColor.cyan
+		menuView.arrowTintColor = UIColor.black
 		
 		self.navigationItem.titleView = menuView
 	}

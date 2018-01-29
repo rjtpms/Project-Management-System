@@ -17,6 +17,7 @@ target 'Project2-PMS' do
   pod 'Eureka'
   pod 'BTNavigationDropdownMenu', :git => 'https://github.com/zkrige/BTNavigationDropdownMenu.git'
   pod 'SDWebImage'
+  pod 'IQKeyboardManagerSwift'
   
   target 'Project2-PMSTests' do
     inherit! :search_paths

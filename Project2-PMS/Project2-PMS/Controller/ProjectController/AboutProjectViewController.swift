@@ -9,16 +9,31 @@
 import UIKit
 
 class AboutProjectViewController: UIViewController {
+	@IBOutlet weak var commentView: UIView!
 	@IBOutlet weak var commentInput: UITextField!
+	@IBOutlet weak var commentShadow: UIView!
 	@IBOutlet weak var projectName: UILabel!
 	@IBOutlet weak var projectNameShadow: UIView!
 	@IBOutlet weak var startDate: UILabel!
 	@IBOutlet weak var startDateShadow: UIView!
 	@IBOutlet weak var dueDate: UILabel!
 	@IBOutlet weak var dueDateShadow: UIView!
-	@IBOutlet weak var des: UIView!
+	@IBOutlet weak var desShadow: UIView!
+	@IBOutlet weak var desLabel: UILabel!
+	@IBOutlet weak var EditButton: UIButton!
+	@IBOutlet weak var EditButtonShadow: UIView!
 	
-	var project: Project! 
+	private let shadowColor = UIColor.gray.cgColor
+	private let normalRadius: CGFloat = 10.0
+	private let updateProjectSegue = "updateProjectSegue"
+	
+	var project: Project! {
+		didSet {
+			if view.window != nil {
+				updateUI()
+			}
+		}
+	}
 	
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,45 +41,77 @@ class AboutProjectViewController: UIViewController {
 		updateUI()
     }
 	
-	private func setupUI() {
-		if project != nil {
-			// make round textfield wrapper
-			commentInput.layer.cornerRadius = 15
-			commentInput.layer.borderColor = UIColor.gray.cgColor
-			commentInput.layer.borderWidth = 0.2
-			
-			makeRoundCorner(for: projectName)
-			makeRoundCorner(for: startDate)
-			makeRoundCorner(for: dueDate)
-			
-			setUpShawdow(for: projectName)
-			setUpShawdow(for: startDate)
-			setUpShawdow(for: dueDate)
+	@IBAction func commentSend(_ sender: UIButton) {
+		
+	}
+	
+	override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+		if segue.identifier == updateProjectSegue, let targetVC = segue.destination.contents as? AddProjectViewController {
+			targetVC.project = project
+			targetVC.delegate = self
+		}
+	}
+}
+
+// MARK: -Helper
+private extension AboutProjectViewController {
+	func setupUI() {
+		projectName.font = lFont
+		startDate.font = mFont
+		dueDate.font = mFont
+		desLabel.font = mFont
+		EditButton.titleLabel?.font = mFont
+		
+		makeRoundCorner(for: commentView, with: commentView.roundRadius)
+		makeRoundCorner(for: desLabel, with: normalRadius)
+		makeRoundCorner(for: projectName, with: normalRadius)
+		makeRoundCorner(for: startDate, with: normalRadius)
+		makeRoundCorner(for: dueDate, with: normalRadius)
+		makeRoundCorner(for: EditButton, with: EditButton.roundRadius)
+		
+		setUpShawdow(for: commentShadow, withRadius: commentShadow.roundRadius, andColor: shadowColor)
+		setUpShawdow(for: desShadow, withRadius: normalRadius, andColor: shadowColor)
+		setUpShawdow(for: projectNameShadow, withRadius: normalRadius, andColor: shadowColor)
+		setUpShawdow(for: startDateShadow, withRadius: normalRadius, andColor: shadowColor)
+		setUpShawdow(for: dueDateShadow, withRadius: normalRadius, andColor: shadowColor)
+		setUpShawdow(for: EditButtonShadow, withRadius: EditButtonShadow.roundRadius, andColor: shadowColor)
+		
+		// hide edit button if current user is member
+		if CurrentUser.sharedInstance.role == .member {
+			EditButtonShadow.isHidden = true
 		}
 	}
 	
-	private func updateUI() {
-		projectName.text = project.name
-		startDate.text = project.startDate.dateString
-		dueDate.text = project.endDate.dateString
+	func updateUI() {
+		if project != nil {
+			projectName.text = project.name
+			startDate.text = project.startDate.dateString
+			dueDate.text = project.endDate.dateString
+			desLabel.text = project.description
+		}
 	}
 	
-	private func makeRoundCorner(for view: UIView) {
-		view.layer.cornerRadius = 8.0
+	func makeRoundCorner(for view: UIView, with radius: CGFloat) {
+		view.layer.cornerRadius = radius
 		view.clipsToBounds = true
 		view.layer.masksToBounds = true
 	}
 	
-	private func setUpShawdow(for view: UIView) {
+	func setUpShawdow(for view: UIView, withRadius radius: CGFloat, andColor color: CGColor) {
 		// configure shadowView
-		view.layer.cornerRadius = 8.0
-		view.layer.shadowColor = UIColor.gray.cgColor
-		view.layer.shadowOffset = CGSize(width: 0.2, height: 0.2)
-		view.layer.shadowRadius = 10
+		view.layer.cornerRadius = radius
+		view.layer.shadowColor = color
+		view.layer.shadowOffset = CGSize(width: 0.1, height: 0.1)
+		view.layer.shadowRadius = radius
 		view.layer.shadowOpacity = 0.2
 	}
-	
-	@IBAction func commentSend(_ sender: UIButton) {
-		
+}
+
+extension AboutProjectViewController: AddProjectVCDelegate {
+	func didAddProject(_ newProject: Project) {
+		// ignore here, should be optional
+	}
+	func didUpdateProject(_ updatedProject: Project) {
+		project = updatedProject
 	}
 }
