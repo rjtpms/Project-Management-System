@@ -58,7 +58,12 @@ class FIRService: NSObject {
         // create task and add to "Tasks" table
         let key = databaseRef.child("Tasks").childByAutoId().key
         let taskDict = ["title": task.title!, "description": task.description!, "start date": task.startDate!.timeIntervalSince1970, "due date": task.dueDate!.timeIntervalSince1970, "projectID": task.projectId!, "isCompleted": false] as [String : Any]
+		
         databaseRef.child("Tasks").child(key).updateChildValues(taskDict)
+		
+		// add task id to project table
+		let projectTaskDict = [key: true]
+        databaseRef.child("Projects").child(task.projectId!).child("tasks").updateChildValues(projectTaskDict)
         
         // add the manager who created the task to the task's member list
         assignTaskToUser(taskId: key, userId: userId) { (err) in
@@ -68,6 +73,12 @@ class FIRService: NSObject {
             completion(err)
         }
         
+    }
+    
+    func updateTask(task: Task) {
+        // update task in "Tasks" table
+        let taskDict = ["title": task.title!, "description": task.description!, "start date": task.startDate!.timeIntervalSince1970, "due date": task.dueDate!.timeIntervalSince1970, "projectID": task.projectId!, "isCompleted": task.isCompleted!] as [String : Any]
+        databaseRef.child("Tasks").child(task.id).updateChildValues(taskDict)
     }
     
     func setCompletionStatus(ofTask taskId: String, to status: Bool) {
@@ -80,6 +91,15 @@ class FIRService: NSObject {
         
        // add user to task's members list
         databaseRef.child("Tasks").child(taskId).child("members").child(userId).setValue(true)
+        completion(nil)
+    }
+    
+    func UnassignTaskFromUser (taskId: String, userId: String, completion: @escaping (Error?) -> ()) {
+        // remove task from user's tasks list
+        databaseRef.child("Users").child(userId).child("tasks").child(taskId).removeValue()
+        
+        // remove user from task's members list
+        databaseRef.child("Tasks").child(taskId).child("members").child(userId).removeValue()
         completion(nil)
     }
     
@@ -148,6 +168,37 @@ class FIRService: NSObject {
         }
         return UIImage()
     }
+    
+    func uploadImage(ofId userId: String, with img: UIImage, completion: @escaping (StorageMetadata?, Error?) -> ()) {
+        let data = UIImageJPEGRepresentation(img, 0.8)
+        let metadata = StorageMetadata()
+        metadata.contentType = "image/jpeg"
+        let imageName = "ProfileImage/\(userId).jpeg"
+        let childRef = storageRef?.child(imageName)
+        guard let dt = data else {return}
+        childRef?.putData(dt, metadata: metadata, completion: { (meta, error) in
+            completion(meta, error)
+            if let url = meta?.downloadURL()?.absoluteURL {
+                self.databaseRef.child("Users").child(userId).child("profile photo").setValue("\(url)")
+            }
+        })
+        
+    }
+    
+    
+    func getProfileImageUrl(ofUser id: String, completion: @escaping (URL?, Error?) -> ()) {
+        let imageName = "ProfileImage/\(id).jpeg"
+        let childRef = storageRef?.child(imageName)
+        childRef?.getMetadata(completion: { (metadata, error) in
+            if error != nil {
+                completion(nil, error)
+            } else {
+                let url = metadata?.downloadURL()?.absoluteURL
+                completion(url, nil)
+            }
+        })
+    }
+    
     
     func getAllTaskIds(ofUser uid: String, completion: @escaping ([String]?, Error?) -> ()) {
         let ref = databaseRef.child("Users").child(uid).child("tasks")
@@ -437,16 +488,22 @@ class FIRService: NSObject {
 		
 		completion()
 	}
+    
+    func updateUserName(ofUser uid: String, name: String) {
+        // set database reference
+        let ref = databaseRef.child("Users").child(uid).child("name")
+        ref.setValue(name)
+    }
 	
 	// search by name or email
-	func searchMembers(using searchText: String, completion: @escaping SearchMembersResultHandler) {
+	func searchMembers(using searchText: String, withinProject projectId: String?, completion: @escaping SearchMembersResultHandler) {
 		var resultIds: [String] = []
 		var resultMembers: [Member] = []
 		let searchGroup = DispatchGroup()
 		let fetchMembersGroup = DispatchGroup()
+		let fetchProjectMembersGroup = DispatchGroup()
 			
-		// get memberIds that has name starting with searchText
-		
+		// get all memberIds that has name starting with searchText
 		let nameQuery = userRef
 			.queryOrdered(byChild: "name")
 			.queryStarting(atValue: searchText)
@@ -490,22 +547,46 @@ class FIRService: NSObject {
 		}
 		
 		searchGroup.notify(queue: .main) { [weak self] in
-			// now start fetching result members info
-			for id in resultIds {
-				fetchMembersGroup.enter()
-				self?.fetchUserInfo(with: id) { (member, error) in
-					fetchMembersGroup.leave()
-					guard error == nil else { return }
-					guard let unwrappedMember = member else { return }
-					resultMembers.append(unwrappedMember)
+			
+			var projectMemberIds: [String] = []
+			if let pId = projectId {
+				let projectRef = self?.databaseRef
+					.child("Projects")
+					.child(pId)
+					.child("members")
+				fetchProjectMembersGroup.enter()
+				projectRef?.observeSingleEvent(of: .value) { (snapshot) in
+					guard let projectMemberDict = snapshot.value as? [String: Any] else {
+						fetchProjectMembersGroup.leave()
+						return
+					}
+					projectMemberIds = Array(projectMemberDict.keys)
+					fetchProjectMembersGroup.leave()
 				}
 			}
 			
-			fetchMembersGroup.notify(queue: .main) {
-				if resultMembers.isEmpty {
-					completion(nil, FIRServiceError.userDoesNotExist)
-				} else {
-					completion(resultMembers, nil)
+			fetchProjectMembersGroup.notify(queue: .main) {
+				// we only interested in results that is in the given project if exists
+				// then we need to filtered resultsId
+				resultIds =  projectId != nil ? resultIds.filter { projectMemberIds.contains($0) } : resultIds
+				
+				// now start fetching result members info
+				for id in resultIds {
+					fetchMembersGroup.enter()
+					self?.fetchUserInfo(with: id) { (member, error) in
+						fetchMembersGroup.leave()
+						guard error == nil else { return }
+						guard let unwrappedMember = member else { return }
+						resultMembers.append(unwrappedMember)
+					}
+				}
+				
+				fetchMembersGroup.notify(queue: .main) {
+					if resultMembers.isEmpty {
+						completion(nil, FIRServiceError.userDoesNotExist)
+					} else {
+						completion(resultMembers, nil)
+					}
 				}
 			}
 		}

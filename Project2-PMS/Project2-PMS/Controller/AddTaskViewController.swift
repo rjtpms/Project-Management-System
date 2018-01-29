@@ -9,6 +9,10 @@
 import UIKit
 import Eureka
 
+protocol AddTaskViewControllerDelegate {
+	func didAddTask(with taskId: String)
+}
+
 class AddTaskViewController: FormViewController {
 
     var projectID: String!
@@ -17,7 +21,6 @@ class AddTaskViewController: FormViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        projectID = "324324as9dsadsada"
         setupView()
     }
     
@@ -87,10 +90,6 @@ class AddTaskViewController: FormViewController {
         }
     }
     
-    func alert(_ title: String, _ message: String) {
-        let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertControllerStyle.alert)
-        alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
-        self.present(alert, animated: true, completion: nil)
-    }
+    
     
 }

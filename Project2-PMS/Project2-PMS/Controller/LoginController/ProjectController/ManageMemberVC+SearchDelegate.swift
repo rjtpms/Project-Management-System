@@ -34,7 +34,7 @@ extension ManageMemembersViewController: UISearchBarDelegate, UISearchResultsUpd
 		showNetworkIndicators()
 		
 		// search Firebase for members with certain email or name
-		FIRService.shareInstance.searchMembers(using: queryText) { (members, error) in
+		FIRService.shareInstance.searchMembers(using: queryText, withinProject: projectId) { (members, error) in
 			// nide networkIndicators
 			DispatchQueue.main.async {
 				self.finishGettingSearchResults(members: members, error: error)

@@ -111,7 +111,10 @@ class SignupViewController: UIViewController {
 					
 					// save user data
 					currUser.save()
-					
+					CurrentUser.sharedInstance.email = email
+                    CurrentUser.sharedInstance.fullname = name
+                    
+                    
                     // TODO: - Go to home page
                     let controller = self.storyboard?.instantiateViewController(withIdentifier: "tabVC")
                     let appDelegate = UIApplication.shared.delegate as! AppDelegate
