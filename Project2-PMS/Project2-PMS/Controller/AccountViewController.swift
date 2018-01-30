@@ -37,6 +37,11 @@ class AccountViewController: UIViewController {
         emailLabel.text = CurrentUser.sharedInstance.email
         
         nameField.delegate = self
+		
+		let bar = self.navigationController?.navigationBar
+		bar?.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
+		bar?.shadowImage = UIImage()
+		bar?.backgroundColor = UIColor.clear
         
     }
     

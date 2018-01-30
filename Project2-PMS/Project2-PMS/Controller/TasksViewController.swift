@@ -35,6 +35,10 @@ class TasksViewController: UIViewController {
     
     func setupView() {
         taskTable.tableFooterView = UIView()
+		let bar = self.navigationController?.navigationBar
+		bar?.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
+		bar?.shadowImage = UIImage()
+		bar?.backgroundColor = UIColor.clear
     }
     
     

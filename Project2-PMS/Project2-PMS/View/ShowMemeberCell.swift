@@ -19,6 +19,9 @@ class ShowMemeberCell: UITableViewCell {
 		memberImage.layer.cornerRadius = memberImage.frame.size.width / 2
 		memberImage.clipsToBounds = true
 		memberImage.layer.masksToBounds = true
+		
+		memberName.font = UIFont.mediumFont
+		memberEmail.font = UIFont.smallFont
 	}
 	
 	func configureCell(imageURL: URL?, name: String?, email: String?) {

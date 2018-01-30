@@ -65,6 +65,11 @@ private extension ProjectViewController {
 		
 		tableview.rowHeight = UITableViewAutomaticDimension
 		tableview.estimatedRowHeight = 110
+		
+		let bar = self.navigationController?.navigationBar
+		bar?.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
+		bar?.shadowImage = UIImage()
+		bar?.backgroundColor = UIColor.clear
 	}
 	
 	@objc func fetchProjects () {

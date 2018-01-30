@@ -17,6 +17,8 @@ class TaskCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+		dueDateLabel.font = UIFont.mediumFont
+		titleLabel.font = UIFont.largeFont
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
