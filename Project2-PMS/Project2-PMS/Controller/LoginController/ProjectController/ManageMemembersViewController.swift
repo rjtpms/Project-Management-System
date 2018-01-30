@@ -77,6 +77,11 @@ extension ManageMemembersViewController {
 		tableview.rowHeight = UITableViewAutomaticDimension
 		tableview.estimatedRowHeight = 70
 		tableview.tableFooterView = UIView()
+		
+		let bar = self.navigationController?.navigationBar
+		bar?.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
+		bar?.shadowImage = UIImage()
+		bar?.backgroundColor = UIColor.clear
 	}
 	
 	private func setupSearching() {

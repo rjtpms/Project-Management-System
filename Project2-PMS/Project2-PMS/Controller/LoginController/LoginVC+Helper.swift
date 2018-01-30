@@ -20,6 +20,7 @@ extension LoginViewController {
 		loginButton.layer.borderColor = UIColor.gray.cgColor
 		loginButton.clipsToBounds = true
 		
+		
 		// view move up as keyboard shows
 		NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(_:)), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
 		NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(_:)), name: NSNotification.Name.UIKeyboardWillHide, object: nil)

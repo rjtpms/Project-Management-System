@@ -8,6 +8,18 @@
 
 import UIKit
 
+extension UIColor {
+	static var background: UIColor {
+		return UIColor(red: 255/255.0, green: 255/255.0, blue: 255/255.0, alpha: 0.9)
+	}
+}
+
+extension UIFont {
+	static let mediumFont = UIFont(name: "Avenir-Heavy", size: 14)
+	static let smallFont = UIFont(name: "Avenir-Heavy", size: 12)
+	static let largeFont = UIFont(name: "Avenir", size: 18)
+}
+
 // hide keyboard when tapped around
 extension UIViewController {
 	var mFont: UIFont? {
@@ -16,12 +28,12 @@ extension UIViewController {
 	}
 	
 	var sFont: UIFont? {
-		let font = UIFont(name: "Avenir", size: 12)
+		let font = UIFont(name: "Avenir-Heavy", size: 12)
 		return font
 	}
 	
 	var lFont: UIFont? {
-		let font = UIFont(name: "Avenir-Medium", size: 18)
+		let font = UIFont(name: "Avenir", size: 18)
 		return font
 	}
 	

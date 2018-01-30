@@ -34,6 +34,8 @@ class MemberPhotoCell: UICollectionViewCell {
 		memberPhoto.layer.cornerRadius = memberPhoto.frame.size.width / 2
 		memberPhoto.clipsToBounds = true
 		memberPhoto.layer.masksToBounds = true
+		
+		memberName.font = UIFont.smallFont
 	}
 	
 }

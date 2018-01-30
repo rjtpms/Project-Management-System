@@ -64,7 +64,7 @@ class ProjectContainerViewController: UIViewController {
 		
 		// customize menu
 		menuView.cellHeight = 40
-		menuView.cellBackgroundColor = self.navigationController?.navigationBar.barTintColor
+		menuView.cellBackgroundColor = UIColor.background
 		menuView.shouldKeepSelectedCellColor = true
 		menuView.cellTextLabelFont = mFont
 		menuView.cellSelectionColor = UIColor.clear
