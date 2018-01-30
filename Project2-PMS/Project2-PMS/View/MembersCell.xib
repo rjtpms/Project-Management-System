@@ -27,34 +27,20 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="RvL-fh-hBU"/>
                                 </constraints>
-                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="47U-cK-Lif">
+                                <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="47U-cK-Lif">
                                     <size key="itemSize" width="50" height="50"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="avatarCell" id="iBW-8z-NfP" customClass="AvatarCell" customModule="Project2_PMS" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="Bcl-Yg-OBy">
+                                        <rect key="frame" x="0.0" y="-5" width="50" height="50"/>
+                                        <autoresizingMask key="autoresizingMask"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
                                             <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
                                             <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="user" translatesAutoresizingMaskIntoConstraints="NO" id="AUS-7O-Nd0">
-                                                    <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
-                                                </imageView>
-                                            </subviews>
                                         </view>
-                                        <constraints>
-                                            <constraint firstAttribute="bottom" secondItem="AUS-7O-Nd0" secondAttribute="bottom" id="9Yt-1F-GFU"/>
-                                            <constraint firstItem="AUS-7O-Nd0" firstAttribute="top" secondItem="iBW-8z-NfP" secondAttribute="top" id="Z2A-YA-rVY"/>
-                                            <constraint firstItem="AUS-7O-Nd0" firstAttribute="leading" secondItem="iBW-8z-NfP" secondAttribute="leading" id="jRK-ap-abA"/>
-                                            <constraint firstAttribute="trailing" secondItem="AUS-7O-Nd0" secondAttribute="trailing" id="lE3-pd-3Mf"/>
-                                        </constraints>
-                                        <connections>
-                                            <outlet property="avatarImageView" destination="AUS-7O-Nd0" id="F7T-Od-hKq"/>
-                                        </connections>
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
@@ -89,7 +75,4 @@
             <point key="canvasLocation" x="122.5" y="894"/>
         </tableViewCell>
     </objects>
-    <resources>
-        <image name="user" width="225" height="225"/>
-    </resources>
 </document>

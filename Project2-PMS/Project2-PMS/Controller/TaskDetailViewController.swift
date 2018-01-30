@@ -65,8 +65,12 @@ class TaskDetailViewController: UIViewController {
         
         let formatter = DateFormatter()
         formatter.dateFormat = "dd MMM"
-        startDateLabel.text = formatter.string(from: task.startDate!)
-        endDateLabel.text = formatter.string(from: task.dueDate!)
+        if let sd = task.startDate {
+            startDateLabel.text = formatter.string(from: sd)
+        }
+        if let ed = task.dueDate {
+            endDateLabel.text = formatter.string(from: ed)
+        }
         titleLabel.text = task.title
         descriptionLabel.text = task.description
         setupCollectionLayout(collectionView: membersCollection)
@@ -139,11 +143,9 @@ class TaskDetailViewController: UIViewController {
         layout.sectionInset = UIEdgeInsetsMake(0, 0, 0, 0)
         layout.itemSize = CGSize(width: 40, height: 40)
         layout.minimumInteritemSpacing = 8
-        layout.minimumLineSpacing = 0
+        layout.minimumLineSpacing = 4
+        layout.scrollDirection = .horizontal
         collectionView.collectionViewLayout = layout
-        
-//        let indexPath = IndexPath(item: 0, section: 0)
-//        collectionView.selectItem(at: indexPath, animated: false, scrollPosition: .centeredHorizontally)
         collectionView.backgroundColor = UIColor.clear
     }
 }

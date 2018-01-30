@@ -186,7 +186,8 @@ class EditTaskViewController: FormViewController, UIGestureRecognizerDelegate {
         layout.sectionInset = UIEdgeInsetsMake(0, 0, 0, 0)
         layout.itemSize = CGSize(width: 40, height: 40)
         layout.minimumInteritemSpacing = 8
-        layout.minimumLineSpacing = 0
+        layout.minimumLineSpacing = 4
+        layout.scrollDirection = .horizontal
         collectionView.collectionViewLayout = layout
         collectionView.backgroundColor = UIColor.clear
     }
