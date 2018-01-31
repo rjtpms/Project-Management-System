@@ -13,8 +13,16 @@ class TasksViewController: UIViewController {
     @IBOutlet weak var taskTable: UITableView!
     var refreshControl: UIRefreshControl!
     
-    var tasks : [Task] = []
+	var tasks : [Task] = []
     var taskIds : [String]?
+	private var numberFetched = 0 {
+		didSet {
+			if numberFetched == tasks.count {
+				tasks.sort { !$0.isCompleted! && $1.isCompleted!}
+				taskTable.reloadData()
+			}
+		}
+	}
 	
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,11 +30,12 @@ class TasksViewController: UIViewController {
         // Do any additional setup after loading the view.
         setupRefreshControl()
         setupView()
+		
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        loadData()
+		loadData()
     }
     
     func setupView() {
@@ -53,6 +62,7 @@ class TasksViewController: UIViewController {
     }
     
     func loadData() {
+		numberFetched = 0
         if let taskids = taskIds {
             
             var tempTasks : [Task] = []
@@ -115,7 +125,8 @@ extension TasksViewController: UITableViewDelegate, UITableViewDataSource {
                 }
                 DispatchQueue.main.async {
                     self.tasks[indexPath.row] = taskObj!
-                    self.taskTable.reloadRows(at: [indexPath], with: UITableViewRowAnimation.none)
+//                    self.taskTable.reloadRows(at: [indexPath], with: UITableViewRowAnimation.none)
+					self.numberFetched += 1
                 }
             })
         }
@@ -128,6 +139,8 @@ extension TasksViewController: UITableViewDelegate, UITableViewDataSource {
         
         if let isCompleted = task.isCompleted {
             cell.finishedImageView.image = isCompleted ? #imageLiteral(resourceName: "checked-green") : #imageLiteral(resourceName: "checked-grey")
+			cell.dueDateLabel.isEnabled = !isCompleted
+			cell.titleLabel.isEnabled = !isCompleted
         }
         
         return cell
