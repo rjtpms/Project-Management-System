@@ -78,13 +78,13 @@ class TasksViewController: UIViewController {
         }
         
         guard let uid = CurrentUser.sharedInstance.userId else {return}
-        let t = Task(id: "123")
-        t.title = "TT"
-        t.isCompleted = true
-        t.dueDate = Date()
-        tasks=[t]
-        taskTable.reloadData()
-        
+//        let t = Task(id: "123")
+//        t.title = ""
+//        t.isCompleted = true
+//        t.dueDate = Date()
+//        tasks=[t]
+//        taskTable.reloadData()
+		
         FIRService.shareInstance.getAllTaskIds(ofUser: uid) { (tasks, err) in
             if err != nil {
                 print()
