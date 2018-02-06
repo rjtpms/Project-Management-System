@@ -16,7 +16,10 @@ protocol AddTaskViewControllerDelegate {
 class AddTaskViewController: FormViewController {
 
     var projectID: String!
-    
+	
+	
+	var delegate: AddTaskViewControllerDelegate?
+	
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -80,11 +83,14 @@ class AddTaskViewController: FormViewController {
         task.dueDate = endDate
         task.members = []
         
-        FIRService.shareInstance.createOrDeleteTask(task: task, toCreate: true) { (err) in
+        FIRService.shareInstance.createOrDeleteTask(task: task, toCreate: true) { (taskId, err) in
             if err != nil {
                 print(err!)
                 self.alert("Error", err!.localizedDescription)
             } else {
+				if let id = taskId {
+					self.delegate?.didAddTask(with: id)
+				}
                 self.navigationController?.popViewController(animated: true)
             }
         }

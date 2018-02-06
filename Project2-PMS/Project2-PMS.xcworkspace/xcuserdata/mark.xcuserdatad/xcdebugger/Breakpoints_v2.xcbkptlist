@@ -154,7 +154,7 @@
                   moduleName = "Project2-PMS"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/mark/Desktop/Project-Management-System/Project2-PMS/Project2-PMS/Controller/LoginController/ExtraInfomationViewController.swift"
-                  timestampString = "539068862.692982"
+                  timestampString = "539126612.726789"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "56"
@@ -169,7 +169,7 @@
                   moduleName = "Project2-PMS"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/mark/Desktop/Project-Management-System/Project2-PMS/Project2-PMS/Controller/LoginController/ExtraInfomationViewController.swift"
-                  timestampString = "539068862.695014"
+                  timestampString = "539126612.7288131"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "56"
@@ -506,13 +506,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Project2-PMS/Controller/AddTaskViewController.swift"
-            timestampString = "538903274.803574"
+            timestampString = "539283179.562601"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "72"
-            endingLineNumber = "72"
-            landmarkName = "createTaskAction(_:)"
-            landmarkType = "7">
+            startingLineNumber = "78"
+            endingLineNumber = "78"
+            landmarkName = "unknown"
+            landmarkType = "0">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -522,13 +522,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Project2-PMS/Controller/AddTaskViewController.swift"
-            timestampString = "538903274.804342"
+            timestampString = "539283179.563413"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "50"
-            endingLineNumber = "50"
-            landmarkName = "setupView()"
-            landmarkType = "7">
+            startingLineNumber = "53"
+            endingLineNumber = "53"
+            landmarkName = "unknown"
+            landmarkType = "0">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -625,38 +625,6 @@
             endingLineNumber = "231"
             landmarkName = "didRemoveMember(_:)"
             landmarkType = "7">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "Project2_PMS.EditTaskViewController.didRemoveMember(Project2_PMS.Member) -&gt; ()"
-                  moduleName = "Project2-PMS"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/mark/Desktop/Project-Management-System/Project2-PMS/Project2-PMS/Controller/EditTaskViewController.swift"
-                  timestampString = "539068862.757201"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "232"
-                  endingLineNumber = "232"
-                  offsetFromSymbolStart = "40">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (Swift.String) -&gt; Swift.Bool in Project2_PMS.EditTaskViewController.didRemoveMember(Project2_PMS.Member) -&gt; ()"
-                  moduleName = "Project2-PMS"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/mark/Desktop/Project-Management-System/Project2-PMS/Project2-PMS/Controller/EditTaskViewController.swift"
-                  timestampString = "539068862.759545"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "232"
-                  endingLineNumber = "232"
-                  offsetFromSymbolStart = "28">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -682,13 +650,93 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Project2-PMS/Controller/TasksViewController.swift"
-            timestampString = "539069979.721369"
+            timestampString = "539126323.570973"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "26"
             endingLineNumber = "26"
             landmarkName = "TasksViewController"
             landmarkType = "3">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Project2-PMS/Controller/TasksViewController.swift"
+            timestampString = "539126323.57103"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "67"
+            endingLineNumber = "67"
+            landmarkName = "loadData()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Project2-PMS/Controller/AddTaskViewController.swift"
+            timestampString = "539283179.564055"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "56"
+            endingLineNumber = "56"
+            landmarkName = "unknown"
+            landmarkType = "0">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Project2-PMS/Controller/AddTaskViewController.swift"
+            timestampString = "539283179.564494"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "91"
+            endingLineNumber = "91"
+            landmarkName = "unknown"
+            landmarkType = "0">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Project2-PMS/Controller/AddTaskViewController.swift"
+            timestampString = "539283179.5650049"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "87"
+            endingLineNumber = "87"
+            landmarkName = "unknown"
+            landmarkType = "0">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Project2-PMS/Controller/LoginController/ProjectController/ProjectContainerViewController.swift"
+            timestampString = "539126612.387785"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "146"
+            endingLineNumber = "146"
+            landmarkName = "didAddTask(with:)"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

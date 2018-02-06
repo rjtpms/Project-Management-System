@@ -55,6 +55,7 @@ class ProjectContainerViewController: UIViewController {
 	@objc func addTask() {
 		if let targetVC = storyboard?.instantiateViewController(withIdentifier: addTaskVCId) as? AddTaskViewController {
 			targetVC.projectID = project.id
+			targetVC.delegate = self
 			navigationController?.pushViewController(targetVC, animated: true)
 		}
 	}
@@ -137,6 +138,15 @@ class ProjectContainerViewController: UIViewController {
 		
 		// Notify Child View Controller
 		viewController.removeFromParentViewController()
+	}
+}
+
+extension ProjectContainerViewController: AddTaskViewControllerDelegate {
+	func didAddTask(with taskId: String) {
+		print("did Added")
+		if let taskVC = childrenVCs.first as? TasksViewController {
+			taskVC.taskIds?.append(taskId)
+		}
 	}
 }
 

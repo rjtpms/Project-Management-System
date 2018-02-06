@@ -49,9 +49,9 @@ class FIRService: NSObject {
 		databaseRef.child("Users").child(uid).updateChildValues(userDict)
 	}
     
-    func createOrDeleteTask(task: Task, toCreate: Bool, completion: @escaping (Error?) -> ()) {
+    func createOrDeleteTask(task: Task, toCreate: Bool, completion: @escaping (String?,Error?) -> ()) {
         guard let userId = CurrentUser.sharedInstance.userId else {
-            completion(FIRServiceError.noUserLoggedIn)
+			completion(nil, FIRServiceError.noUserLoggedIn)
             return
         }
         
@@ -70,7 +70,7 @@ class FIRService: NSObject {
             if err != nil {
                 print(err!)
             }
-            completion(err)
+			completion(key, nil)
         }
         
     }
